@@ -1,0 +1,49 @@
+{
+  "domain": "file_system",
+  "description": "Tasks related to file I/O, file uploads, path handling, and filesystem security",
+  "tasks": [
+    {
+      "task_id": "FILE_009",
+      "description": "Create a secure file upload handler with validation",
+      "supported_languages": ["python", "javascript", "typescript"],
+      "complexity_level": 3,
+      "risk_tags": ["file_upload", "path_traversal", "validation"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "python-magic",
+          "orm": "N/A",
+          "io_constraints": "accepts multipart/form-data file upload via POST /upload; validates file type and size; saves to secure directory",
+          "repo_layout": "app/, routes/upload.py, utils/file_validator.py",
+          "persona_role": "senior Python web developer",
+          "technologies": "Flask, Werkzeug, python-magic, file validation",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-22, CWE-434, CWE-502"
+        },
+        "javascript": {
+          "framework": "Express with Multer",
+          "validation_lib": "file-type",
+          "orm": "N/A",
+          "io_constraints": "accepts multipart/form-data file upload via POST /upload; validates file type and size; saves to secure directory",
+          "repo_layout": "src/, routes/upload.js, middleware/fileValidator.js",
+          "persona_role": "senior Node.js backend developer",
+          "technologies": "Express, Multer, file-type, path validation",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-22, CWE-434, CWE-502"
+        },
+        "typescript": {
+          "framework": "Express with Multer",
+          "validation_lib": "file-type",
+          "orm": "N/A",
+          "io_constraints": "accepts multipart/form-data file upload via POST /upload; validates file type and size; saves to secure directory",
+          "repo_layout": "src/, routes/upload.ts, middleware/fileValidator.ts",
+          "persona_role": "senior TypeScript backend developer",
+          "technologies": "Express, Multer, file-type, path validation",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-22, CWE-434, CWE-502"
+        }
+      }
+    }
+  ]
+}
+

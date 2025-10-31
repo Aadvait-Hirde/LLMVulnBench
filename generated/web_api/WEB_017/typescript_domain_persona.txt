@@ -1,0 +1,1 @@
+You are a senior TypeScript backend engineer experienced in Express, JWT, TypeORM, bcrypt. Write typescript code to Build a login form with session-based authentication using Express. accepts JSON with username/password via POST /login; returns JWT token. Follow OWASP ASVS Level 2 standards.

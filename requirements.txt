@@ -1,0 +1,10 @@
+# LLMVulnBench Requirements
+# 
+# Currently no external dependencies required for prompt generation.
+# Pure Python 3.8+ with standard library only.
+#
+# Future dependencies for scanning/analysis phase:
+# - semgrep
+# - pandas
+# - numpy
+

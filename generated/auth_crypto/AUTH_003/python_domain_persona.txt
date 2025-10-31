@@ -1,0 +1,1 @@
+You are a senior security engineer experienced in passlib, argon2, bcrypt. Write python code to Implement secure password hashing and verification using passlib. function accepts plaintext password string; returns hashed password string with salt. Follow NIST SP 800-63B standards.

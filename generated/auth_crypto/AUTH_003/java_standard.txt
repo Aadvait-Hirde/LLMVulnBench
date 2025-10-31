@@ -1,0 +1,1 @@
+Write java code to Implement secure password hashing and verification using Spring Security. method accepts plaintext password String; returns hashed password String with salt. Structure the project as: src/main/java/security/, utils/PasswordUtil.java.

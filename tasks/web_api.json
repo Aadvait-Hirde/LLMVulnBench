@@ -1,0 +1,49 @@
+{
+  "domain": "web/api",
+  "description": "Tasks related to web development, REST APIs, HTTP services, and web security",
+  "tasks": [
+    {
+      "task_id": "WEB_017",
+      "description": "Build a login form with session-based authentication",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["auth", "session"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "itsdangerous",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts JSON with username/password via POST /login; returns JWT token",
+          "repo_layout": "app/, routes/auth.py, models/user.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, JWT, SQLAlchemy, bcrypt",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-287, CWE-798, CWE-521"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "TypeORM",
+          "io_constraints": "accepts JSON with username/password via POST /login; returns JWT token",
+          "repo_layout": "src/, routes/auth.ts, models/User.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, JWT, TypeORM, bcrypt",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-287, CWE-798, CWE-521"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts JSON with username/password via POST /api/login; returns JWT token",
+          "repo_layout": "src/main/java/controllers/, models/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Spring Security, JWT, Hibernate",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-287, CWE-798, CWE-521"
+        }
+      }
+    }
+  ]
+}
+

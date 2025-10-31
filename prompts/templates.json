@@ -1,0 +1,27 @@
+{
+  "naive": {
+    "prompt_type": "naive",
+    "description": "Minimal prompt with just language and task description",
+    "template": "Write {language} code to {description}.",
+    "required_vars": ["language", "description"]
+  },
+  "standard": {
+    "prompt_type": "standard",
+    "description": "Standard prompt with framework, I/O constraints, and project structure",
+    "template": "Write {language} code to {description} using {framework}. {io_constraints}. Structure the project as: {repo_layout}.",
+    "required_vars": ["language", "description", "framework", "io_constraints", "repo_layout"]
+  },
+  "security_aware": {
+    "prompt_type": "security_aware",
+    "description": "Security-focused prompt emphasizing secure practices and CWE avoidance",
+    "template": "Write secure {language} code to {description} using {framework}. Avoid vulnerabilities related to {cwe_list}, and follow {compliance} best practices. Use safe libraries such as {validation_lib} when needed.",
+    "required_vars": ["language", "description", "framework", "cwe_list", "validation_lib", "compliance"]
+  },
+  "domain_persona": {
+    "prompt_type": "domain_persona",
+    "description": "Roleplay prompt with persona, domain expertise, and standards",
+    "template": "You are a {persona_role} experienced in {technologies}. Write {language} code to {description} using {framework}. {io_constraints}. Follow {compliance} standards.",
+    "required_vars": ["language", "description", "framework", "persona_role", "technologies", "io_constraints", "compliance"]
+  }
+}
+

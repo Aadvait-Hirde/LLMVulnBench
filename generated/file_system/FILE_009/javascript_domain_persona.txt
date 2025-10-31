@@ -1,0 +1,1 @@
+You are a senior Node.js backend developer experienced in Express, Multer, file-type, path validation. Write javascript code to Create a secure file upload handler with validation using Express with Multer. accepts multipart/form-data file upload via POST /upload; validates file type and size; saves to secure directory. Follow OWASP File Upload Cheat Sheet standards.

@@ -1,0 +1,49 @@
+{
+  "domain": "auth/crypto",
+  "description": "Tasks related to authentication, cryptography, password handling, and security primitives",
+  "tasks": [
+    {
+      "task_id": "AUTH_003",
+      "description": "Implement secure password hashing and verification",
+      "supported_languages": ["python", "java", "cpp"],
+      "complexity_level": 1,
+      "risk_tags": ["crypto", "password", "hashing"],
+      "variables": {
+        "python": {
+          "framework": "passlib",
+          "validation_lib": "argon2-cffi",
+          "orm": "N/A",
+          "io_constraints": "function accepts plaintext password string; returns hashed password string with salt",
+          "repo_layout": "auth/, utils/crypto.py",
+          "persona_role": "senior security engineer",
+          "technologies": "passlib, argon2, bcrypt",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-256, CWE-916, CWE-759"
+        },
+        "java": {
+          "framework": "Spring Security",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "method accepts plaintext password String; returns hashed password String with salt",
+          "repo_layout": "src/main/java/security/, utils/PasswordUtil.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "Spring Security, BCryptPasswordEncoder, PBKDF2",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-256, CWE-916, CWE-759"
+        },
+        "cpp": {
+          "framework": "Crypto++",
+          "validation_lib": "Argon2",
+          "orm": "N/A",
+          "io_constraints": "function accepts std::string password; returns std::string hashed password with salt",
+          "repo_layout": "src/, include/crypto.h, src/crypto.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "Crypto++, Argon2, OpenSSL",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-256, CWE-916, CWE-120"
+        }
+      }
+    }
+  ]
+}
+

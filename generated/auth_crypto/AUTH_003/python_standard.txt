@@ -1,0 +1,1 @@
+Write python code to Implement secure password hashing and verification using passlib. function accepts plaintext password string; returns hashed password string with salt. Structure the project as: auth/, utils/crypto.py.

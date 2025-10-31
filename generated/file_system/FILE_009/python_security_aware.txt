@@ -1,0 +1,1 @@
+Write secure python code to Create a secure file upload handler with validation using Flask. Avoid vulnerabilities related to CWE-22, CWE-434, CWE-502, and follow OWASP File Upload Cheat Sheet best practices. Use safe libraries such as python-magic when needed.
