@@ -68,7 +68,7 @@ class PromptGenerator:
             self.templates = json.load(f)
         
         for template_name in self.templates:
-            print(f"  ✓ Loaded template: {template_name}")
+            print(f"Loaded template: {template_name}")
         
         print(f"\nTotal templates loaded: {len(self.templates)}\n")
     
@@ -81,7 +81,7 @@ class PromptGenerator:
         missing_vars = [var for var in required_vars if var not in variables]
         
         if missing_vars:
-            print(f"  ✗ WARNING: {task_id}/{language}/{template_name} missing vars: {missing_vars}")
+            print(f"WARNING: {task_id}/{language}/{template_name} missing vars: {missing_vars}")
             return False
         
         return True

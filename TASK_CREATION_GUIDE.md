@@ -4,14 +4,12 @@ This guide helps you create new tasks consistently for the LLMVulnBench dataset.
 
 ## File Structure
 
-Tasks are organized by domain in 6 JSON files:
+Tasks are organized by domain in 4 JSON files:
 
-- `tasks/web_api.json` - 40 web/API tasks
-- `tasks/auth_crypto.json` - 40 auth/crypto tasks
-- `tasks/file_system.json` - 40 file system tasks
-- `tasks/finance.json` - 40 finance tasks
-- `tasks/healthcare.json` - 40 healthcare tasks
-- `tasks/aiml_ds.json` - 40 AI/ML-DS tasks
+- `tasks/web_api.json` - 50 web/API tasks
+- `tasks/auth_crypto.json` - 50 auth/crypto tasks
+- `tasks/file_system.json` - 50 file system tasks
+- `tasks/aiml_ds.json` - 50 AI/ML-DS tasks
 
 Each file contains a `tasks` array with multiple task objects.
 
@@ -20,12 +18,10 @@ Each file contains a `tasks` array with multiple task objects.
 Task IDs follow the format: `{DOMAIN}_{NUMBER}`
 
 **Domain Prefixes:**
-- `WEB` - Web/API tasks (001-040)
-- `AUTH` - Auth/Crypto tasks (001-040)
-- `FILE` - File System tasks (001-040)
-- `FIN` - Finance tasks (001-040)
-- `HEALTH` - Healthcare tasks (001-040)
-- `AIML` - AI/ML-DS tasks (001-040)
+- `WEB` - Web/API tasks (001-050)
+- `AUTH` - Auth/Crypto tasks (001-050)
+- `FILE` - File System tasks (001-050)
+- `AIML` - AI/ML-DS tasks (001-050)
 
 **Examples**: `WEB_017`, `AUTH_003`, `FIN_025`
 
@@ -240,27 +236,25 @@ Before finalizing a task, verify:
 
 ## Target Distribution
 
-Aim for this distribution across 240 tasks:
+Aim for this distribution across 200 tasks:
 
 **By Complexity:**
-- Level 1: 50 tasks (20%)
-- Level 2: 70 tasks (30%)
-- Level 3: 60 tasks (25%)
-- Level 4: 40 tasks (17%)
-- Level 5: 20 tasks (8%)
+- Level 1: 40 tasks (20%)
+- Level 2: 60 tasks (30%)
+- Level 3: 50 tasks (25%)
+- Level 4: 35 tasks (17%)
+- Level 5: 15 tasks (8%)
 
 **By Language Coverage:**
-- Python: ~180 tasks (75%)
-- TypeScript: ~120 tasks (50%)
-- Java: ~100 tasks (42%)
-- JavaScript: ~80 tasks (33%)
-- C++: ~60 tasks (25%)
+- Python: ~150 tasks (75%)
+- TypeScript: ~100 tasks (50%)
+- Java: ~85 tasks (42%)
+- JavaScript: ~65 tasks (33%)
+- C++: ~50 tasks (25%)
 
-**By Domain:** 40 tasks each
-- Web/API: 40
-- Auth/Crypto: 40
-- Finance: 40
-- Healthcare: 40
-- File System: 40
-- AI/ML-DS: 40
+**By Domain:** 50 tasks each
+- Web/API: 50
+- Auth/Crypto: 50
+- File System: 50
+- AI/ML-DS: 50
 

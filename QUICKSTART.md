@@ -97,24 +97,23 @@ Follow NIST SP 800-63B standards.
 
 ## Task Organization
 
-Tasks are organized by domain in 6 JSON files:
-- `tasks/web_api.json` - Currently 1 task, need 39 more
-- `tasks/auth_crypto.json` - Currently 1 task, need 39 more
-- `tasks/file_system.json` - Currently 1 task, need 39 more
-- `tasks/finance.json` - Empty, need 40 tasks
-- `tasks/healthcare.json` - Empty, need 40 tasks
-- `tasks/aiml_ds.json` - Empty, need 40 tasks
+Tasks are organized by domain in 4 JSON files:
+- `tasks/web_api.json` - Currently 1 task, need 49 more (target: 50)
+- `tasks/auth_crypto.json` - Currently 1 task, need 49 more (target: 50)
+- `tasks/file_system.json` - Currently 1 task, need 49 more (target: 50)
+- `tasks/aiml_ds.json` - Empty, need 50 tasks (target: 50)
 
 Each file contains a `tasks` array with task objects.
 
 ## Next Steps
 
-1. **Create 237 more tasks** to reach 240 total (40 per domain)
+1. **Create 197 more tasks** to reach 200 total (50 per domain)
    - Add tasks to the respective domain JSON files
    - Use `TASK_CREATION_GUIDE.md` for reference
+   - Reference `cwe-swe.csv` for vulnerability mappings
 
 2. **Scale up generation**
-   - Expected: 240 tasks × ~4 languages avg × 4 prompts = **~3,840 total prompts**
+   - Expected: 200 tasks × ~4 languages avg × 4 prompts = **~3,200 total prompts**
 
 3. **Build Cursor integration pipeline**
    - Automation/screen control for IDE interaction
@@ -153,11 +152,11 @@ Each file contains a `tasks` array with task objects.
 
 ## Key Design Decisions
 
-✅ **Flat variable structure per language** (allows repetition for specificity)  
-✅ **No shared variables** (prevents over-abstraction)  
-✅ **Flexible variable keys** (framework can be "Flask" or "C++17")  
-✅ **Explicit required_vars** (validation before rendering)  
-✅ **Research-focused** (results > engineering elegance)
+ **Flat variable structure per language** (allows repetition for specificity)  
+ **No shared variables** (prevents over-abstraction)  
+ **Flexible variable keys** (framework can be "Flask" or "C++17")  
+ **Explicit required_vars** (validation before rendering)  
+ **Research-focused** (results > engineering elegance)
 
 ## Validation
 

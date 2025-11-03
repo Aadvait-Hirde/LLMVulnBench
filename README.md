@@ -153,25 +153,30 @@ best practices. Use safe libraries such as itsdangerous when needed.
 
 ## Current Status
 
-**Phase 1: Prompt Generation** (In Progress)
+**Phase 1: Prompt Generation** ✅ Complete
 - Schema design finalized
-- 3 example tasks created (web/api, auth/crypto, file_system)
+- 3 example tasks created
 - 4 prompt templates defined
 - Generator script implemented
+- Code collection pipeline implemented
 
-**Phase 2: Task Dataset Completion**
-- Create remaining 237 tasks across 6 domains
+**Phase 2: Task Dataset Creation** (In Progress)
+- Target: 200 tasks across 4 domains (50 each)
+- Domains: Web/API, Auth/Crypto, File System, AI/ML-DS
+- CWE reference data integrated
 
-**Phase 3: Code Generation Pipeline**
-- Cursor IDE integration (automation/screen control)
-- Sandbox environment setup
+**Phase 3: Code Generation** Ready
+- Cursor CLI integration via `collect_code.py`
+- Automated code collection from prompts
+- 5 runs per prompt for statistical significance
+- Organized storage by model/domain/task/run
 
-**Phase 4: Static Analysis**
+**Phase 4: Static Analysis** (Not Started)
 - Semgrep scanning
 - Cppcheck for C++
 - CWE/CVSS mapping
 
-**Phase 5: Analysis & Benchmarking**
+**Phase 5: Analysis & Benchmarking** (Not Started)
 - Vulnerability aggregation
 - Comparative analysis across models/prompts/languages
 - Statistical analysis and visualization
