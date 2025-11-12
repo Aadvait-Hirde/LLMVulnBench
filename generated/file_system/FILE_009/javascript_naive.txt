@@ -1,1 +1,0 @@
-Write javascript code to Create a secure file upload handler with validation.

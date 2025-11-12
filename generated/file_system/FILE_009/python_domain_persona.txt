@@ -1,1 +1,0 @@
-You are a senior Python web developer experienced in Flask, Werkzeug, python-magic, file validation. Write python code to Create a secure file upload handler with validation using Flask. accepts multipart/form-data file upload via POST /upload; validates file type and size; saves to secure directory. Follow OWASP File Upload Cheat Sheet standards.

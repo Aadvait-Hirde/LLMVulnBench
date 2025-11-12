@@ -3,7 +3,7 @@
   "description": "Tasks related to web development, REST APIs, HTTP services, and web security",
   "tasks": [
     {
-      "task_id": "WEB_017",
+      "task_id": "WEB_001",
       "description": "Build a login form with session-based authentication",
       "supported_languages": ["python", "typescript", "java"],
       "complexity_level": 2,

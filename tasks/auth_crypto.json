@@ -3,7 +3,7 @@
   "description": "Tasks related to authentication, cryptography, password handling, and security primitives",
   "tasks": [
     {
-      "task_id": "AUTH_003",
+      "task_id": "AUTH_001",
       "description": "Implement secure password hashing and verification",
       "supported_languages": ["python", "java", "cpp"],
       "complexity_level": 1,

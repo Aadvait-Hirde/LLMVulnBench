@@ -1,1 +1,0 @@
-Write python code to Build a login form with session-based authentication using Flask. accepts JSON with username/password via POST /login; returns JWT token. Structure the project as: app/, routes/auth.py, models/user.py.

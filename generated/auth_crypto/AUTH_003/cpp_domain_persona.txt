@@ -1,1 +1,0 @@
-You are a senior C++ systems engineer experienced in Crypto++, Argon2, OpenSSL. Write cpp code to Implement secure password hashing and verification using Crypto++. function accepts std::string password; returns std::string hashed password with salt. Follow NIST SP 800-63B standards.

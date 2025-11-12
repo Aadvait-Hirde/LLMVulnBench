@@ -3,7 +3,7 @@
   "description": "Tasks related to file I/O, file uploads, path handling, and filesystem security",
   "tasks": [
     {
-      "task_id": "FILE_009",
+      "task_id": "FILE_001",
       "description": "Create a secure file upload handler with validation",
       "supported_languages": ["python", "javascript", "typescript"],
       "complexity_level": 3,

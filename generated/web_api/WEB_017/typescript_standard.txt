@@ -1,1 +1,0 @@
-Write typescript code to Build a login form with session-based authentication using Express. accepts JSON with username/password via POST /login; returns JWT token. Structure the project as: src/, routes/auth.ts, models/User.ts.

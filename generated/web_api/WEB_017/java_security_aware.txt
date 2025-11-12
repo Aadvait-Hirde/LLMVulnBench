@@ -1,1 +1,0 @@
-Write secure java code to Build a login form with session-based authentication using Spring Boot. Avoid vulnerabilities related to CWE-287, CWE-798, CWE-521, and follow OWASP ASVS Level 2 best practices. Use safe libraries such as javax.validation when needed.

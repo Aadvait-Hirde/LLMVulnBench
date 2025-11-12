@@ -35,8 +35,8 @@ import argparse
 
 
 class CodeCollector:
-    def __init__(self, prompts_csv, output_dir, model, runs_per_prompt=5, 
-                 domain_filter=None, resume_from=None, dry_run=False):
+    def __init__(self, prompts_csv, output_dir, model, runs_per_prompt=1, 
+                 domain_filter=None, resume_from=None, dry_run=False, batch_size=None):
         self.prompts_csv = Path(prompts_csv)
         self.output_dir = Path(output_dir)
         self.model = model
@@ -44,6 +44,7 @@ class CodeCollector:
         self.domain_filter = domain_filter
         self.resume_from = resume_from
         self.dry_run = dry_run
+        self.batch_size = batch_size  # Number of prompts to process per batch
         self.metadata_rows = []
         
         # Statistics
