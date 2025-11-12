@@ -1,6 +1,1029 @@
 {
   "domain": "aiml_ds",
   "description": "Tasks related to AI/ML model training, data science pipelines, model security, and data processing",
-  "tasks": []
+  "tasks": [
+    {
+      "task_id": "AIML_001",
+      "description": "Create a machine learning model training pipeline with data preprocessing",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["data_validation", "input_validation", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "scikit-learn",
+          "validation_lib": "pandas",
+          "orm": "N/A",
+          "io_constraints": "accepts CSV file path; loads data, preprocesses features, trains model; saves trained model to file",
+          "repo_layout": "src/, models/, data/, preprocessing.py, train.py",
+          "persona_role": "senior data scientist",
+          "technologies": "scikit-learn, pandas, numpy, joblib",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_002",
+      "description": "Build a REST API endpoint for ML model inference",
+      "supported_languages": ["python", "typescript"],
+      "complexity_level": 3,
+      "risk_tags": ["api", "input_validation", "deserialization"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "N/A",
+          "io_constraints": "accepts JSON with feature vector via POST /predict; loads model, runs inference; returns prediction result",
+          "repo_layout": "app/, routes/predict.py, models/model_loader.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "Flask, TensorFlow, joblib, numpy",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-502, CWE-434"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "N/A",
+          "io_constraints": "accepts JSON with feature vector via POST /predict; loads model, runs inference; returns prediction result",
+          "repo_layout": "src/, routes/predict.ts, models/ModelLoader.ts",
+          "persona_role": "senior TypeScript ML engineer",
+          "technologies": "Express, TensorFlow.js, joi",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-502, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_003",
+      "description": "Implement secure model file loading and deserialization",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["deserialization", "file_handling", "model_security"],
+      "variables": {
+        "python": {
+          "framework": "TensorFlow",
+          "validation_lib": "pickle",
+          "orm": "N/A",
+          "io_constraints": "function accepts model file path; validates file signature and integrity; loads model safely",
+          "repo_layout": "src/, models/, utils/model_loader.py",
+          "persona_role": "senior ML security engineer",
+          "technologies": "TensorFlow, joblib, hashlib, pickle",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-502, CWE-345, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_004",
+      "description": "Create a data validation pipeline for training datasets",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["data_validation", "data_poisoning", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "pandas",
+          "validation_lib": "great-expectations",
+          "orm": "N/A",
+          "io_constraints": "accepts dataset file path; validates schema, checks for anomalies, detects outliers; returns validation report",
+          "repo_layout": "src/, data/, validators/, data_validator.py",
+          "persona_role": "senior data engineer",
+          "technologies": "pandas, great-expectations, numpy",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-345, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_005",
+      "description": "Build a feature extraction service with input sanitization",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["input_validation", "feature_engineering", "data_processing"],
+      "variables": {
+        "python": {
+          "framework": "scikit-learn",
+          "validation_lib": "pandas",
+          "orm": "N/A",
+          "io_constraints": "accepts raw data dictionary; extracts and validates features; returns normalized feature vector",
+          "repo_layout": "src/, features/, extractors/, feature_extractor.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "scikit-learn, pandas, numpy",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-345, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_006",
+      "description": "Implement model versioning and storage system",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["file_handling", "model_storage", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "MLflow",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts model object and version string; validates version format; saves to secure storage path",
+          "repo_layout": "src/, models/, storage/, versioning.py",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "MLflow, joblib, pathlib",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_007",
+      "description": "Create a batch prediction service with file upload handling",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["file_upload", "path_traversal", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "pandas",
+          "orm": "N/A",
+          "io_constraints": "accepts CSV file upload via POST /batch-predict; validates file type and content; processes batch predictions; returns results file",
+          "repo_layout": "app/, routes/batch.py, utils/file_handler.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "Flask, pandas, joblib, werkzeug",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_008",
+      "description": "Build a data preprocessing pipeline with SQL database integration",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["sql_injection", "data_processing", "database"],
+      "variables": {
+        "python": {
+          "framework": "pandas",
+          "validation_lib": "SQLAlchemy",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts SQL query string and connection params; executes query safely; processes results into DataFrame",
+          "repo_layout": "src/, data/, db/, preprocess.py",
+          "persona_role": "senior data engineer",
+          "technologies": "pandas, SQLAlchemy, numpy",
+          "compliance": "OWASP SQL Injection Prevention",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_009",
+      "description": "Implement model fine-tuning with secure hyperparameter loading",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["deserialization", "configuration", "model_training"],
+      "variables": {
+        "python": {
+          "framework": "PyTorch",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts config file path and base model path; validates config schema; loads model and applies fine-tuning",
+          "repo_layout": "src/, models/, configs/, fine_tune.py",
+          "persona_role": "senior ML researcher",
+          "technologies": "PyTorch, pydantic, transformers",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-502, CWE-20, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_010",
+      "description": "Create a model evaluation service with metric calculation",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["data_validation", "model_evaluation", "metrics"],
+      "variables": {
+        "python": {
+          "framework": "scikit-learn",
+          "validation_lib": "numpy",
+          "orm": "N/A",
+          "io_constraints": "accepts model, test data, and metric list; validates inputs; calculates and returns metrics dictionary",
+          "repo_layout": "src/, evaluation/, metrics/, evaluator.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "scikit-learn, numpy, pandas",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_011",
+      "description": "Build a real-time inference streaming service",
+      "supported_languages": ["python"],
+      "complexity_level": 4,
+      "risk_tags": ["api", "streaming", "input_validation", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "FastAPI",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts streaming JSON data via WebSocket; validates each message; runs inference; streams results back",
+          "repo_layout": "app/, routes/stream.py, models/inference.py",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "FastAPI, WebSockets, TensorFlow, pydantic",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-502"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_012",
+      "description": "Implement secure model artifact download endpoint",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["file_download", "path_traversal", "authorization"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts model ID via GET /models/{id}/download; validates ID format; checks permissions; returns model file",
+          "repo_layout": "app/, routes/models.py, storage/",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "Flask, pathlib, werkzeug",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-22, CWE-287, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_013",
+      "description": "Create a data augmentation pipeline with file I/O",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["file_handling", "data_processing", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "albumentations",
+          "validation_lib": "PIL",
+          "orm": "N/A",
+          "io_constraints": "accepts image directory path; reads images safely; applies augmentations; saves to output directory",
+          "repo_layout": "src/, data/, augmentations/, augment.py",
+          "persona_role": "senior computer vision engineer",
+          "technologies": "albumentations, PIL, numpy, pathlib",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_014",
+      "description": "Build a model registry API with search functionality",
+      "supported_languages": ["python", "typescript"],
+      "complexity_level": 3,
+      "risk_tags": ["api", "search", "sql_injection", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "FastAPI",
+          "validation_lib": "pydantic",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts search query via GET /models/search; validates query params; searches database safely; returns model list",
+          "repo_layout": "app/, routes/registry.py, models/Model.py, db/",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "FastAPI, SQLAlchemy, pydantic",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "TypeORM",
+          "io_constraints": "accepts search query via GET /models/search; validates query params; searches database safely; returns model list",
+          "repo_layout": "src/, routes/registry.ts, models/Model.ts, db/",
+          "persona_role": "senior TypeScript ML engineer",
+          "technologies": "Express, TypeORM, joi",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_015",
+      "description": "Implement secure model checkpoint saving during training",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["file_handling", "model_storage", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "PyTorch",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "function accepts checkpoint directory and epoch number; validates paths; saves model state safely",
+          "repo_layout": "src/, training/, checkpoints/, checkpoint_manager.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "PyTorch, pathlib, torch",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_016",
+      "description": "Create a data pipeline with external API data fetching",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["api", "data_fetching", "input_validation", "ssrf"],
+      "variables": {
+        "python": {
+          "framework": "requests",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts API endpoint URL and parameters; validates URL format; fetches data safely; processes and returns DataFrame",
+          "repo_layout": "src/, data/, fetchers/, api_fetcher.py",
+          "persona_role": "senior data engineer",
+          "technologies": "requests, pandas, pydantic, urllib",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-918, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_017",
+      "description": "Build a model serving endpoint with rate limiting",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["api", "rate_limiting", "resource_exhaustion", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "flask-limiter",
+          "orm": "N/A",
+          "io_constraints": "accepts prediction request via POST /serve; validates input; enforces rate limits; returns prediction",
+          "repo_layout": "app/, routes/serve.py, middleware/rate_limit.py",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "Flask, flask-limiter, TensorFlow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-400, CWE-20, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_018",
+      "description": "Implement secure configuration loading for ML experiments",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["configuration", "deserialization", "file_handling"],
+      "variables": {
+        "python": {
+          "framework": "hydra",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts config file path; validates YAML/JSON structure; loads configuration safely; returns config object",
+          "repo_layout": "src/, configs/, validators/, config_loader.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "hydra, pydantic, yaml, json",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-502, CWE-20, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_019",
+      "description": "Create a feature store with data validation",
+      "supported_languages": ["python"],
+      "complexity_level": 4,
+      "risk_tags": ["data_validation", "database", "sql_injection", "feature_store"],
+      "variables": {
+        "python": {
+          "framework": "feast",
+          "validation_lib": "pydantic",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts feature definitions and data; validates schema; stores features in database; provides retrieval API",
+          "repo_layout": "src/, features/, store/, feature_store.py",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "feast, SQLAlchemy, pydantic, pandas",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_020",
+      "description": "Build a model monitoring service with drift detection",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["monitoring", "data_validation", "model_security"],
+      "variables": {
+        "python": {
+          "framework": "evidently",
+          "validation_lib": "pandas",
+          "orm": "N/A",
+          "io_constraints": "accepts reference and current data; validates inputs; calculates drift metrics; returns drift report",
+          "repo_layout": "src/, monitoring/, drift/, monitor.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "evidently, pandas, numpy, scipy",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-345, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_021",
+      "description": "Build a distributed training setup with parameter server communication",
+      "supported_languages": ["python"],
+      "complexity_level": 4,
+      "risk_tags": ["distributed_computing", "network_security", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "TensorFlow",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts worker configuration and model parameters; validates network endpoints; coordinates distributed training; aggregates gradients",
+          "repo_layout": "src/, training/, workers/, coordinator.py",
+          "persona_role": "senior distributed ML engineer",
+          "technologies": "TensorFlow, gRPC, pydantic",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-918, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_022",
+      "description": "Create a model compression service with quantization",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["model_optimization", "file_handling", "data_validation"],
+      "variables": {
+        "python": {
+          "framework": "TensorFlow",
+          "validation_lib": "numpy",
+          "orm": "N/A",
+          "io_constraints": "accepts model file and compression config; validates model structure; applies quantization; saves compressed model",
+          "repo_layout": "src/, compression/, quantizers/, compress.py",
+          "persona_role": "senior ML optimization engineer",
+          "technologies": "TensorFlow, TensorFlow Lite, numpy",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-502, CWE-20, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_023",
+      "description": "Implement a model explainability service with SHAP integration",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["model_explainability", "input_validation", "data_processing"],
+      "variables": {
+        "python": {
+          "framework": "shap",
+          "validation_lib": "pandas",
+          "orm": "N/A",
+          "io_constraints": "accepts model and prediction input; validates input format; calculates feature importance; returns explanation scores",
+          "repo_layout": "src/, explainability/, shap/, explainer.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "shap, pandas, numpy, scikit-learn",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_024",
+      "description": "Build a hyperparameter tuning service with experiment tracking",
+      "supported_languages": ["python"],
+      "complexity_level": 4,
+      "risk_tags": ["experiment_management", "configuration", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "optuna",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts search space definition and objective function; validates parameters; runs trials; tracks results to database",
+          "repo_layout": "src/, tuning/, experiments/, tuner.py",
+          "persona_role": "senior ML researcher",
+          "technologies": "optuna, SQLite, pydantic, scikit-learn",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-89"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_025",
+      "description": "Create a model A/B testing framework with traffic splitting",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["ab_testing", "api", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts prediction request via POST /predict; validates input; routes to model A or B based on traffic split; logs results",
+          "repo_layout": "app/, routes/ab_test.py, models/router.py",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "Flask, pydantic, TensorFlow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_026",
+      "description": "Implement a model ensemble service with weighted voting",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["model_ensemble", "input_validation", "deserialization"],
+      "variables": {
+        "python": {
+          "framework": "scikit-learn",
+          "validation_lib": "numpy",
+          "orm": "N/A",
+          "io_constraints": "accepts list of model paths and weights; validates and loads models; runs predictions; combines results with weighted voting",
+          "repo_layout": "src/, ensemble/, models/, ensemble.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "scikit-learn, joblib, numpy",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-502, CWE-20, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_027",
+      "description": "Build a data labeling API with annotation management",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["api", "data_labeling", "sql_injection", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "FastAPI",
+          "validation_lib": "pydantic",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts annotation data via POST /annotations; validates label format; stores in database; returns annotation ID",
+          "repo_layout": "app/, routes/annotations.py, models/Annotation.py, db/",
+          "persona_role": "senior ML data engineer",
+          "technologies": "FastAPI, SQLAlchemy, pydantic",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_028",
+      "description": "Create a model conversion service between frameworks",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["model_conversion", "deserialization", "file_handling"],
+      "variables": {
+        "python": {
+          "framework": "onnx",
+          "validation_lib": "onnx",
+          "orm": "N/A",
+          "io_constraints": "accepts source model file and target format; validates model structure; converts to target framework; saves converted model",
+          "repo_layout": "src/, conversion/, converters/, converter.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "onnx, TensorFlow, PyTorch",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-502, CWE-345, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_029",
+      "description": "Implement a model caching layer with Redis integration",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["caching", "api", "input_validation", "injection"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "redis",
+          "orm": "N/A",
+          "io_constraints": "accepts prediction request; validates input; checks Redis cache; returns cached result or runs inference and caches",
+          "repo_layout": "app/, routes/cached_predict.py, cache/redis_cache.py",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "Flask, redis, TensorFlow, pickle",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-502, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_030",
+      "description": "Build a data pipeline with Kafka streaming integration",
+      "supported_languages": ["python"],
+      "complexity_level": 4,
+      "risk_tags": ["streaming", "data_processing", "input_validation", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "kafka-python",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts Kafka topic and consumer config; validates messages; processes streaming data; writes to output topic",
+          "repo_layout": "src/, streaming/, processors/, kafka_processor.py",
+          "persona_role": "senior data engineer",
+          "technologies": "kafka-python, pydantic, pandas",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_031",
+      "description": "Create a model deployment service with containerization",
+      "supported_languages": ["python"],
+      "complexity_level": 4,
+      "risk_tags": ["deployment", "containerization", "file_handling", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "docker",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts model path and deployment config; validates paths; builds Docker image; deploys container",
+          "repo_layout": "src/, deployment/, docker/, deployer.py",
+          "persona_role": "senior ML DevOps engineer",
+          "technologies": "docker, pathlib, subprocess",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-22, CWE-78, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_032",
+      "description": "Implement a model retraining scheduler with cron integration",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["scheduling", "automation", "input_validation", "command_injection"],
+      "variables": {
+        "python": {
+          "framework": "schedule",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts schedule config and training script path; validates schedule format; executes training job safely",
+          "repo_layout": "src/, scheduling/, trainers/, scheduler.py",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "schedule, subprocess, pydantic",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-78, CWE-20, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_033",
+      "description": "Build a model performance benchmarking service",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["benchmarking", "performance", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "pytest-benchmark",
+          "validation_lib": "numpy",
+          "orm": "N/A",
+          "io_constraints": "accepts model path and benchmark dataset; validates inputs; measures inference latency and throughput; returns metrics",
+          "repo_layout": "src/, benchmarking/, tests/, benchmark.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "pytest-benchmark, TensorFlow, numpy",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_034",
+      "description": "Create a federated learning coordinator with secure aggregation",
+      "supported_languages": ["python"],
+      "complexity_level": 5,
+      "risk_tags": ["federated_learning", "cryptography", "network_security", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "TensorFlow Federated",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "accepts client model updates; validates and encrypts gradients; aggregates securely; distributes updated model",
+          "repo_layout": "src/, federated/, aggregation/, coordinator.py",
+          "persona_role": "senior ML security researcher",
+          "technologies": "TensorFlow Federated, cryptography, gRPC",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-345, CWE-20, CWE-918"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_035",
+      "description": "Implement a model rollback service with version management",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["version_control", "deployment", "file_handling", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "MLflow",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts model version to rollback to; validates version exists; loads previous model; updates deployment",
+          "repo_layout": "src/, deployment/, versions/, rollback.py",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "MLflow, pathlib, joblib",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_036",
+      "description": "Build a data quality monitoring service with anomaly detection",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["data_quality", "anomaly_detection", "monitoring", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "pandas",
+          "validation_lib": "great-expectations",
+          "orm": "N/A",
+          "io_constraints": "accepts data stream and quality rules; validates data schema; detects anomalies; generates quality report",
+          "repo_layout": "src/, monitoring/, quality/, quality_monitor.py",
+          "persona_role": "senior data engineer",
+          "technologies": "pandas, great-expectations, numpy, scipy",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-345, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_037",
+      "description": "Create a model serving gateway with load balancing",
+      "supported_languages": ["python"],
+      "complexity_level": 4,
+      "risk_tags": ["load_balancing", "api", "resource_exhaustion", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "FastAPI",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts prediction request; validates input; routes to available model instance; returns prediction with load metrics",
+          "repo_layout": "app/, routes/gateway.py, load_balancer/",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "FastAPI, pydantic, TensorFlow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-400, CWE-20, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_038",
+      "description": "Implement a model metadata management system",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["metadata", "database", "sql_injection", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "SQLAlchemy",
+          "validation_lib": "pydantic",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts model metadata dictionary; validates schema; stores in database; provides query API",
+          "repo_layout": "src/, metadata/, models/Metadata.py, db/",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "SQLAlchemy, pydantic, json",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_039",
+      "description": "Build a model testing framework with adversarial examples",
+      "supported_languages": ["python"],
+      "complexity_level": 4,
+      "risk_tags": ["adversarial_testing", "model_security", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "foolbox",
+          "validation_lib": "numpy",
+          "orm": "N/A",
+          "io_constraints": "accepts model and test dataset; validates inputs; generates adversarial examples; tests model robustness; returns test report",
+          "repo_layout": "src/, testing/, adversarial/, tester.py",
+          "persona_role": "senior ML security engineer",
+          "technologies": "foolbox, TensorFlow, numpy",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-345, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_040",
+      "description": "Create a model inference optimization service with graph optimization",
+      "supported_languages": ["python"],
+      "complexity_level": 4,
+      "risk_tags": ["optimization", "model_processing", "deserialization", "file_handling"],
+      "variables": {
+        "python": {
+          "framework": "TensorFlow",
+          "validation_lib": "TensorFlow",
+          "orm": "N/A",
+          "io_constraints": "accepts model file and optimization config; validates model; applies graph optimizations; saves optimized model",
+          "repo_layout": "src/, optimization/, optimizers/, optimizer.py",
+          "persona_role": "senior ML optimization engineer",
+          "technologies": "TensorFlow, TensorFlow Graph Transform Tool, joblib",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-502, CWE-345, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_041",
+      "description": "Build a model serving endpoint with input preprocessing pipeline",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["api", "preprocessing", "input_validation", "data_processing"],
+      "variables": {
+        "python": {
+          "framework": "FastAPI",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts raw input via POST /predict; validates and preprocesses input; runs inference; returns prediction",
+          "repo_layout": "app/, routes/serve.py, preprocessing/pipeline.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "FastAPI, pydantic, scikit-learn, TensorFlow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_042",
+      "description": "Create a model training job queue with worker management",
+      "supported_languages": ["python"],
+      "complexity_level": 4,
+      "risk_tags": ["job_queue", "worker_management", "resource_exhaustion", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "celery",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts training job config; validates parameters; queues job; manages worker allocation; tracks progress",
+          "repo_layout": "src/, jobs/, workers/, queue_manager.py",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "celery, Redis, pydantic, TensorFlow",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-400, CWE-20, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_043",
+      "description": "Implement a model prediction logging service with audit trail",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["logging", "audit", "database", "sql_injection"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "pydantic",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts prediction request and result; validates inputs; logs to database with timestamp and metadata; provides audit query API",
+          "repo_layout": "app/, routes/logging.py, models/PredictionLog.py, db/",
+          "persona_role": "senior ML engineer",
+          "technologies": "Flask, SQLAlchemy, pydantic",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_044",
+      "description": "Build a model export service with format conversion",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["model_export", "file_handling", "deserialization", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "TensorFlow",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts model path and target format; validates model structure; converts to target format; saves exported model",
+          "repo_layout": "src/, export/, converters/, exporter.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "TensorFlow, TensorFlow Lite, ONNX, pathlib",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-502, CWE-22, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_045",
+      "description": "Create a data transformation pipeline with schema validation",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["data_transformation", "schema_validation", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "pandas",
+          "validation_lib": "pandera",
+          "orm": "N/A",
+          "io_constraints": "accepts data and transformation rules; validates schema; applies transformations; returns transformed data",
+          "repo_layout": "src/, transformations/, validators/, transformer.py",
+          "persona_role": "senior data engineer",
+          "technologies": "pandas, pandera, numpy",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-345, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_046",
+      "description": "Implement a model health check service with dependency validation",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["health_check", "validation", "model_loading"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts model path via GET /health; validates model loads correctly; checks dependencies; returns health status",
+          "repo_layout": "app/, routes/health.py, validators/health_checker.py",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "Flask, TensorFlow, pydantic",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-502, CWE-20, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_047",
+      "description": "Build a model comparison service with side-by-side evaluation",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["model_comparison", "evaluation", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "scikit-learn",
+          "validation_lib": "pandas",
+          "orm": "N/A",
+          "io_constraints": "accepts list of model paths and test dataset; validates inputs; runs evaluations; returns comparison report",
+          "repo_layout": "src/, comparison/, evaluators/, comparator.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "scikit-learn, pandas, numpy, joblib",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_048",
+      "description": "Create a model inference batching service with queue management",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["batching", "queue_management", "resource_exhaustion", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "FastAPI",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts prediction requests via POST /batch-inference; queues requests; batches when threshold reached; processes and returns results",
+          "repo_layout": "app/, routes/batch_inference.py, queue/batch_manager.py",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "FastAPI, pydantic, TensorFlow, asyncio",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-400, CWE-20, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_049",
+      "description": "Implement a model feature importance analysis service",
+      "supported_languages": ["python"],
+      "complexity_level": 2,
+      "risk_tags": ["feature_analysis", "model_interpretability", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "scikit-learn",
+          "validation_lib": "pandas",
+          "orm": "N/A",
+          "io_constraints": "accepts model and dataset; validates inputs; calculates feature importance scores; returns ranked feature list",
+          "repo_layout": "src/, analysis/, importance/, analyzer.py",
+          "persona_role": "senior ML engineer",
+          "technologies": "scikit-learn, pandas, numpy",
+          "compliance": "OWASP ML Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AIML_050",
+      "description": "Build a model serving proxy with authentication and authorization",
+      "supported_languages": ["python"],
+      "complexity_level": 3,
+      "risk_tags": ["authentication", "authorization", "api", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "FastAPI",
+          "validation_lib": "pydantic",
+          "orm": "N/A",
+          "io_constraints": "accepts prediction request with auth token via POST /predict; validates token and permissions; routes to model; returns prediction",
+          "repo_layout": "app/, routes/proxy.py, auth/middleware.py",
+          "persona_role": "senior ML platform engineer",
+          "technologies": "FastAPI, JWT, pydantic, TensorFlow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-287, CWE-306, CWE-20"
+        }
+      }
+    }
+  ]
 }
 

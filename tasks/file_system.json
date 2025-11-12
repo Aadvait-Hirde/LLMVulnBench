@@ -43,6 +43,2603 @@
           "cwe_list": "CWE-22, CWE-434, CWE-502"
         }
       }
+    },
+    {
+      "task_id": "FILE_002",
+      "description": "Build a secure file reader with path validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["file_read", "path_traversal", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path string; validates path is within allowed directory; reads file content; returns file data",
+          "repo_layout": "src/, utils/file_reader.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path string; validates path is within allowed directory; reads file content; returns file data",
+          "repo_layout": "src/, utils/fileReader.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path string; validates path is within allowed directory; reads file content; returns file data",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Path, Files",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path string; validates path is within allowed directory; reads file content; returns file data",
+          "repo_layout": "src/, utils/file_reader.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, fstream",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_003",
+      "description": "Create a secure file writer with directory creation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["file_write", "directory_creation", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and content; validates path; creates parent directories safely; writes content atomically",
+          "repo_layout": "src/, utils/file_writer.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.makedirs, tempfile",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-73"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and content; validates path; creates parent directories safely; writes content atomically",
+          "repo_layout": "src/, utils/fileWriter.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, fs-extra, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-73"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and content; validates path; creates parent directories safely; writes content atomically",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, Paths",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-73"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and content; validates path; creates parent directories safely; writes content atomically",
+          "repo_layout": "src/, utils/file_writer.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, fstream",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-73"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_004",
+      "description": "Build a file deletion utility with safety checks",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_deletion", "path_traversal", "authorization"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; validates path is within allowed directory; checks file permissions; deletes file safely",
+          "repo_layout": "src/, utils/file_deleter.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os, shutil",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-639, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; validates path is within allowed directory; checks file permissions; deletes file safely",
+          "repo_layout": "src/, utils/fileDeleter.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-639, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; validates path is within allowed directory; checks file permissions; deletes file safely",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, Paths",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-639, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; validates path is within allowed directory; checks file permissions; deletes file safely",
+          "repo_layout": "src/, utils/file_deleter.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-639, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_005",
+      "description": "Create a secure file copy utility with path validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["file_copy", "path_traversal", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts source and destination paths; validates both paths; copies file atomically; preserves permissions",
+          "repo_layout": "src/, utils/file_copier.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, shutil",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts source and destination paths; validates both paths; copies file atomically; preserves permissions",
+          "repo_layout": "src/, utils/fileCopier.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, fs-extra, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts source and destination paths; validates both paths; copies file atomically; preserves permissions",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, Paths",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts source and destination paths; validates both paths; copies file atomically; preserves permissions",
+          "repo_layout": "src/, utils/file_copier.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, fstream",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_006",
+      "description": "Build a temporary file handler with automatic cleanup",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["temporary_files", "file_cleanup", "race_condition"],
+      "variables": {
+        "python": {
+          "framework": "tempfile",
+          "validation_lib": "tempfile",
+          "orm": "N/A",
+          "io_constraints": "creates temporary file with unique name; writes data; provides cleanup on exit; handles race conditions",
+          "repo_layout": "src/, utils/temp_file_handler.py",
+          "persona_role": "senior Python developer",
+          "technologies": "tempfile, contextlib",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-367, CWE-377, CWE-73"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "tmp",
+          "orm": "N/A",
+          "io_constraints": "creates temporary file with unique name; writes data; provides cleanup on exit; handles race conditions",
+          "repo_layout": "src/, utils/tempFileHandler.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, tmp, fs",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-367, CWE-377, CWE-73"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "creates temporary file with unique name; writes data; provides cleanup on exit; handles race conditions",
+          "repo_layout": "src/main/java/utils/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.createTempFile",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-367, CWE-377, CWE-73"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "creates temporary file with unique name; writes data; provides cleanup on exit; handles race conditions",
+          "repo_layout": "src/, utils/temp_file_handler.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, tmpfile, RAII",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-367, CWE-377, CWE-73"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_007",
+      "description": "Create a directory listing utility with path validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["directory_listing", "path_traversal", "information_disclosure"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path is within allowed directory; lists files and subdirectories; filters sensitive files",
+          "repo_layout": "src/, utils/directory_lister.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-200, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path is within allowed directory; lists files and subdirectories; filters sensitive files",
+          "repo_layout": "src/, utils/directoryLister.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-200, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path is within allowed directory; lists files and subdirectories; filters sensitive files",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, Paths",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-200, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path is within allowed directory; lists files and subdirectories; filters sensitive files",
+          "repo_layout": "src/, utils/directory_lister.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-200, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_008",
+      "description": "Build a file metadata extractor with safe parsing",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["metadata", "file_parsing", "information_disclosure"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; validates path; extracts size, permissions, timestamps; returns metadata safely",
+          "repo_layout": "src/, utils/metadata_extractor.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.stat",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-200, CWE-22, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; validates path; extracts size, permissions, timestamps; returns metadata safely",
+          "repo_layout": "src/, utils/metadataExtractor.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.stat, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-200, CWE-22, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; validates path; extracts size, permissions, timestamps; returns metadata safely",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, BasicFileAttributes",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-200, CWE-22, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; validates path; extracts size, permissions, timestamps; returns metadata safely",
+          "repo_layout": "src/, utils/metadata_extractor.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, stat",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-200, CWE-22, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_009",
+      "description": "Create a secure file move utility with validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["file_move", "path_traversal", "race_condition"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts source and destination paths; validates both paths; moves file atomically; handles race conditions",
+          "repo_layout": "src/, utils/file_mover.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, shutil.move",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts source and destination paths; validates both paths; moves file atomically; handles race conditions",
+          "repo_layout": "src/, utils/fileMover.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.rename, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts source and destination paths; validates both paths; moves file atomically; handles race conditions",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.move",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts source and destination paths; validates both paths; moves file atomically; handles race conditions",
+          "repo_layout": "src/, utils/file_mover.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem::rename",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_010",
+      "description": "Build a file search utility with pattern matching",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_search", "path_traversal", "regex_injection"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts search directory and pattern; validates directory path; searches files recursively; sanitizes pattern",
+          "repo_layout": "src/, utils/file_searcher.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, fnmatch, os.walk",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts search directory and pattern; validates directory path; searches files recursively; sanitizes pattern",
+          "repo_layout": "src/, utils/fileSearcher.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, glob, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts search directory and pattern; validates directory path; searches files recursively; sanitizes pattern",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.walk, PathMatcher",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts search directory and pattern; validates directory path; searches files recursively; sanitizes pattern",
+          "repo_layout": "src/, utils/file_searcher.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, regex",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_011",
+      "description": "Create a file compression utility with size limits",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_compression", "zip_bomb", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "zipfile",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file paths and output zip path; validates paths; compresses files; enforces size limits; prevents zip bombs",
+          "repo_layout": "src/, utils/file_compressor.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "zipfile, pathlib, zlib",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file paths and output zip path; validates paths; compresses files; enforces size limits; prevents zip bombs",
+          "repo_layout": "src/, utils/fileCompressor.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, archiver, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file paths and output zip path; validates paths; compresses files; enforces size limits; prevents zip bombs",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.util.zip, java.nio.file",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file paths and output zip path; validates paths; compresses files; enforces size limits; prevents zip bombs",
+          "repo_layout": "src/, utils/file_compressor.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "zlib, std::filesystem",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_012",
+      "description": "Build a file decompression utility with validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_decompression", "zip_bomb", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "zipfile",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts zip file and extraction directory; validates zip structure; prevents path traversal; enforces size limits",
+          "repo_layout": "src/, utils/file_decompressor.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "zipfile, pathlib",
+          "compliance": "OWASP Zip Slip Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts zip file and extraction directory; validates zip structure; prevents path traversal; enforces size limits",
+          "repo_layout": "src/, utils/fileDecompressor.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, yauzl, path",
+          "compliance": "OWASP Zip Slip Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts zip file and extraction directory; validates zip structure; prevents path traversal; enforces size limits",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.util.zip, java.nio.file",
+          "compliance": "OWASP Zip Slip Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts zip file and extraction directory; validates zip structure; prevents path traversal; enforces size limits",
+          "repo_layout": "src/, utils/file_decompressor.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "zlib, std::filesystem",
+          "compliance": "OWASP Zip Slip Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_013",
+      "description": "Create a symbolic link handler with validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["symlink", "path_traversal", "race_condition"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; resolves symlinks safely; validates resolved path; prevents symlink attacks",
+          "repo_layout": "src/, utils/symlink_handler.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.path.realpath",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-59"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; resolves symlinks safely; validates resolved path; prevents symlink attacks",
+          "repo_layout": "src/, utils/symlinkHandler.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.realpath, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-59"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; resolves symlinks safely; validates resolved path; prevents symlink attacks",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.readSymbolicLink, toRealPath",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-59"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; resolves symlinks safely; validates resolved path; prevents symlink attacks",
+          "repo_layout": "src/, utils/symlink_handler.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem::read_symlink, canonical",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-59"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_014",
+      "description": "Build a file locking mechanism for concurrent access",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_locking", "race_condition", "concurrency"],
+      "variables": {
+        "python": {
+          "framework": "fcntl",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; acquires file lock; performs operation; releases lock; handles lock timeouts",
+          "repo_layout": "src/, utils/file_locker.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "fcntl, pathlib, threading",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-367, CWE-362, CWE-22"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; acquires file lock; performs operation; releases lock; handles lock timeouts",
+          "repo_layout": "src/, utils/fileLocker.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, proper-lockfile, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-367, CWE-362, CWE-22"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; acquires file lock; performs operation; releases lock; handles lock timeouts",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.channels.FileLock, java.nio.file",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-367, CWE-362, CWE-22"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; acquires file lock; performs operation; releases lock; handles lock timeouts",
+          "repo_layout": "src/, utils/file_locker.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, fcntl, flock",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-367, CWE-362, CWE-22"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_015",
+      "description": "Create a file permissions manager with validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["file_permissions", "authorization", "access_control"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and permission mode; validates path; sets file permissions; validates permission changes",
+          "repo_layout": "src/, utils/permission_manager.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.chmod, stat",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-276, CWE-639, CWE-22"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and permission mode; validates path; sets file permissions; validates permission changes",
+          "repo_layout": "src/, utils/permissionManager.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.chmod, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-276, CWE-639, CWE-22"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and permission mode; validates path; sets file permissions; validates permission changes",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.setPosixFilePermissions",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-276, CWE-639, CWE-22"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and permission mode; validates path; sets file permissions; validates permission changes",
+          "repo_layout": "src/, utils/permission_manager.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, chmod",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-276, CWE-639, CWE-22"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_016",
+      "description": "Build a recursive directory deletion utility with safety checks",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["directory_deletion", "path_traversal", "recursive_deletion"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path is within allowed directory; recursively deletes contents; prevents deletion of protected paths",
+          "repo_layout": "src/, utils/directory_deleter.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, shutil.rmtree",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-639, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path is within allowed directory; recursively deletes contents; prevents deletion of protected paths",
+          "repo_layout": "src/, utils/directoryDeleter.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs-extra.remove, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-639, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path is within allowed directory; recursively deletes contents; prevents deletion of protected paths",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.walk, delete",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-639, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path is within allowed directory; recursively deletes contents; prevents deletion of protected paths",
+          "repo_layout": "src/, utils/directory_deleter.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem::remove_all",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-639, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_017",
+      "description": "Create a file content hash calculator with validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["file_hashing", "integrity", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "hashlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and hash algorithm; validates path; calculates hash in chunks; returns hash digest",
+          "repo_layout": "src/, utils/hash_calculator.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "hashlib, pathlib",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-345, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and hash algorithm; validates path; calculates hash in chunks; returns hash digest",
+          "repo_layout": "src/, utils/hashCalculator.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, crypto, fs, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-345, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and hash algorithm; validates path; calculates hash in chunks; returns hash digest",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.security.MessageDigest, java.nio.file",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-345, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and hash algorithm; validates path; calculates hash in chunks; returns hash digest",
+          "repo_layout": "src/, utils/hash_calculator.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "OpenSSL, std::filesystem, fstream",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-345, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_018",
+      "description": "Build a file size validator with limits",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["file_size", "resource_exhaustion", "validation"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and size limit; validates path; checks file size; enforces maximum size; returns validation result",
+          "repo_layout": "src/, utils/size_validator.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.path.getsize",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and size limit; validates path; checks file size; enforces maximum size; returns validation result",
+          "repo_layout": "src/, utils/sizeValidator.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.stat, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and size limit; validates path; checks file size; enforces maximum size; returns validation result",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.size",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and size limit; validates path; checks file size; enforces maximum size; returns validation result",
+          "repo_layout": "src/, utils/size_validator.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem::file_size",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_019",
+      "description": "Create a file type validator using magic bytes",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_type_validation", "magic_bytes", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "python-magic",
+          "validation_lib": "python-magic",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; reads magic bytes from file header; validates file type; returns type and validation result",
+          "repo_layout": "src/, utils/type_validator.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "python-magic, pathlib",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-434, CWE-20, CWE-22"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "file-type",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; reads magic bytes from file header; validates file type; returns type and validation result",
+          "repo_layout": "src/, utils/typeValidator.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, file-type, fs, path",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-434, CWE-20, CWE-22"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "Apache Tika",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; reads magic bytes from file header; validates file type; returns type and validation result",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "Apache Tika, java.nio.file",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-434, CWE-20, CWE-22"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "libmagic",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; reads magic bytes from file header; validates file type; returns type and validation result",
+          "repo_layout": "src/, utils/type_validator.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "libmagic, std::filesystem, fstream",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-434, CWE-20, CWE-22"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_020",
+      "description": "Build a secure file rename utility with validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["file_rename", "path_traversal", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and new name; validates both paths; sanitizes new name; renames file atomically",
+          "repo_layout": "src/, utils/file_renamer.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.rename",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and new name; validates both paths; sanitizes new name; renames file atomically",
+          "repo_layout": "src/, utils/fileRenamer.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.rename, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and new name; validates both paths; sanitizes new name; renames file atomically",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.move",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and new name; validates both paths; sanitizes new name; renames file atomically",
+          "repo_layout": "src/, utils/file_renamer.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem::rename",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_021",
+      "description": "Create a file watcher with event handling",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_watching", "event_handling", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "watchdog",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path; watches for file changes; handles events safely; prevents path traversal",
+          "repo_layout": "src/, utils/file_watcher.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "watchdog, pathlib",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path; watches for file changes; handles events safely; prevents path traversal",
+          "repo_layout": "src/, utils/fileWatcher.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, chokidar, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path; watches for file changes; handles events safely; prevents path traversal",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.WatchService",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path; watches for file changes; handles events safely; prevents path traversal",
+          "repo_layout": "src/, utils/file_watcher.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, inotify (Linux), FSEvents (macOS)",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_022",
+      "description": "Build a file streaming reader with chunked processing",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_streaming", "memory_management", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and chunk size; validates path; reads file in chunks; processes chunks; handles large files safely",
+          "repo_layout": "src/, utils/stream_reader.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, io, mmap",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and chunk size; validates path; reads file in chunks; processes chunks; handles large files safely",
+          "repo_layout": "src/, utils/streamReader.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.createReadStream, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and chunk size; validates path; reads file in chunks; processes chunks; handles large files safely",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.channels.FileChannel, java.nio.file",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and chunk size; validates path; reads file in chunks; processes chunks; handles large files safely",
+          "repo_layout": "src/, utils/stream_reader.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, fstream, mmap",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_023",
+      "description": "Create a file comparison utility with diff generation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_comparison", "path_traversal", "memory_management"],
+      "variables": {
+        "python": {
+          "framework": "difflib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts two file paths; validates both paths; compares files; generates diff; returns comparison result",
+          "repo_layout": "src/, utils/file_comparator.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "difflib, pathlib",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts two file paths; validates both paths; compares files; generates diff; returns comparison result",
+          "repo_layout": "src/, utils/fileComparator.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, diff, fs, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts two file paths; validates both paths; compares files; generates diff; returns comparison result",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file, google-diff-match-patch",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts two file paths; validates both paths; compares files; generates diff; returns comparison result",
+          "repo_layout": "src/, utils/file_comparator.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, fstream, diff algorithms",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_024",
+      "description": "Build a file encryption utility with secure key management",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["file_encryption", "cryptography", "key_management"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and encryption key; validates path; encrypts file content; stores encrypted file; handles key securely",
+          "repo_layout": "src/, utils/file_encryptor.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "cryptography, pathlib, Fernet",
+          "compliance": "OWASP Cryptographic Storage",
+          "cwe_list": "CWE-22, CWE-326, CWE-311"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and encryption key; validates path; encrypts file content; stores encrypted file; handles key securely",
+          "repo_layout": "src/, utils/fileEncryptor.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, crypto, fs, path",
+          "compliance": "OWASP Cryptographic Storage",
+          "cwe_list": "CWE-22, CWE-326, CWE-311"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and encryption key; validates path; encrypts file content; stores encrypted file; handles key securely",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "javax.crypto, java.nio.file, AES",
+          "compliance": "OWASP Cryptographic Storage",
+          "cwe_list": "CWE-22, CWE-326, CWE-311"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and encryption key; validates path; encrypts file content; stores encrypted file; handles key securely",
+          "repo_layout": "src/, utils/file_encryptor.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "OpenSSL, std::filesystem, AES",
+          "compliance": "OWASP Cryptographic Storage",
+          "cwe_list": "CWE-22, CWE-326, CWE-311"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_025",
+      "description": "Create a file decryption utility with key validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["file_decryption", "cryptography", "key_validation"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted file path and decryption key; validates path and key; decrypts file content; returns decrypted data",
+          "repo_layout": "src/, utils/file_decryptor.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "cryptography, pathlib, Fernet",
+          "compliance": "OWASP Cryptographic Storage",
+          "cwe_list": "CWE-22, CWE-326, CWE-345"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted file path and decryption key; validates path and key; decrypts file content; returns decrypted data",
+          "repo_layout": "src/, utils/fileDecryptor.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, crypto, fs, path",
+          "compliance": "OWASP Cryptographic Storage",
+          "cwe_list": "CWE-22, CWE-326, CWE-345"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted file path and decryption key; validates path and key; decrypts file content; returns decrypted data",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "javax.crypto, java.nio.file, AES",
+          "compliance": "OWASP Cryptographic Storage",
+          "cwe_list": "CWE-22, CWE-326, CWE-345"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted file path and decryption key; validates path and key; decrypts file content; returns decrypted data",
+          "repo_layout": "src/, utils/file_decryptor.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "OpenSSL, std::filesystem, AES",
+          "compliance": "OWASP Cryptographic Storage",
+          "cwe_list": "CWE-22, CWE-326, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_026",
+      "description": "Build a file backup utility with versioning",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_backup", "versioning", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and backup directory; validates both paths; creates timestamped backup; maintains version history",
+          "repo_layout": "src/, utils/backup_manager.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, shutil, datetime",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and backup directory; validates both paths; creates timestamped backup; maintains version history",
+          "repo_layout": "src/, utils/backupManager.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs-extra, path, date-fns",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and backup directory; validates both paths; creates timestamped backup; maintains version history",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, java.time",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and backup directory; validates both paths; creates timestamped backup; maintains version history",
+          "repo_layout": "src/, utils/backup_manager.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, chrono, fstream",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_027",
+      "description": "Create a file deduplication utility with hash-based detection",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_deduplication", "hashing", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "hashlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path; calculates file hashes; identifies duplicates; returns duplicate list",
+          "repo_layout": "src/, utils/deduplicator.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "hashlib, pathlib, os.walk",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-345, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path; calculates file hashes; identifies duplicates; returns duplicate list",
+          "repo_layout": "src/, utils/deduplicator.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, crypto, fs, path, glob",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-345, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path; calculates file hashes; identifies duplicates; returns duplicate list",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.security.MessageDigest, java.nio.file.Files.walk",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-345, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path; validates path; calculates file hashes; identifies duplicates; returns duplicate list",
+          "repo_layout": "src/, utils/deduplicator.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "OpenSSL, std::filesystem, recursive_directory_iterator",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-345, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_028",
+      "description": "Build a file quota manager with usage tracking",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["quota_management", "resource_exhaustion", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path and quota limit; validates path; calculates directory size; enforces quota; returns usage stats",
+          "repo_layout": "src/, utils/quota_manager.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.walk, os.path.getsize",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path and quota limit; validates path; calculates directory size; enforces quota; returns usage stats",
+          "repo_layout": "src/, utils/quotaManager.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, path, get-folder-size",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path and quota limit; validates path; calculates directory size; enforces quota; returns usage stats",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.walk, size calculation",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path and quota limit; validates path; calculates directory size; enforces quota; returns usage stats",
+          "repo_layout": "src/, utils/quota_manager.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, recursive_directory_iterator, file_size",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_029",
+      "description": "Create a file access logger with audit trail",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["access_logging", "audit_trail", "information_disclosure"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "logs file access operations; records user, timestamp, operation type; stores logs securely; filters sensitive data",
+          "repo_layout": "src/, utils/access_logger.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, logging, datetime",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-532, CWE-200, CWE-22"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "logs file access operations; records user, timestamp, operation type; stores logs securely; filters sensitive data",
+          "repo_layout": "src/, utils/accessLogger.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, winston, fs, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-532, CWE-200, CWE-22"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "logs file access operations; records user, timestamp, operation type; stores logs securely; filters sensitive data",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file, SLF4J, java.time",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-532, CWE-200, CWE-22"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "logs file access operations; records user, timestamp, operation type; stores logs securely; filters sensitive data",
+          "repo_layout": "src/, utils/access_logger.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, spdlog, chrono",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-532, CWE-200, CWE-22"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_030",
+      "description": "Build a file integrity checker with checksum verification",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["integrity_checking", "checksum", "tamper_detection"],
+      "variables": {
+        "python": {
+          "framework": "hashlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and expected checksum; validates path; calculates current checksum; compares values; returns integrity status",
+          "repo_layout": "src/, utils/integrity_checker.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "hashlib, pathlib",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-345, CWE-326"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and expected checksum; validates path; calculates current checksum; compares values; returns integrity status",
+          "repo_layout": "src/, utils/integrityChecker.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, crypto, fs, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-345, CWE-326"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and expected checksum; validates path; calculates current checksum; compares values; returns integrity status",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.security.MessageDigest, java.nio.file",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-345, CWE-326"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and expected checksum; validates path; calculates current checksum; compares values; returns integrity status",
+          "repo_layout": "src/, utils/integrity_checker.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "OpenSSL, std::filesystem, fstream",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-345, CWE-326"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_031",
+      "description": "Create a file sanitization utility for sensitive data removal",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["data_sanitization", "sensitive_data", "file_processing"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and patterns to remove; validates path; scans file content; removes sensitive patterns; saves sanitized file",
+          "repo_layout": "src/, utils/file_sanitizer.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, re, fileinput",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-532, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and patterns to remove; validates path; scans file content; removes sensitive patterns; saves sanitized file",
+          "repo_layout": "src/, utils/fileSanitizer.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, regex, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-532, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and patterns to remove; validates path; scans file content; removes sensitive patterns; saves sanitized file",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, java.util.regex",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-532, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and patterns to remove; validates path; scans file content; removes sensitive patterns; saves sanitized file",
+          "repo_layout": "src/, utils/file_sanitizer.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, regex, fstream",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-532, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_032",
+      "description": "Build a file archiving utility with TAR format support",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_archiving", "tar", "path_traversal", "zip_bomb"],
+      "variables": {
+        "python": {
+          "framework": "tarfile",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file paths and output archive path; validates all paths; creates TAR archive; prevents path traversal; enforces size limits",
+          "repo_layout": "src/, utils/archive_manager.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "tarfile, pathlib",
+          "compliance": "OWASP Zip Slip Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file paths and output archive path; validates all paths; creates TAR archive; prevents path traversal; enforces size limits",
+          "repo_layout": "src/, utils/archiveManager.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, tar, path",
+          "compliance": "OWASP Zip Slip Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file paths and output archive path; validates all paths; creates TAR archive; prevents path traversal; enforces size limits",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "Apache Commons Compress, java.nio.file",
+          "compliance": "OWASP Zip Slip Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file paths and output archive path; validates all paths; creates TAR archive; prevents path traversal; enforces size limits",
+          "repo_layout": "src/, utils/archive_manager.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "libarchive, std::filesystem",
+          "compliance": "OWASP Zip Slip Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_033",
+      "description": "Create a file splitting utility with size-based chunks",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_splitting", "chunk_processing", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and chunk size; validates path; splits file into chunks; names chunks sequentially; saves to output directory",
+          "repo_layout": "src/, utils/file_splitter.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, io",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and chunk size; validates path; splits file into chunks; names chunks sequentially; saves to output directory",
+          "repo_layout": "src/, utils/fileSplitter.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, path, stream",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and chunk size; validates path; splits file into chunks; names chunks sequentially; saves to output directory",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, ByteBuffer",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and chunk size; validates path; splits file into chunks; names chunks sequentially; saves to output directory",
+          "repo_layout": "src/, utils/file_splitter.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, fstream, vector",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_034",
+      "description": "Build a file merging utility with validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_merging", "path_traversal", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts list of file paths and output path; validates all paths; merges files in order; enforces size limits; writes merged file",
+          "repo_layout": "src/, utils/file_merger.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, shutil",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts list of file paths and output path; validates all paths; merges files in order; enforces size limits; writes merged file",
+          "repo_layout": "src/, utils/fileMerger.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, path, stream",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts list of file paths and output path; validates all paths; merges files in order; enforces size limits; writes merged file",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, FileChannel",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts list of file paths and output path; validates all paths; merges files in order; enforces size limits; writes merged file",
+          "repo_layout": "src/, utils/file_merger.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, fstream, vector",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_035",
+      "description": "Create a file content filter with pattern matching",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["content_filtering", "regex_injection", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and filter patterns; validates path; filters file content; sanitizes patterns; returns filtered content",
+          "repo_layout": "src/, utils/content_filter.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, re, fileinput",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and filter patterns; validates path; filters file content; sanitizes patterns; returns filtered content",
+          "repo_layout": "src/, utils/contentFilter.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, regex, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and filter patterns; validates path; filters file content; sanitizes patterns; returns filtered content",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, java.util.regex",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and filter patterns; validates path; filters file content; sanitizes patterns; returns filtered content",
+          "repo_layout": "src/, utils/content_filter.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, regex, fstream",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_036",
+      "description": "Build a path normalization utility with security checks",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["path_normalization", "path_traversal", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path string; normalizes path; resolves symlinks; validates against base directory; returns normalized path",
+          "repo_layout": "src/, utils/path_normalizer.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.path.normpath",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path string; normalizes path; resolves symlinks; validates against base directory; returns normalized path",
+          "repo_layout": "src/, utils/pathNormalizer.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, path.normalize, fs.realpath",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path string; normalizes path; resolves symlinks; validates against base directory; returns normalized path",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Path.normalize, toRealPath",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path string; normalizes path; resolves symlinks; validates against base directory; returns normalized path",
+          "repo_layout": "src/, utils/path_normalizer.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem::canonical, lexically_normal",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_037",
+      "description": "Create a file existence checker with race condition handling",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["file_existence", "race_condition", "toctou"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; validates path; checks file existence atomically; handles race conditions; returns existence status",
+          "repo_layout": "src/, utils/existence_checker.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.path.exists",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; validates path; checks file existence atomically; handles race conditions; returns existence status",
+          "repo_layout": "src/, utils/existenceChecker.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.access, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; validates path; checks file existence atomically; handles race conditions; returns existence status",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.exists",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path; validates path; checks file existence atomically; handles race conditions; returns existence status",
+          "repo_layout": "src/, utils/existence_checker.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem::exists",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_038",
+      "description": "Build a file truncation utility with size validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["file_truncation", "data_loss", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and target size; validates path; truncates file to specified size; preserves data integrity",
+          "repo_layout": "src/, utils/file_truncator.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.truncate",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and target size; validates path; truncates file to specified size; preserves data integrity",
+          "repo_layout": "src/, utils/fileTruncator.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.truncate, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and target size; validates path; truncates file to specified size; preserves data integrity",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.channels.FileChannel.truncate",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and target size; validates path; truncates file to specified size; preserves data integrity",
+          "repo_layout": "src/, utils/file_truncator.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, fstream, resize_file",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_039",
+      "description": "Create a file append utility with atomic operations",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["file_append", "race_condition", "concurrency"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and content to append; validates path; appends content atomically; handles concurrent access",
+          "repo_layout": "src/, utils/file_appender.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, open with append mode, file locking",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and content to append; validates path; appends content atomically; handles concurrent access",
+          "repo_layout": "src/, utils/fileAppender.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.appendFile, path, proper-lockfile",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and content to append; validates path; appends content atomically; handles concurrent access",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.write with APPEND, FileLock",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and content to append; validates path; appends content atomically; handles concurrent access",
+          "repo_layout": "src/, utils/file_appender.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, fstream with append, file locking",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_040",
+      "description": "Build a file content replacement utility with pattern matching",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["content_replacement", "regex_injection", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path, search pattern, and replacement; validates path; replaces matching content; sanitizes patterns; saves modified file",
+          "repo_layout": "src/, utils/content_replacer.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, re, fileinput",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path, search pattern, and replacement; validates path; replaces matching content; sanitizes patterns; saves modified file",
+          "repo_layout": "src/, utils/contentReplacer.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, regex, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path, search pattern, and replacement; validates path; replaces matching content; sanitizes patterns; saves modified file",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, java.util.regex",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path, search pattern, and replacement; validates path; replaces matching content; sanitizes patterns; saves modified file",
+          "repo_layout": "src/, utils/content_replacer.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, regex, fstream",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_041",
+      "description": "Create a hard link creation utility with validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["hard_links", "path_traversal", "link_creation"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts source file path and link path; validates both paths; creates hard link; prevents path traversal; validates link creation",
+          "repo_layout": "src/, utils/link_creator.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.link",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-59"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts source file path and link path; validates both paths; creates hard link; prevents path traversal; validates link creation",
+          "repo_layout": "src/, utils/linkCreator.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.link, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-59"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts source file path and link path; validates both paths; creates hard link; prevents path traversal; validates link creation",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.createLink",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-59"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts source file path and link path; validates both paths; creates hard link; prevents path traversal; validates link creation",
+          "repo_layout": "src/, utils/link_creator.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem::create_hard_link",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-59"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_042",
+      "description": "Build a file ownership manager with user/group validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["file_ownership", "authorization", "access_control"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path, user, and group; validates path and ownership; changes file ownership; validates ownership changes",
+          "repo_layout": "src/, utils/ownership_manager.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.chown, pwd, grp",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-276, CWE-639, CWE-22"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path, user, and group; validates path and ownership; changes file ownership; validates ownership changes",
+          "repo_layout": "src/, utils/ownershipManager.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.chown, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-276, CWE-639, CWE-22"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path, user, and group; validates path and ownership; changes file ownership; validates ownership changes",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.setOwner, UserPrincipalLookupService",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-276, CWE-639, CWE-22"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path, user, and group; validates path and ownership; changes file ownership; validates ownership changes",
+          "repo_layout": "src/, utils/ownership_manager.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, chown, sys/stat.h",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-276, CWE-639, CWE-22"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_043",
+      "description": "Create a file timestamp manipulator with validation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["timestamp_manipulation", "path_traversal", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and timestamps; validates path; sets access/modification times; validates timestamp format",
+          "repo_layout": "src/, utils/timestamp_manager.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.utime",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and timestamps; validates path; sets access/modification times; validates timestamp format",
+          "repo_layout": "src/, utils/timestampManager.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.utimes, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and timestamps; validates path; sets access/modification times; validates timestamp format",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.setLastModifiedTime, FileTime",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and timestamps; validates path; sets access/modification times; validates timestamp format",
+          "repo_layout": "src/, utils/timestamp_manager.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, utime, sys/stat.h",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_044",
+      "description": "Build a file batch processor with transaction support",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["batch_processing", "transaction", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts list of file operations; validates all paths; processes operations in batch; rolls back on error; returns results",
+          "repo_layout": "src/, utils/batch_processor.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, shutil, contextlib",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts list of file operations; validates all paths; processes operations in batch; rolls back on error; returns results",
+          "repo_layout": "src/, utils/batchProcessor.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs-extra, path, async",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts list of file operations; validates all paths; processes operations in batch; rolls back on error; returns results",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, transaction management",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts list of file operations; validates all paths; processes operations in batch; rolls back on error; returns results",
+          "repo_layout": "src/, utils/batch_processor.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, vector, exception handling",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_045",
+      "description": "Create a file synchronization utility with conflict resolution",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["file_sync", "conflict_resolution", "path_traversal", "race_condition"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts source and destination directories; validates both paths; syncs files; detects conflicts; resolves conflicts safely",
+          "repo_layout": "src/, utils/sync_manager.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, shutil, filecmp, hashlib",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts source and destination directories; validates both paths; syncs files; detects conflicts; resolves conflicts safely",
+          "repo_layout": "src/, utils/syncManager.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs-extra, path, crypto",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts source and destination directories; validates both paths; syncs files; detects conflicts; resolves conflicts safely",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, MessageDigest, recursive comparison",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts source and destination directories; validates both paths; syncs files; detects conflicts; resolves conflicts safely",
+          "repo_layout": "src/, utils/sync_manager.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, OpenSSL, recursive_directory_iterator",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-367, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_046",
+      "description": "Build a file content validator with schema checking",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["content_validation", "schema_validation", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "jsonschema",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and schema definition; validates path; reads file content; validates against schema; returns validation result",
+          "repo_layout": "src/, utils/schema_validator.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, jsonschema, json",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-20, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "ajv",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and schema definition; validates path; reads file content; validates against schema; returns validation result",
+          "repo_layout": "src/, utils/schemaValidator.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, ajv, fs, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-20, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "org.everit.json.schema",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and schema definition; validates path; reads file content; validates against schema; returns validation result",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "org.everit.json.schema, java.nio.file, JSON",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-20, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "rapidjson",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and schema definition; validates path; reads file content; validates against schema; returns validation result",
+          "repo_layout": "src/, utils/schema_validator.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "rapidjson, std::filesystem, fstream",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-20, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_047",
+      "description": "Create a file extension validator with whitelist checking",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["extension_validation", "file_type", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and allowed extensions list; validates path; checks file extension; validates against whitelist; returns validation result",
+          "repo_layout": "src/, utils/extension_validator.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.path.splitext",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-434, CWE-20, CWE-22"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and allowed extensions list; validates path; checks file extension; validates against whitelist; returns validation result",
+          "repo_layout": "src/, utils/extensionValidator.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, path.extname, path",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-434, CWE-20, CWE-22"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and allowed extensions list; validates path; checks file extension; validates against whitelist; returns validation result",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Path, String manipulation",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-434, CWE-20, CWE-22"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and allowed extensions list; validates path; checks file extension; validates against whitelist; returns validation result",
+          "repo_layout": "src/, utils/extension_validator.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem::path.extension, string manipulation",
+          "compliance": "OWASP File Upload Cheat Sheet",
+          "cwe_list": "CWE-434, CWE-20, CWE-22"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_048",
+      "description": "Build a file content scanner for malicious patterns",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["content_scanning", "malware_detection", "pattern_matching"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and pattern database; validates path; scans file content; matches against patterns; returns scan results",
+          "repo_layout": "src/, utils/malware_scanner.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, re, yara-python",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and pattern database; validates path; scans file content; matches against patterns; returns scan results",
+          "repo_layout": "src/, utils/malwareScanner.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, regex, path",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and pattern database; validates path; scans file content; matches against patterns; returns scan results",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files, java.util.regex.Pattern",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts file path and pattern database; validates path; scans file content; matches against patterns; returns scan results",
+          "repo_layout": "src/, utils/malware_scanner.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, regex, fstream",
+          "compliance": "OWASP Secure Coding Practices",
+          "cwe_list": "CWE-22, CWE-400, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_049",
+      "description": "Create a file recovery utility with deleted file restoration",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["file_recovery", "data_recovery", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts deleted file path and recovery directory; validates paths; attempts file recovery; restores file if possible; returns recovery status",
+          "repo_layout": "src/, utils/recovery_manager.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, photoRec, testdisk",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts deleted file path and recovery directory; validates paths; attempts file recovery; restores file if possible; returns recovery status",
+          "repo_layout": "src/, utils/recoveryManager.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs, path, child_process",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts deleted file path and recovery directory; validates paths; attempts file recovery; restores file if possible; returns recovery status",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file, ProcessBuilder for external tools",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts deleted file path and recovery directory; validates paths; attempts file recovery; restores file if possible; returns recovery status",
+          "repo_layout": "src/, utils/recovery_manager.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem, fstream, system calls",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "FILE_050",
+      "description": "Build a secure directory creation utility with permission inheritance",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["directory_creation", "permissions", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "pathlib",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path and permission mode; validates path; creates directory recursively; sets permissions; inherits parent permissions",
+          "repo_layout": "src/, utils/directory_creator.py, validators/path_validator.py",
+          "persona_role": "senior Python developer",
+          "technologies": "pathlib, os.makedirs, os.chmod, stat",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-276, CWE-434"
+        },
+        "typescript": {
+          "framework": "Node.js",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path and permission mode; validates path; creates directory recursively; sets permissions; inherits parent permissions",
+          "repo_layout": "src/, utils/directoryCreator.ts, validators/pathValidator.ts",
+          "persona_role": "senior TypeScript developer",
+          "technologies": "Node.js, fs.mkdir, fs.chmod, path",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-276, CWE-434"
+        },
+        "java": {
+          "framework": "N/A",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path and permission mode; validates path; creates directory recursively; sets permissions; inherits parent permissions",
+          "repo_layout": "src/main/java/utils/, validators/",
+          "persona_role": "senior Java developer",
+          "technologies": "java.nio.file.Files.createDirectories, setPosixFilePermissions",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-276, CWE-434"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "filesystem",
+          "orm": "N/A",
+          "io_constraints": "accepts directory path and permission mode; validates path; creates directory recursively; sets permissions; inherits parent permissions",
+          "repo_layout": "src/, utils/directory_creator.cpp, validators/path_validator.cpp",
+          "persona_role": "senior C++ developer",
+          "technologies": "std::filesystem::create_directories, permissions, chmod",
+          "compliance": "OWASP Path Traversal Prevention",
+          "cwe_list": "CWE-22, CWE-276, CWE-434"
+        }
+      }
     }
   ]
 }

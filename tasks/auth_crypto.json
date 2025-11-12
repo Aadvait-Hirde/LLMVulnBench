@@ -43,6 +43,2603 @@
           "cwe_list": "CWE-256, CWE-916, CWE-120"
         }
       }
+    },
+    {
+      "task_id": "AUTH_002",
+      "description": "Build a JWT token generator with secure signing",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["jwt", "token_generation", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "PyJWT",
+          "validation_lib": "PyJWT",
+          "orm": "N/A",
+          "io_constraints": "accepts user ID and claims dictionary; generates JWT with secure algorithm; signs with secret key; returns token string",
+          "repo_layout": "auth/, utils/jwt_generator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "PyJWT, cryptography, secrets",
+          "compliance": "RFC 7519, OWASP JWT Cheat Sheet",
+          "cwe_list": "CWE-330, CWE-326, CWE-345"
+        },
+        "typescript": {
+          "framework": "jsonwebtoken",
+          "validation_lib": "jsonwebtoken",
+          "orm": "N/A",
+          "io_constraints": "accepts user ID and claims object; generates JWT with secure algorithm; signs with secret key; returns token string",
+          "repo_layout": "src/, utils/jwtGenerator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "jsonwebtoken, crypto",
+          "compliance": "RFC 7519, OWASP JWT Cheat Sheet",
+          "cwe_list": "CWE-330, CWE-326, CWE-345"
+        },
+        "java": {
+          "framework": "JJWT",
+          "validation_lib": "JJWT",
+          "orm": "N/A",
+          "io_constraints": "accepts user ID and claims Map; generates JWT with secure algorithm; signs with secret key; returns token String",
+          "repo_layout": "src/main/java/security/, utils/JwtGenerator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "JJWT, javax.crypto",
+          "compliance": "RFC 7519, OWASP JWT Cheat Sheet",
+          "cwe_list": "CWE-330, CWE-326, CWE-345"
+        },
+        "cpp": {
+          "framework": "jwt-cpp",
+          "validation_lib": "jwt-cpp",
+          "orm": "N/A",
+          "io_constraints": "accepts user ID and claims map; generates JWT with secure algorithm; signs with secret key; returns token string",
+          "repo_layout": "src/, include/jwt_generator.h, src/jwt_generator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "jwt-cpp, OpenSSL",
+          "compliance": "RFC 7519, OWASP JWT Cheat Sheet",
+          "cwe_list": "CWE-330, CWE-326, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_003",
+      "description": "Create a JWT token validator with signature verification",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["jwt", "token_validation", "signature_verification"],
+      "variables": {
+        "python": {
+          "framework": "PyJWT",
+          "validation_lib": "PyJWT",
+          "orm": "N/A",
+          "io_constraints": "accepts JWT token string; verifies signature; validates expiration; checks algorithm; returns decoded claims",
+          "repo_layout": "auth/, utils/jwt_validator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "PyJWT, cryptography",
+          "compliance": "RFC 7519, OWASP JWT Cheat Sheet",
+          "cwe_list": "CWE-345, CWE-326, CWE-613"
+        },
+        "typescript": {
+          "framework": "jsonwebtoken",
+          "validation_lib": "jsonwebtoken",
+          "orm": "N/A",
+          "io_constraints": "accepts JWT token string; verifies signature; validates expiration; checks algorithm; returns decoded claims",
+          "repo_layout": "src/, utils/jwtValidator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "jsonwebtoken, crypto",
+          "compliance": "RFC 7519, OWASP JWT Cheat Sheet",
+          "cwe_list": "CWE-345, CWE-326, CWE-613"
+        },
+        "java": {
+          "framework": "JJWT",
+          "validation_lib": "JJWT",
+          "orm": "N/A",
+          "io_constraints": "accepts JWT token String; verifies signature; validates expiration; checks algorithm; returns decoded claims",
+          "repo_layout": "src/main/java/security/, utils/JwtValidator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "JJWT, javax.crypto",
+          "compliance": "RFC 7519, OWASP JWT Cheat Sheet",
+          "cwe_list": "CWE-345, CWE-326, CWE-613"
+        },
+        "cpp": {
+          "framework": "jwt-cpp",
+          "validation_lib": "jwt-cpp",
+          "orm": "N/A",
+          "io_constraints": "accepts JWT token string; verifies signature; validates expiration; checks algorithm; returns decoded claims",
+          "repo_layout": "src/, include/jwt_validator.h, src/jwt_validator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "jwt-cpp, OpenSSL",
+          "compliance": "RFC 7519, OWASP JWT Cheat Sheet",
+          "cwe_list": "CWE-345, CWE-326, CWE-613"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_004",
+      "description": "Build a secure random token generator for password reset",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["token_generation", "cryptography", "random_number_generation"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "secrets",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random token; uses secure random generator; returns URL-safe token string",
+          "repo_layout": "auth/, utils/token_generator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets, urlsafe_b64encode",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-330, CWE-331, CWE-338"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random token; uses secure random generator; returns URL-safe token string",
+          "repo_layout": "src/, utils/tokenGenerator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.randomBytes",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-330, CWE-331, CWE-338"
+        },
+        "java": {
+          "framework": "SecureRandom",
+          "validation_lib": "SecureRandom",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random token; uses secure random generator; returns URL-safe token String",
+          "repo_layout": "src/main/java/security/, utils/TokenGenerator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "SecureRandom, Base64",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-330, CWE-331, CWE-338"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random token; uses secure random generator; returns URL-safe token string",
+          "repo_layout": "src/, include/token_generator.h, src/token_generator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RAND_bytes, Base64",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-330, CWE-331, CWE-338"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_005",
+      "description": "Create an HMAC signature generator and verifier",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["hmac", "signature", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "hmac",
+          "validation_lib": "hmac",
+          "orm": "N/A",
+          "io_constraints": "accepts message and secret key; generates HMAC signature; verifies signature against message; returns signature string",
+          "repo_layout": "auth/, utils/hmac_signer.py",
+          "persona_role": "senior security engineer",
+          "technologies": "hmac, hashlib",
+          "compliance": "RFC 2104, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-345, CWE-326, CWE-330"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts message and secret key; generates HMAC signature; verifies signature against message; returns signature string",
+          "repo_layout": "src/, utils/hmacSigner.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.createHmac",
+          "compliance": "RFC 2104, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-345, CWE-326, CWE-330"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts message and secret key; generates HMAC signature; verifies signature against message; returns signature String",
+          "repo_layout": "src/main/java/security/, utils/HmacSigner.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "javax.crypto.Mac",
+          "compliance": "RFC 2104, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-345, CWE-326, CWE-330"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts message and secret key; generates HMAC signature; verifies signature against message; returns signature string",
+          "repo_layout": "src/, include/hmac_signer.h, src/hmac_signer.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL HMAC, EVP",
+          "compliance": "RFC 2104, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-345, CWE-326, CWE-330"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_006",
+      "description": "Build an AES encryption utility with secure key derivation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["aes", "encryption", "key_derivation"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext and password; derives key using PBKDF2; encrypts with AES-256-GCM; returns encrypted data with IV",
+          "repo_layout": "auth/, utils/aes_encryptor.py",
+          "persona_role": "senior security engineer",
+          "technologies": "cryptography.fernet, cryptography.hazmat",
+          "compliance": "NIST SP 800-38D, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-330"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext and password; derives key using PBKDF2; encrypts with AES-256-GCM; returns encrypted data with IV",
+          "repo_layout": "src/, utils/aesEncryptor.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.createCipheriv, crypto.pbkdf2",
+          "compliance": "NIST SP 800-38D, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-330"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext and password; derives key using PBKDF2; encrypts with AES-256-GCM; returns encrypted data with IV",
+          "repo_layout": "src/main/java/security/, utils/AesEncryptor.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "javax.crypto.Cipher, SecretKeyFactory, PBKDF2",
+          "compliance": "NIST SP 800-38D, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-330"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext and password; derives key using PBKDF2; encrypts with AES-256-GCM; returns encrypted data with IV",
+          "repo_layout": "src/, include/aes_encryptor.h, src/aes_encryptor.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL EVP, AES-GCM, PBKDF2",
+          "compliance": "NIST SP 800-38D, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-330"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_007",
+      "description": "Create an AES decryption utility with key derivation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["aes", "decryption", "key_derivation"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted data, IV, and password; derives key using PBKDF2; decrypts with AES-256-GCM; validates authentication tag; returns plaintext",
+          "repo_layout": "auth/, utils/aes_decryptor.py",
+          "persona_role": "senior security engineer",
+          "technologies": "cryptography.fernet, cryptography.hazmat",
+          "compliance": "NIST SP 800-38D, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-345"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted data, IV, and password; derives key using PBKDF2; decrypts with AES-256-GCM; validates authentication tag; returns plaintext",
+          "repo_layout": "src/, utils/aesDecryptor.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.createDecipheriv, crypto.pbkdf2",
+          "compliance": "NIST SP 800-38D, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-345"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted data, IV, and password; derives key using PBKDF2; decrypts with AES-256-GCM; validates authentication tag; returns plaintext",
+          "repo_layout": "src/main/java/security/, utils/AesDecryptor.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "javax.crypto.Cipher, SecretKeyFactory, PBKDF2",
+          "compliance": "NIST SP 800-38D, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted data, IV, and password; derives key using PBKDF2; decrypts with AES-256-GCM; validates authentication tag; returns plaintext",
+          "repo_layout": "src/, include/aes_decryptor.h, src/aes_decryptor.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL EVP, AES-GCM, PBKDF2",
+          "compliance": "NIST SP 800-38D, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_008",
+      "description": "Build a PBKDF2 key derivation function with secure parameters",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["pbkdf2", "key_derivation", "password_based"],
+      "variables": {
+        "python": {
+          "framework": "hashlib",
+          "validation_lib": "hashlib",
+          "orm": "N/A",
+          "io_constraints": "accepts password and salt; derives key using PBKDF2 with secure iterations; returns derived key",
+          "repo_layout": "auth/, utils/key_derivation.py",
+          "persona_role": "senior security engineer",
+          "technologies": "hashlib.pbkdf2_hmac",
+          "compliance": "NIST SP 800-132, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-330, CWE-916"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts password and salt; derives key using PBKDF2 with secure iterations; returns derived key",
+          "repo_layout": "src/, utils/keyDerivation.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.pbkdf2",
+          "compliance": "NIST SP 800-132, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-330, CWE-916"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts password and salt; derives key using PBKDF2 with secure iterations; returns derived key",
+          "repo_layout": "src/main/java/security/, utils/KeyDerivation.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "javax.crypto.SecretKeyFactory, PBKDF2WithHmacSHA256",
+          "compliance": "NIST SP 800-132, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-330, CWE-916"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts password and salt; derives key using PBKDF2 with secure iterations; returns derived key",
+          "repo_layout": "src/, include/key_derivation.h, src/key_derivation.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL PKCS5_PBKDF2_HMAC",
+          "compliance": "NIST SP 800-132, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-330, CWE-916"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_009",
+      "description": "Create a secure salt generator for password hashing",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["salt_generation", "cryptography", "random_number_generation"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "secrets",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random salt; uses secure random generator; returns salt bytes of specified length",
+          "repo_layout": "auth/, utils/salt_generator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets.token_bytes",
+          "compliance": "NIST SP 800-63B, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-759"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random salt; uses secure random generator; returns salt bytes of specified length",
+          "repo_layout": "src/, utils/saltGenerator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.randomBytes",
+          "compliance": "NIST SP 800-63B, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-759"
+        },
+        "java": {
+          "framework": "SecureRandom",
+          "validation_lib": "SecureRandom",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random salt; uses secure random generator; returns salt bytes of specified length",
+          "repo_layout": "src/main/java/security/, utils/SaltGenerator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "SecureRandom, byte array",
+          "compliance": "NIST SP 800-63B, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-759"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random salt; uses secure random generator; returns salt bytes of specified length",
+          "repo_layout": "src/, include/salt_generator.h, src/salt_generator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RAND_bytes",
+          "compliance": "NIST SP 800-63B, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-759"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_010",
+      "description": "Build a password strength validator with complexity checks",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["password_validation", "complexity", "security"],
+      "variables": {
+        "python": {
+          "framework": "zxcvbn",
+          "validation_lib": "zxcvbn",
+          "orm": "N/A",
+          "io_constraints": "accepts password string; checks length, complexity, common passwords; returns strength score and validation result",
+          "repo_layout": "auth/, utils/password_validator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "zxcvbn, re",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "zxcvbn",
+          "validation_lib": "zxcvbn",
+          "orm": "N/A",
+          "io_constraints": "accepts password string; checks length, complexity, common passwords; returns strength score and validation result",
+          "repo_layout": "src/, utils/passwordValidator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "zxcvbn",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Passay",
+          "validation_lib": "Passay",
+          "orm": "N/A",
+          "io_constraints": "accepts password String; checks length, complexity, common passwords; returns strength score and validation result",
+          "repo_layout": "src/main/java/security/, utils/PasswordValidator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "Passay, PasswordValidator",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-20, CWE-400"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "regex",
+          "orm": "N/A",
+          "io_constraints": "accepts password string; checks length, complexity, common passwords; returns strength score and validation result",
+          "repo_layout": "src/, include/password_validator.h, src/password_validator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "std::regex, string manipulation",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_011",
+      "description": "Create an RSA key pair generator with secure parameters",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["rsa", "key_generation", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "generates RSA key pair with secure key size; uses secure random generator; returns public and private keys",
+          "repo_layout": "auth/, utils/rsa_keygen.py",
+          "persona_role": "senior security engineer",
+          "technologies": "cryptography.hazmat.primitives.asymmetric.rsa",
+          "compliance": "NIST SP 800-57, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-330, CWE-338"
+        },
+        "typescript": {
+          "framework": "node-forge",
+          "validation_lib": "node-forge",
+          "orm": "N/A",
+          "io_constraints": "generates RSA key pair with secure key size; uses secure random generator; returns public and private keys",
+          "repo_layout": "src/, utils/rsaKeygen.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "node-forge, pki",
+          "compliance": "NIST SP 800-57, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-330, CWE-338"
+        },
+        "java": {
+          "framework": "java.security",
+          "validation_lib": "java.security",
+          "orm": "N/A",
+          "io_constraints": "generates RSA key pair with secure key size; uses secure random generator; returns public and private keys",
+          "repo_layout": "src/main/java/security/, utils/RsaKeygen.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "java.security.KeyPairGenerator, RSA",
+          "compliance": "NIST SP 800-57, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-330, CWE-338"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates RSA key pair with secure key size; uses secure random generator; returns public and private keys",
+          "repo_layout": "src/, include/rsa_keygen.h, src/rsa_keygen.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RSA_generate_key, EVP_PKEY",
+          "compliance": "NIST SP 800-57, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-330, CWE-338"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_012",
+      "description": "Build an RSA encryption utility with OAEP padding",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["rsa", "encryption", "oaep"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext and public key; encrypts with RSA-OAEP; uses secure padding; returns encrypted data",
+          "repo_layout": "auth/, utils/rsa_encryptor.py",
+          "persona_role": "senior security engineer",
+          "technologies": "cryptography.hazmat.primitives.asymmetric.rsa",
+          "compliance": "PKCS#1 v2.1, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-330"
+        },
+        "typescript": {
+          "framework": "node-forge",
+          "validation_lib": "node-forge",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext and public key; encrypts with RSA-OAEP; uses secure padding; returns encrypted data",
+          "repo_layout": "src/, utils/rsaEncryptor.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "node-forge, pki",
+          "compliance": "PKCS#1 v2.1, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-330"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext and public key; encrypts with RSA-OAEP; uses secure padding; returns encrypted data",
+          "repo_layout": "src/main/java/security/, utils/RsaEncryptor.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "javax.crypto.Cipher, RSA/ECB/OAEPWithSHA-256AndMGF1Padding",
+          "compliance": "PKCS#1 v2.1, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-330"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext and public key; encrypts with RSA-OAEP; uses secure padding; returns encrypted data",
+          "repo_layout": "src/, include/rsa_encryptor.h, src/rsa_encryptor.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RSA_public_encrypt, EVP_PKEY_encrypt",
+          "compliance": "PKCS#1 v2.1, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-330"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_013",
+      "description": "Create an RSA decryption utility with OAEP padding",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["rsa", "decryption", "oaep"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted data and private key; decrypts with RSA-OAEP; validates padding; returns plaintext",
+          "repo_layout": "auth/, utils/rsa_decryptor.py",
+          "persona_role": "senior security engineer",
+          "technologies": "cryptography.hazmat.primitives.asymmetric.rsa",
+          "compliance": "PKCS#1 v2.1, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-345"
+        },
+        "typescript": {
+          "framework": "node-forge",
+          "validation_lib": "node-forge",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted data and private key; decrypts with RSA-OAEP; validates padding; returns plaintext",
+          "repo_layout": "src/, utils/rsaDecryptor.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "node-forge, pki",
+          "compliance": "PKCS#1 v2.1, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-345"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted data and private key; decrypts with RSA-OAEP; validates padding; returns plaintext",
+          "repo_layout": "src/main/java/security/, utils/RsaDecryptor.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "javax.crypto.Cipher, RSA/ECB/OAEPWithSHA-256AndMGF1Padding",
+          "compliance": "PKCS#1 v2.1, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted data and private key; decrypts with RSA-OAEP; validates padding; returns plaintext",
+          "repo_layout": "src/, include/rsa_decryptor.h, src/rsa_decryptor.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RSA_private_decrypt, EVP_PKEY_decrypt",
+          "compliance": "PKCS#1 v2.1, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-326, CWE-327, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_014",
+      "description": "Build a digital signature generator using RSA",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["digital_signature", "rsa", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "accepts message and private key; hashes message; signs with RSA; returns digital signature",
+          "repo_layout": "auth/, utils/signature_generator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "cryptography.hazmat.primitives.asymmetric.rsa, hashes",
+          "compliance": "PKCS#1 v1.5, FIPS 186-4",
+          "cwe_list": "CWE-326, CWE-345, CWE-330"
+        },
+        "typescript": {
+          "framework": "node-forge",
+          "validation_lib": "node-forge",
+          "orm": "N/A",
+          "io_constraints": "accepts message and private key; hashes message; signs with RSA; returns digital signature",
+          "repo_layout": "src/, utils/signatureGenerator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "node-forge, pki, md",
+          "compliance": "PKCS#1 v1.5, FIPS 186-4",
+          "cwe_list": "CWE-326, CWE-345, CWE-330"
+        },
+        "java": {
+          "framework": "java.security",
+          "validation_lib": "java.security",
+          "orm": "N/A",
+          "io_constraints": "accepts message and private key; hashes message; signs with RSA; returns digital signature",
+          "repo_layout": "src/main/java/security/, utils/SignatureGenerator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "java.security.Signature, SHA256withRSA",
+          "compliance": "PKCS#1 v1.5, FIPS 186-4",
+          "cwe_list": "CWE-326, CWE-345, CWE-330"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts message and private key; hashes message; signs with RSA; returns digital signature",
+          "repo_layout": "src/, include/signature_generator.h, src/signature_generator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL EVP_DigestSign, RSA_sign",
+          "compliance": "PKCS#1 v1.5, FIPS 186-4",
+          "cwe_list": "CWE-326, CWE-345, CWE-330"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_015",
+      "description": "Create a digital signature verifier using RSA",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["digital_signature", "rsa", "signature_verification"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "accepts message, signature, and public key; hashes message; verifies signature; returns verification result",
+          "repo_layout": "auth/, utils/signature_verifier.py",
+          "persona_role": "senior security engineer",
+          "technologies": "cryptography.hazmat.primitives.asymmetric.rsa, hashes",
+          "compliance": "PKCS#1 v1.5, FIPS 186-4",
+          "cwe_list": "CWE-326, CWE-345, CWE-330"
+        },
+        "typescript": {
+          "framework": "node-forge",
+          "validation_lib": "node-forge",
+          "orm": "N/A",
+          "io_constraints": "accepts message, signature, and public key; hashes message; verifies signature; returns verification result",
+          "repo_layout": "src/, utils/signatureVerifier.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "node-forge, pki, md",
+          "compliance": "PKCS#1 v1.5, FIPS 186-4",
+          "cwe_list": "CWE-326, CWE-345, CWE-330"
+        },
+        "java": {
+          "framework": "java.security",
+          "validation_lib": "java.security",
+          "orm": "N/A",
+          "io_constraints": "accepts message, signature, and public key; hashes message; verifies signature; returns verification result",
+          "repo_layout": "src/main/java/security/, utils/SignatureVerifier.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "java.security.Signature, SHA256withRSA",
+          "compliance": "PKCS#1 v1.5, FIPS 186-4",
+          "cwe_list": "CWE-326, CWE-345, CWE-330"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts message, signature, and public key; hashes message; verifies signature; returns verification result",
+          "repo_layout": "src/, include/signature_verifier.h, src/signature_verifier.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL EVP_DigestVerify, RSA_verify",
+          "compliance": "PKCS#1 v1.5, FIPS 186-4",
+          "cwe_list": "CWE-326, CWE-345, CWE-330"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_016",
+      "description": "Build a secure IV (Initialization Vector) generator for encryption",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["iv_generation", "cryptography", "random_number_generation"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "secrets",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random IV; uses secure random generator; returns IV bytes of specified length",
+          "repo_layout": "auth/, utils/iv_generator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets.token_bytes",
+          "compliance": "NIST SP 800-38A, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-329"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random IV; uses secure random generator; returns IV bytes of specified length",
+          "repo_layout": "src/, utils/ivGenerator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.randomBytes",
+          "compliance": "NIST SP 800-38A, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-329"
+        },
+        "java": {
+          "framework": "SecureRandom",
+          "validation_lib": "SecureRandom",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random IV; uses secure random generator; returns IV bytes of specified length",
+          "repo_layout": "src/main/java/security/, utils/IvGenerator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "SecureRandom, byte array",
+          "compliance": "NIST SP 800-38A, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-329"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random IV; uses secure random generator; returns IV bytes of specified length",
+          "repo_layout": "src/, include/iv_generator.h, src/iv_generator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RAND_bytes",
+          "compliance": "NIST SP 800-38A, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-329"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_017",
+      "description": "Create a nonce generator for replay attack prevention",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["nonce", "replay_attack", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "secrets",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random nonce; uses secure random generator; returns nonce string",
+          "repo_layout": "auth/, utils/nonce_generator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets.token_urlsafe",
+          "compliance": "RFC 4086, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-345"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random nonce; uses secure random generator; returns nonce string",
+          "repo_layout": "src/, utils/nonceGenerator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.randomBytes",
+          "compliance": "RFC 4086, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-345"
+        },
+        "java": {
+          "framework": "SecureRandom",
+          "validation_lib": "SecureRandom",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random nonce; uses secure random generator; returns nonce String",
+          "repo_layout": "src/main/java/security/, utils/NonceGenerator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "SecureRandom, Base64",
+          "compliance": "RFC 4086, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random nonce; uses secure random generator; returns nonce string",
+          "repo_layout": "src/, include/nonce_generator.h, src/nonce_generator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RAND_bytes, Base64",
+          "compliance": "RFC 4086, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_018",
+      "description": "Build a session token generator with expiration",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["session_token", "token_generation", "expiration"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "secrets",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure session token; includes expiration timestamp; signs token; returns token string",
+          "repo_layout": "auth/, utils/session_token.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets, datetime, hmac",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-330, CWE-613, CWE-345"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure session token; includes expiration timestamp; signs token; returns token string",
+          "repo_layout": "src/, utils/sessionToken.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.randomBytes, Date, crypto.createHmac",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-330, CWE-613, CWE-345"
+        },
+        "java": {
+          "framework": "SecureRandom",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure session token; includes expiration timestamp; signs token; returns token String",
+          "repo_layout": "src/main/java/security/, utils/SessionToken.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "SecureRandom, java.time, javax.crypto.Mac",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-330, CWE-613, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure session token; includes expiration timestamp; signs token; returns token string",
+          "repo_layout": "src/, include/session_token.h, src/session_token.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RAND_bytes, chrono, HMAC",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-330, CWE-613, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_019",
+      "description": "Create a CSRF token generator and validator",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["csrf", "token_generation", "token_validation"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "hmac",
+          "orm": "N/A",
+          "io_constraints": "generates CSRF token; validates token against session; uses HMAC for integrity; returns token and validation result",
+          "repo_layout": "auth/, utils/csrf_token.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets, hmac, hashlib",
+          "compliance": "OWASP CSRF Prevention",
+          "cwe_list": "CWE-352, CWE-330, CWE-345"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "generates CSRF token; validates token against session; uses HMAC for integrity; returns token and validation result",
+          "repo_layout": "src/, utils/csrfToken.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.randomBytes, crypto.createHmac",
+          "compliance": "OWASP CSRF Prevention",
+          "cwe_list": "CWE-352, CWE-330, CWE-345"
+        },
+        "java": {
+          "framework": "SecureRandom",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "generates CSRF token; validates token against session; uses HMAC for integrity; returns token and validation result",
+          "repo_layout": "src/main/java/security/, utils/CsrfToken.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "SecureRandom, javax.crypto.Mac",
+          "compliance": "OWASP CSRF Prevention",
+          "cwe_list": "CWE-352, CWE-330, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates CSRF token; validates token against session; uses HMAC for integrity; returns token and validation result",
+          "repo_layout": "src/, include/csrf_token.h, src/csrf_token.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RAND_bytes, HMAC",
+          "compliance": "OWASP CSRF Prevention",
+          "cwe_list": "CWE-352, CWE-330, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_020",
+      "description": "Build an API key generator with secure encoding",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["api_key", "key_generation", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "secrets",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure API key; uses secure random generator; encodes key securely; returns API key string",
+          "repo_layout": "auth/, utils/api_key_generator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets.token_urlsafe",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-330, CWE-798, CWE-338"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure API key; uses secure random generator; encodes key securely; returns API key string",
+          "repo_layout": "src/, utils/apiKeyGenerator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.randomBytes",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-330, CWE-798, CWE-338"
+        },
+        "java": {
+          "framework": "SecureRandom",
+          "validation_lib": "SecureRandom",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure API key; uses secure random generator; encodes key securely; returns API key String",
+          "repo_layout": "src/main/java/security/, utils/ApiKeyGenerator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "SecureRandom, Base64",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-330, CWE-798, CWE-338"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure API key; uses secure random generator; encodes key securely; returns API key string",
+          "repo_layout": "src/, include/api_key_generator.h, src/api_key_generator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RAND_bytes, Base64",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-330, CWE-798, CWE-338"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_021",
+      "description": "Create a key rotation utility for cryptographic keys",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["key_rotation", "key_management", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "accepts current key and rotation policy; generates new key; migrates data; invalidates old key; returns new key",
+          "repo_layout": "auth/, utils/key_rotation.py",
+          "persona_role": "senior security engineer",
+          "technologies": "cryptography, secrets",
+          "compliance": "NIST SP 800-57, OWASP Key Management",
+          "cwe_list": "CWE-326, CWE-330, CWE-798"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts current key and rotation policy; generates new key; migrates data; invalidates old key; returns new key",
+          "repo_layout": "src/, utils/keyRotation.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto, key generation",
+          "compliance": "NIST SP 800-57, OWASP Key Management",
+          "cwe_list": "CWE-326, CWE-330, CWE-798"
+        },
+        "java": {
+          "framework": "java.security",
+          "validation_lib": "java.security",
+          "orm": "N/A",
+          "io_constraints": "accepts current key and rotation policy; generates new key; migrates data; invalidates old key; returns new key",
+          "repo_layout": "src/main/java/security/, utils/KeyRotation.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "java.security.KeyGenerator, key management",
+          "compliance": "NIST SP 800-57, OWASP Key Management",
+          "cwe_list": "CWE-326, CWE-330, CWE-798"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts current key and rotation policy; generates new key; migrates data; invalidates old key; returns new key",
+          "repo_layout": "src/, include/key_rotation.h, src/key_rotation.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL key generation, key management",
+          "compliance": "NIST SP 800-57, OWASP Key Management",
+          "cwe_list": "CWE-326, CWE-330, CWE-798"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_022",
+      "description": "Build a certificate validator for X.509 certificates",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["certificate_validation", "x509", "tls"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "accepts certificate and CA bundle; validates certificate chain; checks expiration; verifies signature; returns validation result",
+          "repo_layout": "auth/, utils/certificate_validator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "cryptography.x509",
+          "compliance": "RFC 5280, OWASP Certificate Validation",
+          "cwe_list": "CWE-295, CWE-326, CWE-345"
+        },
+        "typescript": {
+          "framework": "node-forge",
+          "validation_lib": "node-forge",
+          "orm": "N/A",
+          "io_constraints": "accepts certificate and CA bundle; validates certificate chain; checks expiration; verifies signature; returns validation result",
+          "repo_layout": "src/, utils/certificateValidator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "node-forge, pki",
+          "compliance": "RFC 5280, OWASP Certificate Validation",
+          "cwe_list": "CWE-295, CWE-326, CWE-345"
+        },
+        "java": {
+          "framework": "java.security.cert",
+          "validation_lib": "java.security.cert",
+          "orm": "N/A",
+          "io_constraints": "accepts certificate and CA bundle; validates certificate chain; checks expiration; verifies signature; returns validation result",
+          "repo_layout": "src/main/java/security/, utils/CertificateValidator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "java.security.cert.X509Certificate, CertificateFactory",
+          "compliance": "RFC 5280, OWASP Certificate Validation",
+          "cwe_list": "CWE-295, CWE-326, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts certificate and CA bundle; validates certificate chain; checks expiration; verifies signature; returns validation result",
+          "repo_layout": "src/, include/certificate_validator.h, src/certificate_validator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL X509, SSL_CTX",
+          "compliance": "RFC 5280, OWASP Certificate Validation",
+          "cwe_list": "CWE-295, CWE-326, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_023",
+      "description": "Create a secret manager with encryption at rest",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["secret_management", "encryption", "key_management"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "accepts secret name and value; encrypts secret with master key; stores encrypted secret; provides retrieval API",
+          "repo_layout": "auth/, utils/secret_manager.py",
+          "persona_role": "senior security engineer",
+          "technologies": "cryptography.fernet, key derivation",
+          "compliance": "OWASP Secret Management, NIST SP 800-57",
+          "cwe_list": "CWE-311, CWE-326, CWE-798"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts secret name and value; encrypts secret with master key; stores encrypted secret; provides retrieval API",
+          "repo_layout": "src/, utils/secretManager.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.createCipheriv, key derivation",
+          "compliance": "OWASP Secret Management, NIST SP 800-57",
+          "cwe_list": "CWE-311, CWE-326, CWE-798"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts secret name and value; encrypts secret with master key; stores encrypted secret; provides retrieval API",
+          "repo_layout": "src/main/java/security/, utils/SecretManager.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "javax.crypto.Cipher, key derivation",
+          "compliance": "OWASP Secret Management, NIST SP 800-57",
+          "cwe_list": "CWE-311, CWE-326, CWE-798"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts secret name and value; encrypts secret with master key; stores encrypted secret; provides retrieval API",
+          "repo_layout": "src/, include/secret_manager.h, src/secret_manager.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL EVP, key derivation",
+          "compliance": "OWASP Secret Management, NIST SP 800-57",
+          "cwe_list": "CWE-311, CWE-326, CWE-798"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_024",
+      "description": "Build a TOTP (Time-based One-Time Password) generator",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["totp", "mfa", "otp_generation"],
+      "variables": {
+        "python": {
+          "framework": "pyotp",
+          "validation_lib": "pyotp",
+          "orm": "N/A",
+          "io_constraints": "accepts secret key and timestamp; generates TOTP code; validates time window; returns 6-digit code",
+          "repo_layout": "auth/, utils/totp_generator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "pyotp, hmac, time",
+          "compliance": "RFC 6238, OWASP MFA",
+          "cwe_list": "CWE-330, CWE-345, CWE-287"
+        },
+        "typescript": {
+          "framework": "otplib",
+          "validation_lib": "otplib",
+          "orm": "N/A",
+          "io_constraints": "accepts secret key and timestamp; generates TOTP code; validates time window; returns 6-digit code",
+          "repo_layout": "src/, utils/totpGenerator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "otplib, crypto",
+          "compliance": "RFC 6238, OWASP MFA",
+          "cwe_list": "CWE-330, CWE-345, CWE-287"
+        },
+        "java": {
+          "framework": "TOTP",
+          "validation_lib": "TOTP",
+          "orm": "N/A",
+          "io_constraints": "accepts secret key and timestamp; generates TOTP code; validates time window; returns 6-digit code",
+          "repo_layout": "src/main/java/security/, utils/TotpGenerator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "TOTP library, javax.crypto.Mac",
+          "compliance": "RFC 6238, OWASP MFA",
+          "cwe_list": "CWE-330, CWE-345, CWE-287"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts secret key and timestamp; generates TOTP code; validates time window; returns 6-digit code",
+          "repo_layout": "src/, include/totp_generator.h, src/totp_generator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL HMAC, time functions",
+          "compliance": "RFC 6238, OWASP MFA",
+          "cwe_list": "CWE-330, CWE-345, CWE-287"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_025",
+      "description": "Create a TOTP validator with time window tolerance",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["totp", "mfa", "otp_validation"],
+      "variables": {
+        "python": {
+          "framework": "pyotp",
+          "validation_lib": "pyotp",
+          "orm": "N/A",
+          "io_constraints": "accepts TOTP code, secret key, and timestamp; validates code within time window; checks for replay attacks; returns validation result",
+          "repo_layout": "auth/, utils/totp_validator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "pyotp, hmac, time",
+          "compliance": "RFC 6238, OWASP MFA",
+          "cwe_list": "CWE-330, CWE-345, CWE-294"
+        },
+        "typescript": {
+          "framework": "otplib",
+          "validation_lib": "otplib",
+          "orm": "N/A",
+          "io_constraints": "accepts TOTP code, secret key, and timestamp; validates code within time window; checks for replay attacks; returns validation result",
+          "repo_layout": "src/, utils/totpValidator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "otplib, crypto",
+          "compliance": "RFC 6238, OWASP MFA",
+          "cwe_list": "CWE-330, CWE-345, CWE-294"
+        },
+        "java": {
+          "framework": "TOTP",
+          "validation_lib": "TOTP",
+          "orm": "N/A",
+          "io_constraints": "accepts TOTP code, secret key, and timestamp; validates code within time window; checks for replay attacks; returns validation result",
+          "repo_layout": "src/main/java/security/, utils/TotpValidator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "TOTP library, javax.crypto.Mac",
+          "compliance": "RFC 6238, OWASP MFA",
+          "cwe_list": "CWE-330, CWE-345, CWE-294"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts TOTP code, secret key, and timestamp; validates code within time window; checks for replay attacks; returns validation result",
+          "repo_layout": "src/, include/totp_validator.h, src/totp_validator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL HMAC, time functions",
+          "compliance": "RFC 6238, OWASP MFA",
+          "cwe_list": "CWE-330, CWE-345, CWE-294"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_026",
+      "description": "Build a key derivation function using Argon2",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["argon2", "key_derivation", "password_based"],
+      "variables": {
+        "python": {
+          "framework": "argon2-cffi",
+          "validation_lib": "argon2-cffi",
+          "orm": "N/A",
+          "io_constraints": "accepts password and salt; derives key using Argon2id with secure parameters; returns derived key",
+          "repo_layout": "auth/, utils/argon2_kdf.py",
+          "persona_role": "senior security engineer",
+          "technologies": "argon2-cffi",
+          "compliance": "NIST SP 800-63B, OWASP Password Storage",
+          "cwe_list": "CWE-916, CWE-326, CWE-330"
+        },
+        "typescript": {
+          "framework": "argon2",
+          "validation_lib": "argon2",
+          "orm": "N/A",
+          "io_constraints": "accepts password and salt; derives key using Argon2id with secure parameters; returns derived key",
+          "repo_layout": "src/, utils/argon2Kdf.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "argon2",
+          "compliance": "NIST SP 800-63B, OWASP Password Storage",
+          "cwe_list": "CWE-916, CWE-326, CWE-330"
+        },
+        "java": {
+          "framework": "Argon2",
+          "validation_lib": "Argon2",
+          "orm": "N/A",
+          "io_constraints": "accepts password and salt; derives key using Argon2id with secure parameters; returns derived key",
+          "repo_layout": "src/main/java/security/, utils/Argon2Kdf.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "de.mkammerer.argon2",
+          "compliance": "NIST SP 800-63B, OWASP Password Storage",
+          "cwe_list": "CWE-916, CWE-326, CWE-330"
+        },
+        "cpp": {
+          "framework": "Argon2",
+          "validation_lib": "Argon2",
+          "orm": "N/A",
+          "io_constraints": "accepts password and salt; derives key using Argon2id with secure parameters; returns derived key",
+          "repo_layout": "src/, include/argon2_kdf.h, src/argon2_kdf.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "libargon2",
+          "compliance": "NIST SP 800-63B, OWASP Password Storage",
+          "cwe_list": "CWE-916, CWE-326, CWE-330"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_027",
+      "description": "Build a password reset token validator with expiration check",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["password_reset", "token_validation", "expiration"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "hmac",
+          "orm": "N/A",
+          "io_constraints": "accepts reset token and timestamp; validates token signature; checks expiration; verifies token hasn't been used; returns validation result",
+          "repo_layout": "auth/, utils/reset_token_validator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets, hmac, datetime",
+          "compliance": "OWASP Password Reset",
+          "cwe_list": "CWE-613, CWE-330, CWE-345"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts reset token and timestamp; validates token signature; checks expiration; verifies token hasn't been used; returns validation result",
+          "repo_layout": "src/, utils/resetTokenValidator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.createHmac, Date",
+          "compliance": "OWASP Password Reset",
+          "cwe_list": "CWE-613, CWE-330, CWE-345"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts reset token and timestamp; validates token signature; checks expiration; verifies token hasn't been used; returns validation result",
+          "repo_layout": "src/main/java/security/, utils/ResetTokenValidator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "javax.crypto.Mac, java.time",
+          "compliance": "OWASP Password Reset",
+          "cwe_list": "CWE-613, CWE-330, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts reset token and timestamp; validates token signature; checks expiration; verifies token hasn't been used; returns validation result",
+          "repo_layout": "src/, include/reset_token_validator.h, src/reset_token_validator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL HMAC, chrono",
+          "compliance": "OWASP Password Reset",
+          "cwe_list": "CWE-613, CWE-330, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_028",
+      "description": "Create a secure cookie generator with HttpOnly and Secure flags",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["cookie", "session_management", "security_headers"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "secrets",
+          "orm": "N/A",
+          "io_constraints": "generates secure session cookie; sets HttpOnly flag; sets Secure flag; sets SameSite attribute; returns cookie string",
+          "repo_layout": "auth/, utils/cookie_generator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets, urllib.parse",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-614, CWE-613, CWE-352"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "generates secure session cookie; sets HttpOnly flag; sets Secure flag; sets SameSite attribute; returns cookie string",
+          "repo_layout": "src/, utils/cookieGenerator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.randomBytes",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-614, CWE-613, CWE-352"
+        },
+        "java": {
+          "framework": "SecureRandom",
+          "validation_lib": "SecureRandom",
+          "orm": "N/A",
+          "io_constraints": "generates secure session cookie; sets HttpOnly flag; sets Secure flag; sets SameSite attribute; returns cookie String",
+          "repo_layout": "src/main/java/security/, utils/CookieGenerator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "SecureRandom, Cookie class",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-614, CWE-613, CWE-352"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates secure session cookie; sets HttpOnly flag; sets Secure flag; sets SameSite attribute; returns cookie string",
+          "repo_layout": "src/, include/cookie_generator.h, src/cookie_generator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RAND_bytes",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-614, CWE-613, CWE-352"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_029",
+      "description": "Build a rate limiter for authentication attempts",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["rate_limiting", "brute_force", "authentication"],
+      "variables": {
+        "python": {
+          "framework": "time",
+          "validation_lib": "collections",
+          "orm": "N/A",
+          "io_constraints": "accepts user identifier and attempt count; tracks attempts per time window; enforces rate limits; returns allow/deny decision",
+          "repo_layout": "auth/, utils/rate_limiter.py",
+          "persona_role": "senior security engineer",
+          "technologies": "time, collections.deque, threading",
+          "compliance": "OWASP Authentication Cheat Sheet",
+          "cwe_list": "CWE-307, CWE-307, CWE-798"
+        },
+        "typescript": {
+          "framework": "N/A",
+          "validation_lib": "Map",
+          "orm": "N/A",
+          "io_constraints": "accepts user identifier and attempt count; tracks attempts per time window; enforces rate limits; returns allow/deny decision",
+          "repo_layout": "src/, utils/rateLimiter.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "Map, Date, setTimeout",
+          "compliance": "OWASP Authentication Cheat Sheet",
+          "cwe_list": "CWE-307, CWE-307, CWE-798"
+        },
+        "java": {
+          "framework": "java.util.concurrent",
+          "validation_lib": "java.util.concurrent",
+          "orm": "N/A",
+          "io_constraints": "accepts user identifier and attempt count; tracks attempts per time window; enforces rate limits; returns allow/deny decision",
+          "repo_layout": "src/main/java/security/, utils/RateLimiter.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "ConcurrentHashMap, ScheduledExecutorService",
+          "compliance": "OWASP Authentication Cheat Sheet",
+          "cwe_list": "CWE-307, CWE-307, CWE-798"
+        },
+        "cpp": {
+          "framework": "N/A",
+          "validation_lib": "unordered_map",
+          "orm": "N/A",
+          "io_constraints": "accepts user identifier and attempt count; tracks attempts per time window; enforces rate limits; returns allow/deny decision",
+          "repo_layout": "src/, include/rate_limiter.h, src/rate_limiter.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "std::unordered_map, std::chrono, mutex",
+          "compliance": "OWASP Authentication Cheat Sheet",
+          "cwe_list": "CWE-307, CWE-307, CWE-798"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_030",
+      "description": "Create a secure password comparison function with constant-time comparison",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["password_comparison", "timing_attack", "constant_time"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "secrets",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext password and hashed password; performs constant-time comparison; prevents timing attacks; returns comparison result",
+          "repo_layout": "auth/, utils/password_comparison.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets.compare_digest, hmac",
+          "compliance": "OWASP Timing Attack Prevention",
+          "cwe_list": "CWE-208, CWE-203, CWE-345"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext password and hashed password; performs constant-time comparison; prevents timing attacks; returns comparison result",
+          "repo_layout": "src/, utils/passwordComparison.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.timingSafeEqual",
+          "compliance": "OWASP Timing Attack Prevention",
+          "cwe_list": "CWE-208, CWE-203, CWE-345"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext password and hashed password; performs constant-time comparison; prevents timing attacks; returns comparison result",
+          "repo_layout": "src/main/java/security/, utils/PasswordComparison.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "MessageDigest.isEqual, constant-time comparison",
+          "compliance": "OWASP Timing Attack Prevention",
+          "cwe_list": "CWE-208, CWE-203, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext password and hashed password; performs constant-time comparison; prevents timing attacks; returns comparison result",
+          "repo_layout": "src/, include/password_comparison.h, src/password_comparison.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL CRYPTO_memcmp, constant-time comparison",
+          "compliance": "OWASP Timing Attack Prevention",
+          "cwe_list": "CWE-208, CWE-203, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_031",
+      "description": "Build a secure session store with expiration and cleanup",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["session_management", "session_store", "expiration"],
+      "variables": {
+        "python": {
+          "framework": "datetime",
+          "validation_lib": "datetime",
+          "orm": "N/A",
+          "io_constraints": "accepts session ID and session data; stores session with expiration; provides cleanup for expired sessions; returns session data",
+          "repo_layout": "auth/, utils/session_store.py",
+          "persona_role": "senior security engineer",
+          "technologies": "datetime, dict, threading",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-613, CWE-614, CWE-922"
+        },
+        "typescript": {
+          "framework": "Map",
+          "validation_lib": "Date",
+          "orm": "N/A",
+          "io_constraints": "accepts session ID and session data; stores session with expiration; provides cleanup for expired sessions; returns session data",
+          "repo_layout": "src/, utils/sessionStore.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "Map, Date, setInterval",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-613, CWE-614, CWE-922"
+        },
+        "java": {
+          "framework": "java.util.concurrent",
+          "validation_lib": "java.time",
+          "orm": "N/A",
+          "io_constraints": "accepts session ID and session data; stores session with expiration; provides cleanup for expired sessions; returns session data",
+          "repo_layout": "src/main/java/security/, utils/SessionStore.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "ConcurrentHashMap, ScheduledExecutorService",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-613, CWE-614, CWE-922"
+        },
+        "cpp": {
+          "framework": "unordered_map",
+          "validation_lib": "chrono",
+          "orm": "N/A",
+          "io_constraints": "accepts session ID and session data; stores session with expiration; provides cleanup for expired sessions; returns session data",
+          "repo_layout": "src/, include/session_store.h, src/session_store.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "std::unordered_map, std::chrono, thread",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-613, CWE-614, CWE-922"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_032",
+      "description": "Create a challenge-response authentication system",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["challenge_response", "authentication", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "hmac",
+          "orm": "N/A",
+          "io_constraints": "generates random challenge; accepts challenge and response; validates response using HMAC; prevents replay attacks; returns authentication result",
+          "repo_layout": "auth/, utils/challenge_response.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets, hmac, hashlib",
+          "compliance": "OWASP Authentication Cheat Sheet",
+          "cwe_list": "CWE-294, CWE-330, CWE-345"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "generates random challenge; accepts challenge and response; validates response using HMAC; prevents replay attacks; returns authentication result",
+          "repo_layout": "src/, utils/challengeResponse.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.randomBytes, crypto.createHmac",
+          "compliance": "OWASP Authentication Cheat Sheet",
+          "cwe_list": "CWE-294, CWE-330, CWE-345"
+        },
+        "java": {
+          "framework": "SecureRandom",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "generates random challenge; accepts challenge and response; validates response using HMAC; prevents replay attacks; returns authentication result",
+          "repo_layout": "src/main/java/security/, utils/ChallengeResponse.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "SecureRandom, javax.crypto.Mac",
+          "compliance": "OWASP Authentication Cheat Sheet",
+          "cwe_list": "CWE-294, CWE-330, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates random challenge; accepts challenge and response; validates response using HMAC; prevents replay attacks; returns authentication result",
+          "repo_layout": "src/, include/challenge_response.h, src/challenge_response.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RAND_bytes, HMAC",
+          "compliance": "OWASP Authentication Cheat Sheet",
+          "cwe_list": "CWE-294, CWE-330, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_033",
+      "description": "Build a secure key exchange using Diffie-Hellman",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["key_exchange", "diffie_hellman", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "generates DH parameters; performs key exchange; derives shared secret; validates parameters; returns shared key",
+          "repo_layout": "auth/, utils/dh_key_exchange.py",
+          "persona_role": "senior security engineer",
+          "technologies": "cryptography.hazmat.primitives.asymmetric.dh",
+          "compliance": "NIST SP 800-56A, OWASP Key Management",
+          "cwe_list": "CWE-326, CWE-330, CWE-345"
+        },
+        "typescript": {
+          "framework": "node-forge",
+          "validation_lib": "node-forge",
+          "orm": "N/A",
+          "io_constraints": "generates DH parameters; performs key exchange; derives shared secret; validates parameters; returns shared key",
+          "repo_layout": "src/, utils/dhKeyExchange.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "node-forge, diffieHellman",
+          "compliance": "NIST SP 800-56A, OWASP Key Management",
+          "cwe_list": "CWE-326, CWE-330, CWE-345"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "generates DH parameters; performs key exchange; derives shared secret; validates parameters; returns shared key",
+          "repo_layout": "src/main/java/security/, utils/DhKeyExchange.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "javax.crypto.KeyAgreement, DHParameterSpec",
+          "compliance": "NIST SP 800-56A, OWASP Key Management",
+          "cwe_list": "CWE-326, CWE-330, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates DH parameters; performs key exchange; derives shared secret; validates parameters; returns shared key",
+          "repo_layout": "src/, include/dh_key_exchange.h, src/dh_key_exchange.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL DH, EVP_PKEY",
+          "compliance": "NIST SP 800-56A, OWASP Key Management",
+          "cwe_list": "CWE-326, CWE-330, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_034",
+      "description": "Create a secure hash function using SHA-256",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["hashing", "sha256", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "hashlib",
+          "validation_lib": "hashlib",
+          "orm": "N/A",
+          "io_constraints": "accepts input data; computes SHA-256 hash; returns hexadecimal hash string",
+          "repo_layout": "auth/, utils/sha256_hash.py",
+          "persona_role": "senior security engineer",
+          "technologies": "hashlib.sha256",
+          "compliance": "FIPS 180-4, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-327, CWE-916"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts input data; computes SHA-256 hash; returns hexadecimal hash string",
+          "repo_layout": "src/, utils/sha256Hash.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.createHash",
+          "compliance": "FIPS 180-4, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-327, CWE-916"
+        },
+        "java": {
+          "framework": "java.security",
+          "validation_lib": "java.security",
+          "orm": "N/A",
+          "io_constraints": "accepts input data; computes SHA-256 hash; returns hexadecimal hash String",
+          "repo_layout": "src/main/java/security/, utils/Sha256Hash.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "java.security.MessageDigest, SHA-256",
+          "compliance": "FIPS 180-4, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-327, CWE-916"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts input data; computes SHA-256 hash; returns hexadecimal hash string",
+          "repo_layout": "src/, include/sha256_hash.h, src/sha256_hash.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL SHA256, EVP",
+          "compliance": "FIPS 180-4, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-327, CWE-916"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_035",
+      "description": "Build a secure password hasher using bcrypt",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["bcrypt", "password_hashing", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "bcrypt",
+          "validation_lib": "bcrypt",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext password; generates salt; hashes password with bcrypt; uses secure cost factor; returns hashed password",
+          "repo_layout": "auth/, utils/bcrypt_hasher.py",
+          "persona_role": "senior security engineer",
+          "technologies": "bcrypt",
+          "compliance": "NIST SP 800-63B, OWASP Password Storage",
+          "cwe_list": "CWE-916, CWE-330, CWE-759"
+        },
+        "typescript": {
+          "framework": "bcrypt",
+          "validation_lib": "bcrypt",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext password; generates salt; hashes password with bcrypt; uses secure cost factor; returns hashed password",
+          "repo_layout": "src/, utils/bcryptHasher.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "bcrypt",
+          "compliance": "NIST SP 800-63B, OWASP Password Storage",
+          "cwe_list": "CWE-916, CWE-330, CWE-759"
+        },
+        "java": {
+          "framework": "BCrypt",
+          "validation_lib": "BCrypt",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext password; generates salt; hashes password with bcrypt; uses secure cost factor; returns hashed password",
+          "repo_layout": "src/main/java/security/, utils/BcryptHasher.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "org.mindrot.jbcrypt.BCrypt",
+          "compliance": "NIST SP 800-63B, OWASP Password Storage",
+          "cwe_list": "CWE-916, CWE-330, CWE-759"
+        },
+        "cpp": {
+          "framework": "bcrypt",
+          "validation_lib": "bcrypt",
+          "orm": "N/A",
+          "io_constraints": "accepts plaintext password; generates salt; hashes password with bcrypt; uses secure cost factor; returns hashed password",
+          "repo_layout": "src/, include/bcrypt_hasher.h, src/bcrypt_hasher.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "bcrypt library",
+          "compliance": "NIST SP 800-63B, OWASP Password Storage",
+          "cwe_list": "CWE-916, CWE-330, CWE-759"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_036",
+      "description": "Create a secure random number generator wrapper",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 2,
+      "risk_tags": ["random_number_generation", "cryptography", "entropy"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "secrets",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random numbers; uses system entropy source; returns random integer or bytes",
+          "repo_layout": "auth/, utils/secure_random.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets.randbelow, secrets.token_bytes",
+          "compliance": "NIST SP 800-90A, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-331"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random numbers; uses system entropy source; returns random integer or bytes",
+          "repo_layout": "src/, utils/secureRandom.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.randomBytes, crypto.randomInt",
+          "compliance": "NIST SP 800-90A, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-331"
+        },
+        "java": {
+          "framework": "SecureRandom",
+          "validation_lib": "SecureRandom",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random numbers; uses system entropy source; returns random integer or bytes",
+          "repo_layout": "src/main/java/security/, utils/SecureRandomWrapper.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "SecureRandom, nextInt, nextBytes",
+          "compliance": "NIST SP 800-90A, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-331"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates cryptographically secure random numbers; uses system entropy source; returns random integer or bytes",
+          "repo_layout": "src/, include/secure_random.h, src/secure_random.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RAND_bytes, RAND_pseudo_bytes",
+          "compliance": "NIST SP 800-90A, OWASP Cryptographic Storage",
+          "cwe_list": "CWE-330, CWE-338, CWE-331"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_037",
+      "description": "Build an OAuth2 token refresh handler",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["oauth2", "token_refresh", "authentication"],
+      "variables": {
+        "python": {
+          "framework": "requests",
+          "validation_lib": "requests",
+          "orm": "N/A",
+          "io_constraints": "accepts refresh token; validates refresh token; exchanges for new access token; validates new token; returns new token pair",
+          "repo_layout": "auth/, utils/oauth2_refresh.py",
+          "persona_role": "senior security engineer",
+          "technologies": "requests, jwt, cryptography",
+          "compliance": "RFC 6749, OWASP OAuth2",
+          "cwe_list": "CWE-613, CWE-345, CWE-330"
+        },
+        "typescript": {
+          "framework": "axios",
+          "validation_lib": "jsonwebtoken",
+          "orm": "N/A",
+          "io_constraints": "accepts refresh token; validates refresh token; exchanges for new access token; validates new token; returns new token pair",
+          "repo_layout": "src/, utils/oauth2Refresh.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "axios, jsonwebtoken",
+          "compliance": "RFC 6749, OWASP OAuth2",
+          "cwe_list": "CWE-613, CWE-345, CWE-330"
+        },
+        "java": {
+          "framework": "Spring Security OAuth2",
+          "validation_lib": "JJWT",
+          "orm": "N/A",
+          "io_constraints": "accepts refresh token; validates refresh token; exchanges for new access token; validates new token; returns new token pair",
+          "repo_layout": "src/main/java/security/, utils/OAuth2Refresh.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "Spring Security OAuth2, JJWT",
+          "compliance": "RFC 6749, OWASP OAuth2",
+          "cwe_list": "CWE-613, CWE-345, CWE-330"
+        },
+        "cpp": {
+          "framework": "libcurl",
+          "validation_lib": "jwt-cpp",
+          "orm": "N/A",
+          "io_constraints": "accepts refresh token; validates refresh token; exchanges for new access token; validates new token; returns new token pair",
+          "repo_layout": "src/, include/oauth2_refresh.h, src/oauth2_refresh.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "libcurl, jwt-cpp",
+          "compliance": "RFC 6749, OWASP OAuth2",
+          "cwe_list": "CWE-613, CWE-345, CWE-330"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_038",
+      "description": "Create a secure token blacklist manager",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["token_blacklist", "token_revocation", "session_management"],
+      "variables": {
+        "python": {
+          "framework": "datetime",
+          "validation_lib": "datetime",
+          "orm": "N/A",
+          "io_constraints": "accepts token ID; adds token to blacklist with expiration; checks if token is blacklisted; provides cleanup for expired entries",
+          "repo_layout": "auth/, utils/token_blacklist.py",
+          "persona_role": "senior security engineer",
+          "technologies": "datetime, set, threading",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-613, CWE-922, CWE-345"
+        },
+        "typescript": {
+          "framework": "Set",
+          "validation_lib": "Date",
+          "orm": "N/A",
+          "io_constraints": "accepts token ID; adds token to blacklist with expiration; checks if token is blacklisted; provides cleanup for expired entries",
+          "repo_layout": "src/, utils/tokenBlacklist.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "Set, Date, Map",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-613, CWE-922, CWE-345"
+        },
+        "java": {
+          "framework": "java.util.concurrent",
+          "validation_lib": "java.time",
+          "orm": "N/A",
+          "io_constraints": "accepts token ID; adds token to blacklist with expiration; checks if token is blacklisted; provides cleanup for expired entries",
+          "repo_layout": "src/main/java/security/, utils/TokenBlacklist.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "ConcurrentHashMap, ScheduledExecutorService",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-613, CWE-922, CWE-345"
+        },
+        "cpp": {
+          "framework": "unordered_set",
+          "validation_lib": "chrono",
+          "orm": "N/A",
+          "io_constraints": "accepts token ID; adds token to blacklist with expiration; checks if token is blacklisted; provides cleanup for expired entries",
+          "repo_layout": "src/, include/token_blacklist.h, src/token_blacklist.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "std::unordered_set, std::chrono, thread",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-613, CWE-922, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_039",
+      "description": "Build a secure password history checker",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["password_history", "password_policy", "security"],
+      "variables": {
+        "python": {
+          "framework": "hashlib",
+          "validation_lib": "hashlib",
+          "orm": "N/A",
+          "io_constraints": "accepts new password and password history; hashes new password; compares against historical hashes; returns validation result",
+          "repo_layout": "auth/, utils/password_history.py",
+          "persona_role": "senior security engineer",
+          "technologies": "hashlib, constant-time comparison",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-208, CWE-345"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts new password and password history; hashes new password; compares against historical hashes; returns validation result",
+          "repo_layout": "src/, utils/passwordHistory.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.createHash, crypto.timingSafeEqual",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-208, CWE-345"
+        },
+        "java": {
+          "framework": "java.security",
+          "validation_lib": "java.security",
+          "orm": "N/A",
+          "io_constraints": "accepts new password and password history; hashes new password; compares against historical hashes; returns validation result",
+          "repo_layout": "src/main/java/security/, utils/PasswordHistory.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "MessageDigest, constant-time comparison",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-208, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts new password and password history; hashes new password; compares against historical hashes; returns validation result",
+          "repo_layout": "src/, include/password_history.h, src/password_history.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL SHA256, CRYPTO_memcmp",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-208, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_040",
+      "description": "Create a secure account lockout mechanism",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["account_lockout", "brute_force", "authentication"],
+      "variables": {
+        "python": {
+          "framework": "datetime",
+          "validation_lib": "datetime",
+          "orm": "N/A",
+          "io_constraints": "tracks failed login attempts; locks account after threshold; enforces lockout duration; provides unlock mechanism; returns lockout status",
+          "repo_layout": "auth/, utils/account_lockout.py",
+          "persona_role": "senior security engineer",
+          "technologies": "datetime, dict, threading",
+          "compliance": "OWASP Authentication Cheat Sheet",
+          "cwe_list": "CWE-307, CWE-798, CWE-613"
+        },
+        "typescript": {
+          "framework": "Map",
+          "validation_lib": "Date",
+          "orm": "N/A",
+          "io_constraints": "tracks failed login attempts; locks account after threshold; enforces lockout duration; provides unlock mechanism; returns lockout status",
+          "repo_layout": "src/, utils/accountLockout.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "Map, Date",
+          "compliance": "OWASP Authentication Cheat Sheet",
+          "cwe_list": "CWE-307, CWE-798, CWE-613"
+        },
+        "java": {
+          "framework": "java.util.concurrent",
+          "validation_lib": "java.time",
+          "orm": "N/A",
+          "io_constraints": "tracks failed login attempts; locks account after threshold; enforces lockout duration; provides unlock mechanism; returns lockout status",
+          "repo_layout": "src/main/java/security/, utils/AccountLockout.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "ConcurrentHashMap, ScheduledExecutorService",
+          "compliance": "OWASP Authentication Cheat Sheet",
+          "cwe_list": "CWE-307, CWE-798, CWE-613"
+        },
+        "cpp": {
+          "framework": "unordered_map",
+          "validation_lib": "chrono",
+          "orm": "N/A",
+          "io_constraints": "tracks failed login attempts; locks account after threshold; enforces lockout duration; provides unlock mechanism; returns lockout status",
+          "repo_layout": "src/, include/account_lockout.h, src/account_lockout.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "std::unordered_map, std::chrono, mutex",
+          "compliance": "OWASP Authentication Cheat Sheet",
+          "cwe_list": "CWE-307, CWE-798, CWE-613"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_041",
+      "description": "Build a secure password change validator",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["password_change", "password_validation", "authentication"],
+      "variables": {
+        "python": {
+          "framework": "zxcvbn",
+          "validation_lib": "zxcvbn",
+          "orm": "N/A",
+          "io_constraints": "accepts old password, new password, and user context; validates old password; checks new password strength; prevents reuse; returns validation result",
+          "repo_layout": "auth/, utils/password_change.py",
+          "persona_role": "senior security engineer",
+          "technologies": "zxcvbn, hashlib, constant-time comparison",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-287, CWE-208"
+        },
+        "typescript": {
+          "framework": "zxcvbn",
+          "validation_lib": "zxcvbn",
+          "orm": "N/A",
+          "io_constraints": "accepts old password, new password, and user context; validates old password; checks new password strength; prevents reuse; returns validation result",
+          "repo_layout": "src/, utils/passwordChange.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "zxcvbn, crypto.timingSafeEqual",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-287, CWE-208"
+        },
+        "java": {
+          "framework": "Passay",
+          "validation_lib": "Passay",
+          "orm": "N/A",
+          "io_constraints": "accepts old password, new password, and user context; validates old password; checks new password strength; prevents reuse; returns validation result",
+          "repo_layout": "src/main/java/security/, utils/PasswordChange.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "Passay, MessageDigest.isEqual",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-287, CWE-208"
+        },
+        "cpp": {
+          "framework": "regex",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts old password, new password, and user context; validates old password; checks new password strength; prevents reuse; returns validation result",
+          "repo_layout": "src/, include/password_change.h, src/password_change.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "std::regex, OpenSSL CRYPTO_memcmp",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-287, CWE-208"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_042",
+      "description": "Create a secure token storage with encryption",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["token_storage", "encryption", "key_management"],
+      "variables": {
+        "python": {
+          "framework": "cryptography",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "accepts token and master key; encrypts token with AES; stores encrypted token; provides decryption API; returns encrypted/decrypted token",
+          "repo_layout": "auth/, utils/token_storage.py",
+          "persona_role": "senior security engineer",
+          "technologies": "cryptography.fernet, key derivation",
+          "compliance": "OWASP Token Storage, NIST SP 800-57",
+          "cwe_list": "CWE-311, CWE-326, CWE-798"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts token and master key; encrypts token with AES; stores encrypted token; provides decryption API; returns encrypted/decrypted token",
+          "repo_layout": "src/, utils/tokenStorage.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.createCipheriv, key derivation",
+          "compliance": "OWASP Token Storage, NIST SP 800-57",
+          "cwe_list": "CWE-311, CWE-326, CWE-798"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts token and master key; encrypts token with AES; stores encrypted token; provides decryption API; returns encrypted/decrypted token",
+          "repo_layout": "src/main/java/security/, utils/TokenStorage.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "javax.crypto.Cipher, key derivation",
+          "compliance": "OWASP Token Storage, NIST SP 800-57",
+          "cwe_list": "CWE-311, CWE-326, CWE-798"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts token and master key; encrypts token with AES; stores encrypted token; provides decryption API; returns encrypted/decrypted token",
+          "repo_layout": "src/, include/token_storage.h, src/token_storage.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL EVP, key derivation",
+          "compliance": "OWASP Token Storage, NIST SP 800-57",
+          "cwe_list": "CWE-311, CWE-326, CWE-798"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_043",
+      "description": "Build a secure password recovery flow with email verification",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["password_recovery", "email_verification", "authentication"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "hmac",
+          "orm": "N/A",
+          "io_constraints": "generates recovery token; sends email with token; validates token on recovery; enforces expiration; returns recovery status",
+          "repo_layout": "auth/, utils/password_recovery.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets, hmac, smtplib",
+          "compliance": "OWASP Password Reset",
+          "cwe_list": "CWE-613, CWE-330, CWE-345"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "generates recovery token; sends email with token; validates token on recovery; enforces expiration; returns recovery status",
+          "repo_layout": "src/, utils/passwordRecovery.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.randomBytes, nodemailer",
+          "compliance": "OWASP Password Reset",
+          "cwe_list": "CWE-613, CWE-330, CWE-345"
+        },
+        "java": {
+          "framework": "SecureRandom",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "generates recovery token; sends email with token; validates token on recovery; enforces expiration; returns recovery status",
+          "repo_layout": "src/main/java/security/, utils/PasswordRecovery.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "SecureRandom, javax.mail, javax.crypto.Mac",
+          "compliance": "OWASP Password Reset",
+          "cwe_list": "CWE-613, CWE-330, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates recovery token; sends email with token; validates token on recovery; enforces expiration; returns recovery status",
+          "repo_layout": "src/, include/password_recovery.h, src/password_recovery.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL RAND_bytes, libcurl for email",
+          "compliance": "OWASP Password Reset",
+          "cwe_list": "CWE-613, CWE-330, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_044",
+      "description": "Create a secure API key validator with rate limiting",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["api_key", "api_authentication", "rate_limiting"],
+      "variables": {
+        "python": {
+          "framework": "hmac",
+          "validation_lib": "hmac",
+          "orm": "N/A",
+          "io_constraints": "accepts API key and request signature; validates key against database; checks rate limits; verifies signature; returns validation result",
+          "repo_layout": "auth/, utils/api_key_validator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "hmac, hashlib, rate limiting",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-798, CWE-307, CWE-345"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts API key and request signature; validates key against database; checks rate limits; verifies signature; returns validation result",
+          "repo_layout": "src/, utils/apiKeyValidator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.createHmac, rate limiting",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-798, CWE-307, CWE-345"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts API key and request signature; validates key against database; checks rate limits; verifies signature; returns validation result",
+          "repo_layout": "src/main/java/security/, utils/ApiKeyValidator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "javax.crypto.Mac, rate limiting",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-798, CWE-307, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "accepts API key and request signature; validates key against database; checks rate limits; verifies signature; returns validation result",
+          "repo_layout": "src/, include/api_key_validator.h, src/api_key_validator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL HMAC, rate limiting",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-798, CWE-307, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_045",
+      "description": "Build a secure session hijacking prevention mechanism",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["session_hijacking", "session_security", "authentication"],
+      "variables": {
+        "python": {
+          "framework": "secrets",
+          "validation_lib": "hmac",
+          "orm": "N/A",
+          "io_constraints": "tracks session binding to IP address; validates session on each request; detects anomalies; invalidates suspicious sessions; returns validation result",
+          "repo_layout": "auth/, utils/session_security.py",
+          "persona_role": "senior security engineer",
+          "technologies": "secrets, hmac, ipaddress",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-384, CWE-613, CWE-345"
+        },
+        "typescript": {
+          "framework": "crypto",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "tracks session binding to IP address; validates session on each request; detects anomalies; invalidates suspicious sessions; returns validation result",
+          "repo_layout": "src/, utils/sessionSecurity.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "crypto.createHmac, IP validation",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-384, CWE-613, CWE-345"
+        },
+        "java": {
+          "framework": "javax.crypto",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "tracks session binding to IP address; validates session on each request; detects anomalies; invalidates suspicious sessions; returns validation result",
+          "repo_layout": "src/main/java/security/, utils/SessionSecurity.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "javax.crypto.Mac, InetAddress",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-384, CWE-613, CWE-345"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "tracks session binding to IP address; validates session on each request; detects anomalies; invalidates suspicious sessions; returns validation result",
+          "repo_layout": "src/, include/session_security.h, src/session_security.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL HMAC, socket programming",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-384, CWE-613, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_046",
+      "description": "Create a secure multi-factor authentication token generator",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["mfa", "multi_factor", "authentication"],
+      "variables": {
+        "python": {
+          "framework": "pyotp",
+          "validation_lib": "pyotp",
+          "orm": "N/A",
+          "io_constraints": "generates MFA secret; creates QR code for setup; generates backup codes; stores encrypted secret; returns MFA setup data",
+          "repo_layout": "auth/, utils/mfa_generator.py",
+          "persona_role": "senior security engineer",
+          "technologies": "pyotp, qrcode, cryptography",
+          "compliance": "NIST SP 800-63B, OWASP MFA",
+          "cwe_list": "CWE-287, CWE-311, CWE-330"
+        },
+        "typescript": {
+          "framework": "otplib",
+          "validation_lib": "otplib",
+          "orm": "N/A",
+          "io_constraints": "generates MFA secret; creates QR code for setup; generates backup codes; stores encrypted secret; returns MFA setup data",
+          "repo_layout": "src/, utils/mfaGenerator.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "otplib, qrcode, crypto",
+          "compliance": "NIST SP 800-63B, OWASP MFA",
+          "cwe_list": "CWE-287, CWE-311, CWE-330"
+        },
+        "java": {
+          "framework": "TOTP",
+          "validation_lib": "TOTP",
+          "orm": "N/A",
+          "io_constraints": "generates MFA secret; creates QR code for setup; generates backup codes; stores encrypted secret; returns MFA setup data",
+          "repo_layout": "src/main/java/security/, utils/MfaGenerator.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "TOTP library, QR code library, javax.crypto",
+          "compliance": "NIST SP 800-63B, OWASP MFA",
+          "cwe_list": "CWE-287, CWE-311, CWE-330"
+        },
+        "cpp": {
+          "framework": "OpenSSL",
+          "validation_lib": "OpenSSL",
+          "orm": "N/A",
+          "io_constraints": "generates MFA secret; creates QR code for setup; generates backup codes; stores encrypted secret; returns MFA setup data",
+          "repo_layout": "src/, include/mfa_generator.h, src/mfa_generator.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "OpenSSL, QR code library",
+          "compliance": "NIST SP 800-63B, OWASP MFA",
+          "cwe_list": "CWE-287, CWE-311, CWE-330"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_047",
+      "description": "Build a secure password policy enforcer",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["password_policy", "password_validation", "security"],
+      "variables": {
+        "python": {
+          "framework": "re",
+          "validation_lib": "re",
+          "orm": "N/A",
+          "io_constraints": "accepts password and policy rules; validates length, complexity, character requirements; checks against common passwords; returns validation result",
+          "repo_layout": "auth/, utils/password_policy.py",
+          "persona_role": "senior security engineer",
+          "technologies": "re, zxcvbn",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "regex",
+          "validation_lib": "regex",
+          "orm": "N/A",
+          "io_constraints": "accepts password and policy rules; validates length, complexity, character requirements; checks against common passwords; returns validation result",
+          "repo_layout": "src/, utils/passwordPolicy.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "RegExp, zxcvbn",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Passay",
+          "validation_lib": "Passay",
+          "orm": "N/A",
+          "io_constraints": "accepts password and policy rules; validates length, complexity, character requirements; checks against common passwords; returns validation result",
+          "repo_layout": "src/main/java/security/, utils/PasswordPolicy.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "Passay, PasswordValidator",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-20, CWE-400"
+        },
+        "cpp": {
+          "framework": "regex",
+          "validation_lib": "regex",
+          "orm": "N/A",
+          "io_constraints": "accepts password and policy rules; validates length, complexity, character requirements; checks against common passwords; returns validation result",
+          "repo_layout": "src/, include/password_policy.h, src/password_policy.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "std::regex, string manipulation",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_048",
+      "description": "Create a secure token refresh mechanism with rotation",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 4,
+      "risk_tags": ["token_refresh", "token_rotation", "session_management"],
+      "variables": {
+        "python": {
+          "framework": "PyJWT",
+          "validation_lib": "PyJWT",
+          "orm": "N/A",
+          "io_constraints": "accepts refresh token; validates refresh token; generates new access and refresh tokens; invalidates old refresh token; returns new token pair",
+          "repo_layout": "auth/, utils/token_refresh.py",
+          "persona_role": "senior security engineer",
+          "technologies": "PyJWT, cryptography, secrets",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-613, CWE-330, CWE-345"
+        },
+        "typescript": {
+          "framework": "jsonwebtoken",
+          "validation_lib": "jsonwebtoken",
+          "orm": "N/A",
+          "io_constraints": "accepts refresh token; validates refresh token; generates new access and refresh tokens; invalidates old refresh token; returns new token pair",
+          "repo_layout": "src/, utils/tokenRefresh.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "jsonwebtoken, crypto",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-613, CWE-330, CWE-345"
+        },
+        "java": {
+          "framework": "JJWT",
+          "validation_lib": "JJWT",
+          "orm": "N/A",
+          "io_constraints": "accepts refresh token; validates refresh token; generates new access and refresh tokens; invalidates old refresh token; returns new token pair",
+          "repo_layout": "src/main/java/security/, utils/TokenRefresh.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "JJWT, javax.crypto",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-613, CWE-330, CWE-345"
+        },
+        "cpp": {
+          "framework": "jwt-cpp",
+          "validation_lib": "jwt-cpp",
+          "orm": "N/A",
+          "io_constraints": "accepts refresh token; validates refresh token; generates new access and refresh tokens; invalidates old refresh token; returns new token pair",
+          "repo_layout": "src/, include/token_refresh.h, src/token_refresh.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "jwt-cpp, OpenSSL",
+          "compliance": "OWASP Session Management",
+          "cwe_list": "CWE-613, CWE-330, CWE-345"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_049",
+      "description": "Build a secure authentication attempt logger",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["audit_logging", "authentication", "security"],
+      "variables": {
+        "python": {
+          "framework": "logging",
+          "validation_lib": "logging",
+          "orm": "N/A",
+          "io_constraints": "logs authentication attempts with timestamp; records success/failure; includes IP address; sanitizes sensitive data; provides secure log storage",
+          "repo_layout": "auth/, utils/auth_logger.py",
+          "persona_role": "senior security engineer",
+          "technologies": "logging, datetime, hashlib",
+          "compliance": "OWASP Logging Cheat Sheet",
+          "cwe_list": "CWE-532, CWE-778, CWE-922"
+        },
+        "typescript": {
+          "framework": "winston",
+          "validation_lib": "winston",
+          "orm": "N/A",
+          "io_constraints": "logs authentication attempts with timestamp; records success/failure; includes IP address; sanitizes sensitive data; provides secure log storage",
+          "repo_layout": "src/, utils/authLogger.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "winston, Date",
+          "compliance": "OWASP Logging Cheat Sheet",
+          "cwe_list": "CWE-532, CWE-778, CWE-922"
+        },
+        "java": {
+          "framework": "java.util.logging",
+          "validation_lib": "java.util.logging",
+          "orm": "N/A",
+          "io_constraints": "logs authentication attempts with timestamp; records success/failure; includes IP address; sanitizes sensitive data; provides secure log storage",
+          "repo_layout": "src/main/java/security/, utils/AuthLogger.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "java.util.logging.Logger, java.time",
+          "compliance": "OWASP Logging Cheat Sheet",
+          "cwe_list": "CWE-532, CWE-778, CWE-922"
+        },
+        "cpp": {
+          "framework": "spdlog",
+          "validation_lib": "spdlog",
+          "orm": "N/A",
+          "io_constraints": "logs authentication attempts with timestamp; records success/failure; includes IP address; sanitizes sensitive data; provides secure log storage",
+          "repo_layout": "src/, include/auth_logger.h, src/auth_logger.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "spdlog, chrono",
+          "compliance": "OWASP Logging Cheat Sheet",
+          "cwe_list": "CWE-532, CWE-778, CWE-922"
+        }
+      }
+    },
+    {
+      "task_id": "AUTH_050",
+      "description": "Create a secure password entropy calculator",
+      "supported_languages": ["python", "typescript", "java", "cpp"],
+      "complexity_level": 3,
+      "risk_tags": ["password_entropy", "password_strength", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "math",
+          "validation_lib": "math",
+          "orm": "N/A",
+          "io_constraints": "accepts password string; calculates character set size; computes entropy bits; evaluates password strength; returns entropy value and strength rating",
+          "repo_layout": "auth/, utils/password_entropy.py",
+          "persona_role": "senior security engineer",
+          "technologies": "math.log2, set operations",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-400, CWE-20"
+        },
+        "typescript": {
+          "framework": "Math",
+          "validation_lib": "Math",
+          "orm": "N/A",
+          "io_constraints": "accepts password string; calculates character set size; computes entropy bits; evaluates password strength; returns entropy value and strength rating",
+          "repo_layout": "src/, utils/passwordEntropy.ts",
+          "persona_role": "senior TypeScript security engineer",
+          "technologies": "Math.log2, Set operations",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-400, CWE-20"
+        },
+        "java": {
+          "framework": "java.util",
+          "validation_lib": "java.util",
+          "orm": "N/A",
+          "io_constraints": "accepts password String; calculates character set size; computes entropy bits; evaluates password strength; returns entropy value and strength rating",
+          "repo_layout": "src/main/java/security/, utils/PasswordEntropy.java",
+          "persona_role": "senior Java security engineer",
+          "technologies": "Math.log, Set operations",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-400, CWE-20"
+        },
+        "cpp": {
+          "framework": "cmath",
+          "validation_lib": "unordered_set",
+          "orm": "N/A",
+          "io_constraints": "accepts password string; calculates character set size; computes entropy bits; evaluates password strength; returns entropy value and strength rating",
+          "repo_layout": "src/, include/password_entropy.h, src/password_entropy.cpp",
+          "persona_role": "senior C++ systems engineer",
+          "technologies": "std::log2, std::unordered_set",
+          "compliance": "NIST SP 800-63B",
+          "cwe_list": "CWE-521, CWE-400, CWE-20"
+        }
+      }
     }
   ]
 }

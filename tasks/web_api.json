@@ -43,6 +43,2064 @@
           "cwe_list": "CWE-287, CWE-798, CWE-521"
         }
       }
+    },
+    {
+      "task_id": "WEB_002",
+      "description": "Build a user registration API with email verification",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["auth", "email", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts JSON with email/password via POST /register; validates input; sends verification email; stores user",
+          "repo_layout": "app/, routes/auth.py, models/user.py, services/email.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, marshmallow, bcrypt, smtplib",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-20, CWE-287, CWE-798"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "TypeORM",
+          "io_constraints": "accepts JSON with email/password via POST /register; validates input; sends verification email; stores user",
+          "repo_layout": "src/, routes/auth.ts, models/User.ts, services/email.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, TypeORM, joi, bcrypt, nodemailer",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-20, CWE-287, CWE-798"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts JSON with email/password via POST /api/register; validates input; sends verification email; stores user",
+          "repo_layout": "src/main/java/controllers/, models/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Spring Security, Hibernate, JavaMail",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-20, CWE-287, CWE-798"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_003",
+      "description": "Create a REST API endpoint for file upload with validation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["file_upload", "input_validation", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "werkzeug",
+          "orm": "N/A",
+          "io_constraints": "accepts file via POST /upload; validates file type and size; saves to secure location; returns file URL",
+          "repo_layout": "app/, routes/upload.py, utils/file_validator.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, werkzeug, pathlib",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "multer",
+          "orm": "N/A",
+          "io_constraints": "accepts file via POST /upload; validates file type and size; saves to secure location; returns file URL",
+          "repo_layout": "src/, routes/upload.ts, utils/fileValidator.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, multer, path",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "commons-fileupload",
+          "orm": "N/A",
+          "io_constraints": "accepts file via POST /api/upload; validates file type and size; saves to secure location; returns file URL",
+          "repo_layout": "src/main/java/controllers/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Apache Commons FileUpload",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_004",
+      "description": "Build an API rate limiting middleware",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["rate_limiting", "api", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "flask-limiter",
+          "orm": "N/A",
+          "io_constraints": "tracks requests per IP; enforces rate limits; returns 429 when exceeded; resets counter after window",
+          "repo_layout": "app/, middleware/rate_limiter.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, flask-limiter, Redis",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-770, CWE-400"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "express-rate-limit",
+          "orm": "N/A",
+          "io_constraints": "tracks requests per IP; enforces rate limits; returns 429 when exceeded; resets counter after window",
+          "repo_layout": "src/, middleware/rateLimiter.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, express-rate-limit, Redis",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-770, CWE-400"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "bucket4j",
+          "orm": "N/A",
+          "io_constraints": "tracks requests per IP; enforces rate limits; returns 429 when exceeded; resets counter after window",
+          "repo_layout": "src/main/java/middleware/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Bucket4j, Redis",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-770, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_005",
+      "description": "Create a user profile API with CRUD operations",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["api", "crud", "sql_injection", "authorization"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts GET/POST/PUT/DELETE /users/:id; validates authorization; performs CRUD operations; returns user data",
+          "repo_layout": "app/, routes/users.py, models/user.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, marshmallow, JWT",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-639, CWE-20"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "TypeORM",
+          "io_constraints": "accepts GET/POST/PUT/DELETE /users/:id; validates authorization; performs CRUD operations; returns user data",
+          "repo_layout": "src/, routes/users.ts, models/User.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, TypeORM, joi, JWT",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-639, CWE-20"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts GET/POST/PUT/DELETE /api/users/:id; validates authorization; performs CRUD operations; returns user data",
+          "repo_layout": "src/main/java/controllers/, models/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Spring Security, Hibernate, JWT",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-639, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_006",
+      "description": "Build a password reset API with secure token generation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["auth", "password_reset", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "itsdangerous",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts email via POST /reset-password; generates secure token; sends reset link; validates token on reset",
+          "repo_layout": "app/, routes/auth.py, models/token.py, services/email.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, itsdangerous, secrets, smtplib",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-330, CWE-331, CWE-287"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "TypeORM",
+          "io_constraints": "accepts email via POST /reset-password; generates secure token; sends reset link; validates token on reset",
+          "repo_layout": "src/, routes/auth.ts, models/Token.ts, services/email.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, TypeORM, joi, crypto, nodemailer",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-330, CWE-331, CWE-287"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts email via POST /api/reset-password; generates secure token; sends reset link; validates token on reset",
+          "repo_layout": "src/main/java/controllers/, models/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Spring Security, Hibernate, SecureRandom, JavaMail",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-330, CWE-331, CWE-287"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_007",
+      "description": "Create a search API with query parameter validation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["api", "search", "sql_injection", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts search query via GET /search?q=term; validates and sanitizes query; searches database; returns results",
+          "repo_layout": "app/, routes/search.py, models/",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, marshmallow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "TypeORM",
+          "io_constraints": "accepts search query via GET /search?q=term; validates and sanitizes query; searches database; returns results",
+          "repo_layout": "src/, routes/search.ts, models/",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, TypeORM, joi",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts search query via GET /api/search?q=term; validates and sanitizes query; searches database; returns results",
+          "repo_layout": "src/main/java/controllers/, models/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Hibernate, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_008",
+      "description": "Build a WebSocket chat API with message validation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["websocket", "real_time", "input_validation", "xss"],
+      "variables": {
+        "python": {
+          "framework": "Flask-SocketIO",
+          "validation_lib": "marshmallow",
+          "orm": "N/A",
+          "io_constraints": "accepts WebSocket connections; validates and sanitizes messages; broadcasts to room; stores message history",
+          "repo_layout": "app/, routes/chat.py, handlers/socket_handler.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask-SocketIO, marshmallow, eventlet",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "Socket.IO",
+          "validation_lib": "joi",
+          "orm": "N/A",
+          "io_constraints": "accepts WebSocket connections; validates and sanitizes messages; broadcasts to room; stores message history",
+          "repo_layout": "src/, routes/chat.ts, handlers/socketHandler.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Socket.IO, Express, joi",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "N/A",
+          "io_constraints": "accepts WebSocket connections; validates and sanitizes messages; broadcasts to room; stores message history",
+          "repo_layout": "src/main/java/controllers/, handlers/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot WebSocket, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_009",
+      "description": "Create an API key management service",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["api_keys", "authentication", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts POST /api-keys to generate key; validates key on requests; stores hashed keys; provides revocation",
+          "repo_layout": "app/, routes/api_keys.py, models/api_key.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, marshmallow, secrets, bcrypt",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-798, CWE-330, CWE-287"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "TypeORM",
+          "io_constraints": "accepts POST /api-keys to generate key; validates key on requests; stores hashed keys; provides revocation",
+          "repo_layout": "src/, routes/apiKeys.ts, models/ApiKey.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, TypeORM, joi, crypto, bcrypt",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-798, CWE-330, CWE-287"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts POST /api/api-keys to generate key; validates key on requests; stores hashed keys; provides revocation",
+          "repo_layout": "src/main/java/controllers/, models/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Hibernate, SecureRandom, BCrypt",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-798, CWE-330, CWE-287"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_010",
+      "description": "Build a pagination API with offset and limit validation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["api", "pagination", "input_validation", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts GET /items?offset=0&limit=10; validates pagination params; enforces max limit; returns paginated results",
+          "repo_layout": "app/, routes/items.py, utils/pagination.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, marshmallow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-770"
+        },
+        "typescript": {
+          "framework": "NestJS",
+          "validation_lib": "class-validator",
+          "orm": "TypeORM",
+          "io_constraints": "accepts GET /items?offset=0&limit=10; validates pagination params; enforces max limit; returns paginated results",
+          "repo_layout": "src/, controllers/items.controller.ts, dto/pagination.dto.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "NestJS, TypeORM, class-validator",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-770"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts GET /api/items?offset=0&limit=10; validates pagination params; enforces max limit; returns paginated results",
+          "repo_layout": "src/main/java/controllers/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Hibernate, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_011",
+      "description": "Create a CORS configuration middleware",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["cors", "security_headers", "api"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "flask-cors",
+          "orm": "N/A",
+          "io_constraints": "configures CORS headers; validates origin whitelist; handles preflight requests; sets appropriate headers",
+          "repo_layout": "app/, middleware/cors.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, flask-cors",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-942, CWE-352"
+        },
+        "typescript": {
+          "framework": "Koa",
+          "validation_lib": "@koa/cors",
+          "orm": "N/A",
+          "io_constraints": "configures CORS headers; validates origin whitelist; handles preflight requests; sets appropriate headers",
+          "repo_layout": "src/, middleware/cors.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Koa, @koa/cors",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-942, CWE-352"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "configures CORS headers; validates origin whitelist; handles preflight requests; sets appropriate headers",
+          "repo_layout": "src/main/java/config/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Spring Web",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-942, CWE-352"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_012",
+      "description": "Build a session management API with secure cookie handling",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["session", "cookies", "authentication"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "itsdangerous",
+          "orm": "SQLAlchemy",
+          "io_constraints": "creates session on login; sets secure HttpOnly cookies; validates session on requests; handles session expiry",
+          "repo_layout": "app/, routes/session.py, models/session.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, Flask-Session, SQLAlchemy, itsdangerous",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-614, CWE-315, CWE-287"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "express-session",
+          "orm": "TypeORM",
+          "io_constraints": "creates session on login; sets secure HttpOnly cookies; validates session on requests; handles session expiry",
+          "repo_layout": "src/, routes/session.ts, models/Session.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, express-session, TypeORM",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-614, CWE-315, CWE-287"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.servlet",
+          "orm": "Hibernate",
+          "io_constraints": "creates session on login; sets secure HttpOnly cookies; validates session on requests; handles session expiry",
+          "repo_layout": "src/main/java/controllers/, models/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Spring Session, Hibernate",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-614, CWE-315, CWE-287"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_013",
+      "description": "Create a GraphQL API with query depth limiting",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 4,
+      "risk_tags": ["graphql", "api", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "Graphene",
+          "validation_lib": "graphene",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts GraphQL queries; validates query depth; limits query complexity; executes and returns results",
+          "repo_layout": "app/, schema/, resolvers/, middleware/",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Graphene, SQLAlchemy, Flask",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-400, CWE-770, CWE-20"
+        },
+        "typescript": {
+          "framework": "Apollo Server",
+          "validation_lib": "graphql",
+          "orm": "TypeORM",
+          "io_constraints": "accepts GraphQL queries; validates query depth; limits query complexity; executes and returns results",
+          "repo_layout": "src/, schema/, resolvers/, middleware/",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Apollo Server, TypeORM, graphql",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-400, CWE-770, CWE-20"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "graphql-java",
+          "orm": "Hibernate",
+          "io_constraints": "accepts GraphQL queries; validates query depth; limits query complexity; executes and returns results",
+          "repo_layout": "src/main/java/schema/, resolvers/, middleware/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, graphql-java, Hibernate",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-400, CWE-770, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_014",
+      "description": "Build an OAuth2 authorization server",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 4,
+      "risk_tags": ["oauth", "authorization", "authentication"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "authlib",
+          "orm": "SQLAlchemy",
+          "io_constraints": "implements OAuth2 flows; issues access/refresh tokens; validates client credentials; handles token revocation",
+          "repo_layout": "app/, routes/oauth.py, models/client.py, models/token.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, Authlib, SQLAlchemy, JWT",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-287, CWE-330, CWE-798"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "oauth2-server",
+          "orm": "TypeORM",
+          "io_constraints": "implements OAuth2 flows; issues access/refresh tokens; validates client credentials; handles token revocation",
+          "repo_layout": "src/, routes/oauth.ts, models/Client.ts, models/Token.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, oauth2-server, TypeORM, JWT",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-287, CWE-330, CWE-798"
+        },
+        "java": {
+          "framework": "Javalin",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "implements OAuth2 flows; issues access/refresh tokens; validates client credentials; handles token revocation",
+          "repo_layout": "src/main/java/controllers/, models/, config/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Javalin, pac4j, Hibernate, JWT",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-287, CWE-330, CWE-798"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_015",
+      "description": "Create a webhook endpoint with signature verification",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["webhook", "signature_verification", "api"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "hmac",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /webhook with payload; verifies HMAC signature; processes webhook event; returns 200 on success",
+          "repo_layout": "app/, routes/webhook.py, utils/signature.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, hmac, hashlib",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-345, CWE-326, CWE-20"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /webhook with payload; verifies HMAC signature; processes webhook event; returns 200 on success",
+          "repo_layout": "src/, routes/webhook.ts, utils/signature.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, crypto",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-345, CWE-326, CWE-20"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /api/webhook with payload; verifies HMAC signature; processes webhook event; returns 200 on success",
+          "repo_layout": "src/main/java/controllers/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, javax.crypto.Mac",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-345, CWE-326, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_016",
+      "description": "Build an API versioning system with header-based routing",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["api_versioning", "routing", "api"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "flask-restx",
+          "orm": "N/A",
+          "io_constraints": "reads API version from Accept header; routes to appropriate version handler; returns versioned response",
+          "repo_layout": "app/, routes/v1/, routes/v2/, middleware/versioning.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, flask-restx",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "Next.js",
+          "validation_lib": "zod",
+          "orm": "N/A",
+          "io_constraints": "reads API version from Accept header; routes to appropriate version handler; returns versioned response",
+          "repo_layout": "app/api/v1/, app/api/v2/, middleware.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Next.js, zod",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "reads API version from Accept header; routes to appropriate version handler; returns versioned response",
+          "repo_layout": "src/main/java/controllers/v1/, controllers/v2/, config/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Spring Web",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_017",
+      "description": "Create a file download API with path validation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["file_download", "path_traversal", "authorization"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "pathlib",
+          "orm": "N/A",
+          "io_constraints": "accepts GET /download/:filename; validates file path; checks authorization; streams file securely",
+          "repo_layout": "app/, routes/download.py, utils/path_validator.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, pathlib, send_file",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-22, CWE-639, CWE-434"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "path",
+          "orm": "N/A",
+          "io_constraints": "accepts GET /download/:filename; validates file path; checks authorization; streams file securely",
+          "repo_layout": "src/, routes/download.ts, utils/pathValidator.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, path, fs",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-22, CWE-639, CWE-434"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "java.nio.file",
+          "orm": "N/A",
+          "io_constraints": "accepts GET /api/download/:filename; validates file path; checks authorization; streams file securely",
+          "repo_layout": "src/main/java/controllers/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, java.nio.file.Path",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-22, CWE-639, CWE-434"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_018",
+      "description": "Build a request logging middleware with sensitive data filtering",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["logging", "data_exposure", "api"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "logs all requests/responses; filters passwords, tokens, SSNs; stores logs securely; provides log query API",
+          "repo_layout": "app/, middleware/logging.py, utils/data_filter.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, logging, re",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-532, CWE-200, CWE-20"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "logs all requests/responses; filters passwords, tokens, SSNs; stores logs securely; provides log query API",
+          "repo_layout": "src/, middleware/logging.ts, utils/dataFilter.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, winston, regex",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-532, CWE-200, CWE-20"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "logs all requests/responses; filters passwords, tokens, SSNs; stores logs securely; provides log query API",
+          "repo_layout": "src/main/java/middleware/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Logback, regex",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-532, CWE-200, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_019",
+      "description": "Create a bulk operation API with transaction management",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["api", "bulk_operations", "sql_injection", "transaction"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts POST /bulk with array of operations; validates all items; executes in transaction; rolls back on error",
+          "repo_layout": "app/, routes/bulk.py, models/",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, marshmallow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "TypeORM",
+          "io_constraints": "accepts POST /bulk with array of operations; validates all items; executes in transaction; rolls back on error",
+          "repo_layout": "src/, routes/bulk.ts, models/",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, TypeORM, joi",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Quarkus",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts POST /api/bulk with array of operations; validates all items; executes in transaction; rolls back on error",
+          "repo_layout": "src/main/java/controllers/, models/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Quarkus, Hibernate, javax.validation, @Transactional",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_020",
+      "description": "Build a CSRF protection middleware",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["csrf", "security_headers", "api"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "flask-wtf",
+          "orm": "N/A",
+          "io_constraints": "generates CSRF tokens; validates tokens on state-changing requests; sets SameSite cookie attributes",
+          "repo_layout": "app/, middleware/csrf.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, Flask-WTF, itsdangerous",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-352, CWE-614"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "csurf",
+          "orm": "N/A",
+          "io_constraints": "generates CSRF tokens; validates tokens on state-changing requests; sets SameSite cookie attributes",
+          "repo_layout": "src/, middleware/csrf.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, csurf, cookie-parser",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-352, CWE-614"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "Spring Security",
+          "orm": "N/A",
+          "io_constraints": "generates CSRF tokens; validates tokens on state-changing requests; sets SameSite cookie attributes",
+          "repo_layout": "src/main/java/config/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Spring Security",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-352, CWE-614"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_021",
+      "description": "Create an API response caching service with Redis",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["caching", "api", "data_exposure"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "flask-caching",
+          "orm": "N/A",
+          "io_constraints": "caches GET responses by URL and params; validates cache keys; sets TTL; invalidates on updates",
+          "repo_layout": "app/, middleware/cache.py, cache/redis_cache.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, flask-caching, Redis",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-200, CWE-345, CWE-20"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "express-redis-cache",
+          "orm": "N/A",
+          "io_constraints": "caches GET responses by URL and params; validates cache keys; sets TTL; invalidates on updates",
+          "repo_layout": "src/, middleware/cache.ts, cache/redisCache.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, express-redis-cache, Redis",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-200, CWE-345, CWE-20"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "Spring Cache",
+          "orm": "N/A",
+          "io_constraints": "caches GET responses by URL and params; validates cache keys; sets TTL; invalidates on updates",
+          "repo_layout": "src/main/java/config/, cache/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Spring Cache, Redis",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-200, CWE-345, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_022",
+      "description": "Build a request ID tracking middleware with correlation headers",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["logging", "tracing", "api"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "generates unique request ID; adds to response headers; logs with correlation ID; tracks request lifecycle",
+          "repo_layout": "app/, middleware/request_id.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, uuid, logging",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-532, CWE-20"
+        },
+        "typescript": {
+          "framework": "Koa",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "generates unique request ID; adds to response headers; logs with correlation ID; tracks request lifecycle",
+          "repo_layout": "src/, middleware/requestId.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Koa, uuid, winston",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-532, CWE-20"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "generates unique request ID; adds to response headers; logs with correlation ID; tracks request lifecycle",
+          "repo_layout": "src/main/java/middleware/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, SLF4J, UUID",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-532, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_023",
+      "description": "Create an API endpoint for image upload with format conversion",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["file_upload", "image_processing", "input_validation", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "Pillow",
+          "orm": "N/A",
+          "io_constraints": "accepts image file via POST /upload-image; validates format and size; converts to target format; saves securely",
+          "repo_layout": "app/, routes/upload.py, utils/image_processor.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, Pillow, werkzeug",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "typescript": {
+          "framework": "NestJS",
+          "validation_lib": "class-validator",
+          "orm": "N/A",
+          "io_constraints": "accepts image file via POST /upload-image; validates format and size; converts to target format; saves securely",
+          "repo_layout": "src/, controllers/upload.controller.ts, services/image.service.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "NestJS, sharp, multer, class-validator",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "N/A",
+          "io_constraints": "accepts image file via POST /api/upload-image; validates format and size; converts to target format; saves securely",
+          "repo_layout": "src/main/java/controllers/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, ImageIO, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_024",
+      "description": "Build a multi-tenant API with tenant isolation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 4,
+      "risk_tags": ["multi_tenant", "authorization", "data_isolation", "sql_injection"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "extracts tenant ID from header; validates tenant access; filters queries by tenant; enforces isolation",
+          "repo_layout": "app/, routes/tenant.py, middleware/tenant_isolation.py, models/",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, marshmallow, JWT",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-639, CWE-89, CWE-20"
+        },
+        "typescript": {
+          "framework": "NestJS",
+          "validation_lib": "class-validator",
+          "orm": "TypeORM",
+          "io_constraints": "extracts tenant ID from header; validates tenant access; filters queries by tenant; enforces isolation",
+          "repo_layout": "src/, controllers/, guards/tenant.guard.ts, interceptors/",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "NestJS, TypeORM, class-validator, JWT",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-639, CWE-89, CWE-20"
+        },
+        "java": {
+          "framework": "Quarkus",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "extracts tenant ID from header; validates tenant access; filters queries by tenant; enforces isolation",
+          "repo_layout": "src/main/java/controllers/, filters/, models/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Quarkus, Hibernate, javax.validation, JWT",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-639, CWE-89, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_025",
+      "description": "Create an API endpoint for exporting data to CSV",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["data_export", "csv", "sql_injection", "authorization"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts GET /export?table=name; validates table name; queries data; generates CSV; streams download",
+          "repo_layout": "app/, routes/export.py, utils/csv_generator.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, csv, marshmallow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-639, CWE-20"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "TypeORM",
+          "io_constraints": "accepts GET /export?table=name; validates table name; queries data; generates CSV; streams download",
+          "repo_layout": "src/, routes/export.ts, utils/csvGenerator.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, TypeORM, csv-writer, joi",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-639, CWE-20"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts GET /api/export?table=name; validates table name; queries data; generates CSV; streams download",
+          "repo_layout": "src/main/java/controllers/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Hibernate, OpenCSV, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-639, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_026",
+      "description": "Build an API endpoint for batch user creation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["batch_operations", "input_validation", "sql_injection", "transaction"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts POST /users/batch with array of users; validates all entries; creates users in transaction; returns results",
+          "repo_layout": "app/, routes/users.py, models/user.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, marshmallow, bcrypt",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "NestJS",
+          "validation_lib": "class-validator",
+          "orm": "TypeORM",
+          "io_constraints": "accepts POST /users/batch with array of users; validates all entries; creates users in transaction; returns results",
+          "repo_layout": "src/, controllers/users.controller.ts, dto/user.dto.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "NestJS, TypeORM, class-validator, bcrypt",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Javalin",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts POST /api/users/batch with array of users; validates all entries; creates users in transaction; returns results",
+          "repo_layout": "src/main/java/controllers/, models/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Javalin, Hibernate, javax.validation, BCrypt",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_027",
+      "description": "Create an API endpoint for generating secure temporary URLs",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["url_generation", "cryptography", "temporary_access"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "itsdangerous",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /generate-url with resource path and expiry; generates signed URL; validates signature on access; expires after TTL",
+          "repo_layout": "app/, routes/urls.py, utils/url_signer.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, itsdangerous, secrets",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-330, CWE-345, CWE-326"
+        },
+        "typescript": {
+          "framework": "Koa",
+          "validation_lib": "joi",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /generate-url with resource path and expiry; generates signed URL; validates signature on access; expires after TTL",
+          "repo_layout": "src/, routes/urls.ts, utils/urlSigner.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Koa, crypto, joi",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-330, CWE-345, CWE-326"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /api/generate-url with resource path and expiry; generates signed URL; validates signature on access; expires after TTL",
+          "repo_layout": "src/main/java/controllers/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, javax.crypto, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-330, CWE-345, CWE-326"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_028",
+      "description": "Build an API endpoint for real-time notifications via Server-Sent Events",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["sse", "real_time", "authorization", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "accepts GET /notifications/stream; validates user auth; streams events; handles connection lifecycle; closes on timeout",
+          "repo_layout": "app/, routes/notifications.py, handlers/sse_handler.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, flask-sse, JWT",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-287, CWE-400, CWE-770"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "accepts GET /notifications/stream; validates user auth; streams events; handles connection lifecycle; closes on timeout",
+          "repo_layout": "src/, routes/notifications.ts, handlers/sseHandler.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, express-sse, JWT",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-287, CWE-400, CWE-770"
+        },
+        "java": {
+          "framework": "Quarkus",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "accepts GET /api/notifications/stream; validates user auth; streams events; handles connection lifecycle; closes on timeout",
+          "repo_layout": "src/main/java/controllers/, handlers/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Quarkus, JWT, Reactive Streams",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-287, CWE-400, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_029",
+      "description": "Create an API endpoint for validating and sanitizing HTML content",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["html_validation", "xss", "input_validation", "sanitization"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "bleach",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /sanitize with HTML content; validates structure; removes dangerous tags/attributes; returns sanitized HTML",
+          "repo_layout": "app/, routes/sanitize.py, utils/html_sanitizer.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, bleach, html5lib",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "Next.js",
+          "validation_lib": "zod",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /sanitize with HTML content; validates structure; removes dangerous tags/attributes; returns sanitized HTML",
+          "repo_layout": "app/api/sanitize/, utils/htmlSanitizer.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Next.js, dompurify, zod",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /api/sanitize with HTML content; validates structure; removes dangerous tags/attributes; returns sanitized HTML",
+          "repo_layout": "src/main/java/controllers/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, OWASP Java HTML Sanitizer, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_030",
+      "description": "Build an API endpoint for API key rotation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["api_keys", "key_rotation", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts POST /api-keys/:id/rotate; validates current key; generates new key; invalidates old key; returns new key",
+          "repo_layout": "app/, routes/api_keys.py, models/api_key.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, secrets, bcrypt",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-798, CWE-330, CWE-287"
+        },
+        "typescript": {
+          "framework": "NestJS",
+          "validation_lib": "class-validator",
+          "orm": "TypeORM",
+          "io_constraints": "accepts POST /api-keys/:id/rotate; validates current key; generates new key; invalidates old key; returns new key",
+          "repo_layout": "src/, controllers/apiKeys.controller.ts, models/ApiKey.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "NestJS, TypeORM, crypto, bcrypt",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-798, CWE-330, CWE-287"
+        },
+        "java": {
+          "framework": "Javalin",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts POST /api/api-keys/:id/rotate; validates current key; generates new key; invalidates old key; returns new key",
+          "repo_layout": "src/main/java/controllers/, models/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Javalin, Hibernate, SecureRandom, BCrypt",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-798, CWE-330, CWE-287"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_031",
+      "description": "Create an API endpoint for content compression with gzip",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["compression", "api", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "flask-compress",
+          "orm": "N/A",
+          "io_constraints": "detects Accept-Encoding header; compresses responses with gzip; handles decompression on client; limits compression size",
+          "repo_layout": "app/, middleware/compression.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, flask-compress, gzip",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-400, CWE-770"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "compression",
+          "orm": "N/A",
+          "io_constraints": "detects Accept-Encoding header; compresses responses with gzip; handles decompression on client; limits compression size",
+          "repo_layout": "src/, middleware/compression.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, compression",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-400, CWE-770"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "detects Accept-Encoding header; compresses responses with gzip; handles decompression on client; limits compression size",
+          "repo_layout": "src/main/java/config/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, GzipFilter",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-400, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_032",
+      "description": "Build an API endpoint for scheduled job management",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["scheduling", "job_management", "input_validation", "command_injection"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts POST /jobs with schedule config; validates cron expression; creates scheduled job; provides job status API",
+          "repo_layout": "app/, routes/jobs.py, models/job.py, schedulers/",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, APScheduler, SQLAlchemy, marshmallow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-78, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "NestJS",
+          "validation_lib": "class-validator",
+          "orm": "TypeORM",
+          "io_constraints": "accepts POST /jobs with schedule config; validates cron expression; creates scheduled job; provides job status API",
+          "repo_layout": "src/, controllers/jobs.controller.ts, schedulers/",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "NestJS, @nestjs/schedule, TypeORM, class-validator",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-78, CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Quarkus",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts POST /api/jobs with schedule config; validates cron expression; creates scheduled job; provides job status API",
+          "repo_layout": "src/main/java/controllers/, models/, schedulers/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Quarkus, Quartz, Hibernate, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-78, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_033",
+      "description": "Create an API endpoint for API usage analytics and reporting",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["analytics", "logging", "sql_injection", "data_aggregation"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "tracks API calls; aggregates metrics by endpoint/user; accepts GET /analytics with date range; returns usage reports",
+          "repo_layout": "app/, routes/analytics.py, models/analytics.py, services/",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, marshmallow, pandas",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "TypeORM",
+          "io_constraints": "tracks API calls; aggregates metrics by endpoint/user; accepts GET /analytics with date range; returns usage reports",
+          "repo_layout": "src/, routes/analytics.ts, models/Analytics.ts, services/",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, TypeORM, joi",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "tracks API calls; aggregates metrics by endpoint/user; accepts GET /api/analytics with date range; returns usage reports",
+          "repo_layout": "src/main/java/controllers/, models/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Hibernate, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-89, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_034",
+      "description": "Build an API endpoint for email template rendering with variable substitution",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["template_rendering", "xss", "input_validation", "injection"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /render-email with template ID and variables; validates template exists; escapes variables; renders HTML email",
+          "repo_layout": "app/, routes/email.py, templates/, utils/renderer.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, Jinja2, marshmallow, bleach",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-94, CWE-20"
+        },
+        "typescript": {
+          "framework": "Koa",
+          "validation_lib": "joi",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /render-email with template ID and variables; validates template exists; escapes variables; renders HTML email",
+          "repo_layout": "src/, routes/email.ts, templates/, utils/renderer.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Koa, handlebars, joi, dompurify",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-94, CWE-20"
+        },
+        "java": {
+          "framework": "Javalin",
+          "validation_lib": "javax.validation",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /api/render-email with template ID and variables; validates template exists; escapes variables; renders HTML email",
+          "repo_layout": "src/main/java/controllers/, templates/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Javalin, Thymeleaf, javax.validation, OWASP Java HTML Sanitizer",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-94, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_035",
+      "description": "Create an API endpoint for file metadata extraction",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["file_processing", "metadata", "input_validation", "path_traversal"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "werkzeug",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /extract-metadata with file; validates file type; extracts metadata safely; returns JSON with file info",
+          "repo_layout": "app/, routes/metadata.py, utils/extractor.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, python-magic, pathlib",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "typescript": {
+          "framework": "Next.js",
+          "validation_lib": "zod",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /extract-metadata with file; validates file type; extracts metadata safely; returns JSON with file info",
+          "repo_layout": "app/api/extract-metadata/, utils/extractor.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Next.js, file-type, zod",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /api/extract-metadata with file; validates file type; extracts metadata safely; returns JSON with file info",
+          "repo_layout": "src/main/java/controllers/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Apache Tika, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-22, CWE-434, CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_036",
+      "description": "Build an API endpoint for IP address geolocation lookup",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["geolocation", "input_validation", "api"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "N/A",
+          "io_constraints": "accepts GET /geolocate?ip=address; validates IP format; looks up geolocation; returns location data",
+          "repo_layout": "app/, routes/geolocate.py, services/geo_service.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, geoip2, marshmallow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "N/A",
+          "io_constraints": "accepts GET /geolocate?ip=address; validates IP format; looks up geolocation; returns location data",
+          "repo_layout": "src/, routes/geolocate.ts, services/geoService.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, geoip-lite, joi",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Quarkus",
+          "validation_lib": "javax.validation",
+          "orm": "N/A",
+          "io_constraints": "accepts GET /api/geolocate?ip=address; validates IP format; looks up geolocation; returns location data",
+          "repo_layout": "src/main/java/controllers/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Quarkus, MaxMind GeoIP2, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_037",
+      "description": "Create an API endpoint for password strength validation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["password_validation", "security", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /validate-password with password; checks length, complexity, common passwords; returns strength score",
+          "repo_layout": "app/, routes/validation.py, utils/password_validator.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, zxcvbn, marshmallow",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-521, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "NestJS",
+          "validation_lib": "class-validator",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /validate-password with password; checks length, complexity, common passwords; returns strength score",
+          "repo_layout": "src/, controllers/validation.controller.ts, services/password.service.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "NestJS, zxcvbn, class-validator",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-521, CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /api/validate-password with password; checks length, complexity, common passwords; returns strength score",
+          "repo_layout": "src/main/java/controllers/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Passay, javax.validation",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-521, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_038",
+      "description": "Build an API endpoint for request/response transformation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["data_transformation", "api", "input_validation"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /transform with data and transformation rules; validates rules; applies transformations; returns transformed data",
+          "repo_layout": "app/, routes/transform.py, utils/transformer.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, marshmallow, jsonpath",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "Koa",
+          "validation_lib": "joi",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /transform with data and transformation rules; validates rules; applies transformations; returns transformed data",
+          "repo_layout": "src/, routes/transform.ts, utils/transformer.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Koa, joi, jsonpath",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Javalin",
+          "validation_lib": "javax.validation",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /api/transform with data and transformation rules; validates rules; applies transformations; returns transformed data",
+          "repo_layout": "src/main/java/controllers/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Javalin, Jayway JsonPath, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_039",
+      "description": "Create an API endpoint for API documentation generation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["documentation", "api", "information_disclosure"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "flask-restx",
+          "orm": "N/A",
+          "io_constraints": "generates OpenAPI spec from routes; serves Swagger UI at /docs; filters sensitive endpoints; returns JSON spec",
+          "repo_layout": "app/, routes/docs.py, swagger/",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, flask-restx, Swagger UI",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-200, CWE-532"
+        },
+        "typescript": {
+          "framework": "NestJS",
+          "validation_lib": "@nestjs/swagger",
+          "orm": "N/A",
+          "io_constraints": "generates OpenAPI spec from routes; serves Swagger UI at /docs; filters sensitive endpoints; returns JSON spec",
+          "repo_layout": "src/, swagger/",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "NestJS, @nestjs/swagger, Swagger UI",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-200, CWE-532"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "springdoc-openapi",
+          "orm": "N/A",
+          "io_constraints": "generates OpenAPI spec from routes; serves Swagger UI at /docs; filters sensitive endpoints; returns JSON spec",
+          "repo_layout": "src/main/java/config/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, springdoc-openapi, Swagger UI",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-200, CWE-532"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_040",
+      "description": "Build an API endpoint for health checks with dependency status",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["health_check", "monitoring", "api"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "accepts GET /health; checks database connection; verifies external services; returns status with dependency health",
+          "repo_layout": "app/, routes/health.py, services/health_checker.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, requests",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "accepts GET /health; checks database connection; verifies external services; returns status with dependency health",
+          "repo_layout": "src/, routes/health.ts, services/healthChecker.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, TypeORM, axios",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20"
+        },
+        "java": {
+          "framework": "Quarkus",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "accepts GET /api/health; checks database connection; verifies external services; returns status with dependency health",
+          "repo_layout": "src/main/java/controllers/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Quarkus, SmallRye Health, Hibernate",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-20"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_041",
+      "description": "Create an API endpoint for request body size limiting",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["size_limiting", "api", "resource_exhaustion"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "werkzeug",
+          "orm": "N/A",
+          "io_constraints": "configures max request size; validates content-length header; rejects oversized requests; returns 413 on exceed",
+          "repo_layout": "app/, middleware/size_limit.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, werkzeug",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-400, CWE-770"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "express",
+          "orm": "N/A",
+          "io_constraints": "configures max request size; validates content-length header; rejects oversized requests; returns 413 on exceed",
+          "repo_layout": "src/, middleware/sizeLimit.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, express.json",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-400, CWE-770"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "configures max request size; validates content-length header; rejects oversized requests; returns 413 on exceed",
+          "repo_layout": "src/main/java/config/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Spring Web",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-400, CWE-770"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_042",
+      "description": "Build an API endpoint for JWT token refresh with rotation",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["jwt", "token_refresh", "authentication", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts POST /refresh with refresh token; validates token; issues new access/refresh tokens; invalidates old refresh token",
+          "repo_layout": "app/, routes/auth.py, models/token.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, PyJWT, SQLAlchemy, marshmallow",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-287, CWE-330, CWE-613"
+        },
+        "typescript": {
+          "framework": "NestJS",
+          "validation_lib": "class-validator",
+          "orm": "TypeORM",
+          "io_constraints": "accepts POST /refresh with refresh token; validates token; issues new access/refresh tokens; invalidates old refresh token",
+          "repo_layout": "src/, controllers/auth.controller.ts, models/Token.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "NestJS, jsonwebtoken, TypeORM, class-validator",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-287, CWE-330, CWE-613"
+        },
+        "java": {
+          "framework": "Javalin",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts POST /api/refresh with refresh token; validates token; issues new access/refresh tokens; invalidates old refresh token",
+          "repo_layout": "src/main/java/controllers/, models/, services/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Javalin, JJWT, Hibernate, javax.validation",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-287, CWE-330, CWE-613"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_043",
+      "description": "Create an API endpoint for request signing with HMAC",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["hmac", "request_signing", "authentication", "cryptography"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "N/A",
+          "io_constraints": "accepts requests with HMAC signature in header; validates signature against request body; rejects invalid signatures; returns 401 on failure",
+          "repo_layout": "app/, middleware/hmac_validator.py, utils/signer.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, hmac, hashlib, marshmallow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-345, CWE-326, CWE-287"
+        },
+        "typescript": {
+          "framework": "Koa",
+          "validation_lib": "joi",
+          "orm": "N/A",
+          "io_constraints": "accepts requests with HMAC signature in header; validates signature against request body; rejects invalid signatures; returns 401 on failure",
+          "repo_layout": "src/, middleware/hmacValidator.ts, utils/signer.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Koa, crypto, joi",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-345, CWE-326, CWE-287"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "N/A",
+          "io_constraints": "accepts requests with HMAC signature in header; validates signature against request body; rejects invalid signatures; returns 401 on failure",
+          "repo_layout": "src/main/java/middleware/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, javax.crypto.Mac, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-345, CWE-326, CWE-287"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_044",
+      "description": "Build an API endpoint for role-based access control (RBAC)",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["rbac", "authorization", "access_control"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts requests with user context; checks user roles and permissions; enforces RBAC rules; returns 403 on unauthorized",
+          "repo_layout": "app/, routes/rbac.py, models/role.py, middleware/rbac.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, marshmallow, Flask-Principal",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-639, CWE-284, CWE-287"
+        },
+        "typescript": {
+          "framework": "NestJS",
+          "validation_lib": "class-validator",
+          "orm": "TypeORM",
+          "io_constraints": "accepts requests with user context; checks user roles and permissions; enforces RBAC rules; returns 403 on unauthorized",
+          "repo_layout": "src/, controllers/, guards/rbac.guard.ts, decorators/",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "NestJS, TypeORM, class-validator, @nestjs/passport",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-639, CWE-284, CWE-287"
+        },
+        "java": {
+          "framework": "Quarkus",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts requests with user context; checks user roles and permissions; enforces RBAC rules; returns 403 on unauthorized",
+          "repo_layout": "src/main/java/controllers/, filters/, models/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Quarkus, Hibernate, javax.validation, SmallRye JWT",
+          "compliance": "OWASP ASVS Level 2",
+          "cwe_list": "CWE-639, CWE-284, CWE-287"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_045",
+      "description": "Create an API endpoint for input sanitization and XSS prevention",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["xss", "input_sanitization", "security"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "bleach",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /sanitize-input with user content; sanitizes HTML/JavaScript; escapes special characters; returns sanitized output",
+          "repo_layout": "app/, routes/sanitize.py, utils/sanitizer.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, bleach, html5lib",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "Next.js",
+          "validation_lib": "zod",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /sanitize-input with user content; sanitizes HTML/JavaScript; escapes special characters; returns sanitized output",
+          "repo_layout": "app/api/sanitize-input/, utils/sanitizer.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Next.js, dompurify, zod",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "N/A",
+          "io_constraints": "accepts POST /api/sanitize-input with user content; sanitizes HTML/JavaScript; escapes special characters; returns sanitized output",
+          "repo_layout": "src/main/java/controllers/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, OWASP Java HTML Sanitizer, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-20, CWE-400"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_046",
+      "description": "Build an API endpoint for API request/response encryption",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 4,
+      "risk_tags": ["encryption", "api", "cryptography", "data_protection"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "cryptography",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted requests; decrypts with RSA/AES; processes request; encrypts response; returns encrypted data",
+          "repo_layout": "app/, middleware/encryption.py, utils/crypto.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, cryptography, PyCrypto",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-326, CWE-327, CWE-311"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted requests; decrypts with RSA/AES; processes request; encrypts response; returns encrypted data",
+          "repo_layout": "src/, middleware/encryption.ts, utils/crypto.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, crypto, node-forge",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-326, CWE-327, CWE-311"
+        },
+        "java": {
+          "framework": "Quarkus",
+          "validation_lib": "javax.crypto",
+          "orm": "N/A",
+          "io_constraints": "accepts encrypted requests; decrypts with RSA/AES; processes request; encrypts response; returns encrypted data",
+          "repo_layout": "src/main/java/middleware/, utils/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Quarkus, javax.crypto, BouncyCastle",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-326, CWE-327, CWE-311"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_047",
+      "description": "Create an API endpoint for audit logging with tamper detection",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["audit_logging", "tamper_detection", "integrity", "logging"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "logs all critical actions; generates hash for each log entry; validates log integrity on read; detects tampering",
+          "repo_layout": "app/, routes/audit.py, models/audit_log.py, utils/integrity.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, hashlib, marshmallow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-345, CWE-326, CWE-532"
+        },
+        "typescript": {
+          "framework": "NestJS",
+          "validation_lib": "class-validator",
+          "orm": "TypeORM",
+          "io_constraints": "logs all critical actions; generates hash for each log entry; validates log integrity on read; detects tampering",
+          "repo_layout": "src/, interceptors/audit.interceptor.ts, models/AuditLog.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "NestJS, TypeORM, crypto, class-validator",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-345, CWE-326, CWE-532"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "logs all critical actions; generates hash for each log entry; validates log integrity on read; detects tampering",
+          "repo_layout": "src/main/java/controllers/, models/, interceptors/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Hibernate, MessageDigest, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-345, CWE-326, CWE-532"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_048",
+      "description": "Build an API endpoint for content security policy (CSP) header management",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 2,
+      "risk_tags": ["csp", "security_headers", "xss_prevention"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "configures CSP headers per route; validates CSP directives; sets appropriate headers; handles CSP violations",
+          "repo_layout": "app/, middleware/csp.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, flask-talisman",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-1021"
+        },
+        "typescript": {
+          "framework": "Koa",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "configures CSP headers per route; validates CSP directives; sets appropriate headers; handles CSP violations",
+          "repo_layout": "src/, middleware/csp.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Koa, helmet",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-1021"
+        },
+        "java": {
+          "framework": "Javalin",
+          "validation_lib": "N/A",
+          "orm": "N/A",
+          "io_constraints": "configures CSP headers per route; validates CSP directives; sets appropriate headers; handles CSP violations",
+          "repo_layout": "src/main/java/middleware/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Javalin, OWASP Java HTML Sanitizer",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-79, CWE-1021"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_049",
+      "description": "Create an API endpoint for API key scoping and permissions",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["api_keys", "scoping", "permissions", "authorization"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "validates API key on request; checks key scopes and permissions; enforces scope-based access; returns 403 on insufficient permissions",
+          "repo_layout": "app/, routes/api_keys.py, models/api_key.py, middleware/scope_validator.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, marshmallow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-639, CWE-284, CWE-287"
+        },
+        "typescript": {
+          "framework": "Express",
+          "validation_lib": "joi",
+          "orm": "TypeORM",
+          "io_constraints": "validates API key on request; checks key scopes and permissions; enforces scope-based access; returns 403 on insufficient permissions",
+          "repo_layout": "src/, routes/apiKeys.ts, models/ApiKey.ts, middleware/scopeValidator.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "Express, TypeORM, joi",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-639, CWE-284, CWE-287"
+        },
+        "java": {
+          "framework": "Spring Boot",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "validates API key on request; checks key scopes and permissions; enforces scope-based access; returns 403 on insufficient permissions",
+          "repo_layout": "src/main/java/controllers/, models/, filters/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Spring Boot, Hibernate, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-639, CWE-284, CWE-287"
+        }
+      }
+    },
+    {
+      "task_id": "WEB_050",
+      "description": "Build an API endpoint for request deduplication with idempotency keys",
+      "supported_languages": ["python", "typescript", "java"],
+      "complexity_level": 3,
+      "risk_tags": ["idempotency", "request_deduplication", "api"],
+      "variables": {
+        "python": {
+          "framework": "Flask",
+          "validation_lib": "marshmallow",
+          "orm": "SQLAlchemy",
+          "io_constraints": "accepts Idempotency-Key header; stores request hash; returns cached response for duplicate keys; expires after TTL",
+          "repo_layout": "app/, middleware/idempotency.py, models/idempotency_key.py",
+          "persona_role": "senior Python backend engineer",
+          "technologies": "Flask, SQLAlchemy, Redis, marshmallow",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-345, CWE-20, CWE-400"
+        },
+        "typescript": {
+          "framework": "NestJS",
+          "validation_lib": "class-validator",
+          "orm": "TypeORM",
+          "io_constraints": "accepts Idempotency-Key header; stores request hash; returns cached response for duplicate keys; expires after TTL",
+          "repo_layout": "src/, interceptors/idempotency.interceptor.ts, models/IdempotencyKey.ts",
+          "persona_role": "senior TypeScript backend engineer",
+          "technologies": "NestJS, TypeORM, Redis, class-validator",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-345, CWE-20, CWE-400"
+        },
+        "java": {
+          "framework": "Quarkus",
+          "validation_lib": "javax.validation",
+          "orm": "Hibernate",
+          "io_constraints": "accepts Idempotency-Key header; stores request hash; returns cached response for duplicate keys; expires after TTL",
+          "repo_layout": "src/main/java/filters/, models/, cache/",
+          "persona_role": "senior Java backend engineer",
+          "technologies": "Quarkus, Hibernate, Redis, javax.validation",
+          "compliance": "OWASP API Security Top 10",
+          "cwe_list": "CWE-345, CWE-20, CWE-400"
+        }
+      }
     }
   ]
 }
