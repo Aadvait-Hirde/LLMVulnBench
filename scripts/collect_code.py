@@ -9,8 +9,11 @@ This script automates code collection for the LLMVulnBench project by:
 4. Tracking metadata for analysis
 
 Usage:
-    # Collect code for one model with 5 runs per prompt
-    python3 collect_code.py --model gpt-5 --runs 5
+    # Collect code for one model (default: 1 run per prompt)
+    python3 collect_code.py --model gpt-5
+    
+    # Process in batches (10 prompts per batch)
+    python3 collect_code.py --model gpt-5 --batch-size 10
     
     # Test with dry run
     python3 collect_code.py --dry-run
@@ -171,6 +174,25 @@ class CodeCollector:
                 return event.get('result', '')
         return ""
     
+    def is_already_collected(self, task_id, domain, language, prompt_type, run_number):
+        """Check if this run has already been successfully collected"""
+        run_dir = self.output_dir / self.model / domain / task_id / \
+                  f"{language}_{prompt_type}" / f"run_{run_number}"
+        metadata_file = run_dir / "metadata.json"
+        
+        if metadata_file.exists():
+            try:
+                with open(metadata_file, 'r') as f:
+                    metadata = json.load(f)
+                    # If metadata exists and indicates success, skip
+                    if metadata.get('success', False):
+                        return True
+            except (json.JSONDecodeError, KeyError):
+                # If metadata is corrupted, re-run
+                pass
+        
+        return False
+    
     def collect_one_run(self, task_id, domain, language, prompt_type, 
                         prompt_text, complexity, risk_tags, run_number):
         """Collect code for one run of one prompt"""
@@ -182,6 +204,26 @@ class CodeCollector:
         run_dir.mkdir(parents=True, exist_ok=True)
         code_dir = run_dir / "code"
         code_dir.mkdir(exist_ok=True)
+        
+        # Check if already collected
+        if self.is_already_collected(task_id, domain, language, prompt_type, run_number):
+            print(f"  Run {run_number}: {task_id}/{language}/{prompt_type}... SKIPPED (already collected)", flush=True)
+            # Load existing metadata to include in stats
+            metadata_file = run_dir / "metadata.json"
+            try:
+                with open(metadata_file, 'r') as f:
+                    existing_metadata = json.load(f)
+                    self.metadata_rows.append({
+                        **existing_metadata,
+                        "run_dir": str(run_dir.relative_to(self.output_dir))
+                    })
+                    self.stats['total_runs'] += 1
+                    self.stats['successful_runs'] += 1
+                    if existing_metadata.get('files_created'):
+                        self.stats['files_created'] += len(existing_metadata['files_created'])
+            except:
+                pass
+            return True
         
         print(f"  Run {run_number}: {task_id}/{language}/{prompt_type}...", end='', flush=True)
         
@@ -310,35 +352,88 @@ class CodeCollector:
         
         total_runs = len(prompts) * self.runs_per_prompt
         
-        print(f"\nCollection plan:")
-        print(f"  Prompts: {len(prompts)}")
-        print(f"  Runs per prompt: {self.runs_per_prompt}")
-        print(f"  Model: {self.model}")
-        print(f"  Total runs: {total_runs}")
-        print(f"  Output: {self.output_dir}")
-        if self.dry_run:
-            print(f"  Mode: DRY RUN (no actual execution)")
-        print()
-        
-        # Process each prompt
-        start_time = time.time()
-        
-        for i, prompt_row in enumerate(prompts, 1):
+        # Check how many prompts are already collected
+        already_collected = 0
+        for prompt_row in prompts:
             task_id = prompt_row['task_id']
             domain = prompt_row['domain'].replace('/', '_')
             language = prompt_row['language']
             prompt_type = prompt_row['prompt_type']
-            prompt_text = prompt_row['prompt_text']
-            complexity = prompt_row.get('complexity_level', '')
-            risk_tags = prompt_row.get('risk_tags', '')
+            if self.is_already_collected(task_id, domain, language, prompt_type, 1):
+                already_collected += 1
+        
+        remaining = len(prompts) - already_collected
+        
+        print(f"\nCollection plan:")
+        print(f"  Total prompts: {len(prompts)}")
+        print(f"  Already collected: {already_collected}")
+        print(f"  Remaining: {remaining}")
+        print(f"  Runs per prompt: {self.runs_per_prompt}")
+        print(f"  Model: {self.model}")
+        print(f"  Total runs: {total_runs}")
+        print(f"  Output: {self.output_dir}")
+        if self.batch_size:
+            total_batches = (remaining + self.batch_size - 1) // self.batch_size if remaining > 0 else 0
+            print(f"  Batch processing: {self.batch_size} prompts per batch ({total_batches} batches)")
+        if self.dry_run:
+            print(f"  Mode: DRY RUN (no actual execution)")
+        print()
+        
+        # Process prompts
+        start_time = time.time()
+        
+        if self.batch_size:
+            # Process in batches
+            total_batches = (len(prompts) + self.batch_size - 1) // self.batch_size
             
-            print(f"\n[{i}/{len(prompts)}] {task_id} - {language} - {prompt_type}")
-            
-            for run in range(1, self.runs_per_prompt + 1):
-                self.collect_one_run(
-                    task_id, domain, language, prompt_type,
-                    prompt_text, complexity, risk_tags, run
-                )
+            for batch_num in range(total_batches):
+                batch_start = batch_num * self.batch_size
+                batch_end = min(batch_start + self.batch_size, len(prompts))
+                batch_prompts = prompts[batch_start:batch_end]
+                
+                print(f"\n{'='*70}")
+                print(f"BATCH {batch_num + 1}/{total_batches} (Prompts {batch_start + 1}-{batch_end} of {len(prompts)})")
+                print(f"{'='*70}\n")
+                
+                # Process batch
+                for i, prompt_row in enumerate(batch_prompts, batch_start + 1):
+                    task_id = prompt_row['task_id']
+                    domain = prompt_row['domain'].replace('/', '_')
+                    language = prompt_row['language']
+                    prompt_type = prompt_row['prompt_type']
+                    prompt_text = prompt_row['prompt_text']
+                    complexity = prompt_row.get('complexity_level', '')
+                    risk_tags = prompt_row.get('risk_tags', '')
+                    
+                    print(f"\n[{i}/{len(prompts)}] {task_id} - {language} - {prompt_type}")
+                    
+                    for run in range(1, self.runs_per_prompt + 1):
+                        self.collect_one_run(
+                            task_id, domain, language, prompt_type,
+                            prompt_text, complexity, risk_tags, run
+                        )
+                
+                # Save progress after each batch
+                self.save_master_csv()
+                print(f"\n✓ Batch {batch_num + 1} complete. Progress saved.")
+        else:
+            # Process all prompts at once
+            for i, prompt_row in enumerate(prompts, 1):
+                task_id = prompt_row['task_id']
+                domain = prompt_row['domain'].replace('/', '_')
+                language = prompt_row['language']
+                prompt_type = prompt_row['prompt_type']
+                prompt_text = prompt_row['prompt_text']
+                complexity = prompt_row.get('complexity_level', '')
+                risk_tags = prompt_row.get('risk_tags', '')
+                
+                print(f"\n[{i}/{len(prompts)}] {task_id} - {language} - {prompt_type}")
+                
+                for run in range(1, self.runs_per_prompt + 1):
+                    self.collect_one_run(
+                        task_id, domain, language, prompt_type,
+                        prompt_text, complexity, risk_tags, run
+                    )
         
         # Calculate final statistics
         total_time = time.time() - start_time
@@ -395,8 +490,11 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Collect for GPT-5 with 5 runs per prompt
-  python3 collect_code.py --model gpt-5 --runs 5
+  # Collect for GPT-5 (default: 1 run per prompt)
+  python3 collect_code.py --model gpt-5
+  
+  # Process in batches (10 prompts per batch)
+  python3 collect_code.py --model gpt-5 --batch-size 10
   
   # Test without actual execution
   python3 collect_code.py --dry-run
@@ -423,8 +521,13 @@ Examples:
     
     parser.add_argument('--runs', 
                         type=int, 
-                        default=5,
-                        help='Number of runs per prompt (default: 5)')
+                        default=1,
+                        help='Number of runs per prompt (default: 1)')
+    
+    parser.add_argument('--batch-size',
+                        type=int,
+                        metavar='N',
+                        help='Process N prompts per batch (saves progress after each batch)')
     
     parser.add_argument('--domain',
                         choices=['web_api', 'auth_crypto', 'file_system', 'aiml_ds'],
@@ -452,7 +555,8 @@ Examples:
         runs_per_prompt=args.runs,
         domain_filter=args.domain,
         resume_from=args.resume_from,
-        dry_run=args.dry_run
+        dry_run=args.dry_run,
+        batch_size=args.batch_size
     )
     
     success = collector.collect_all()
