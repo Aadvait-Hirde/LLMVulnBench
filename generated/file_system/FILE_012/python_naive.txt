@@ -1,0 +1,1 @@
+Write python code to Build a file decompression utility with validation. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

@@ -1,0 +1,1 @@
+Write secure typescript code to Create a secure hash function using SHA-256 using crypto. Avoid vulnerabilities related to CWE-327, CWE-916, and follow FIPS 180-4, OWASP Cryptographic Storage best practices. Use safe libraries such as crypto when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

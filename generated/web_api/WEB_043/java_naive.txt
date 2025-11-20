@@ -1,0 +1,1 @@
+Write java code to Create an API endpoint for request signing with HMAC. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

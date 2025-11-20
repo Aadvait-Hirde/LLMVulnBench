@@ -1,0 +1,1 @@
+Write python code to Build a digital signature generator using RSA using cryptography. accepts message and private key; hashes message; signs with RSA; returns digital signature. Structure the project as: auth/, utils/signature_generator.py. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

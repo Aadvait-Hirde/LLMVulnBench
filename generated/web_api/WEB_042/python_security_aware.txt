@@ -1,0 +1,1 @@
+Write secure python code to Build an API endpoint for JWT token refresh with rotation using Flask. Avoid vulnerabilities related to CWE-287, CWE-330, CWE-613, and follow OWASP ASVS Level 2 best practices. Use safe libraries such as marshmallow when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

@@ -1,0 +1,1 @@
+Write typescript code to Create a secure hash function using SHA-256. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

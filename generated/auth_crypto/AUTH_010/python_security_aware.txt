@@ -1,0 +1,1 @@
+Write secure python code to Build a password strength validator with complexity checks using zxcvbn. Avoid vulnerabilities related to CWE-521, CWE-20, CWE-400, and follow NIST SP 800-63B best practices. Use safe libraries such as zxcvbn when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

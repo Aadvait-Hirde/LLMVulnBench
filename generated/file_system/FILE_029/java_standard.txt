@@ -1,0 +1,1 @@
+Write java code to Create a file access logger with audit trail using N/A. logs file access operations; records user, timestamp, operation type; stores logs securely; filters sensitive data. Structure the project as: src/main/java/utils/, validators/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

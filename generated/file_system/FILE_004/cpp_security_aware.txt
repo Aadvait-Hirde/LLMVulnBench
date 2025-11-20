@@ -1,0 +1,1 @@
+Write secure cpp code to Build a file deletion utility with safety checks using N/A. Avoid vulnerabilities related to CWE-22, CWE-639, CWE-434, and follow OWASP Path Traversal Prevention best practices. Use safe libraries such as filesystem when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

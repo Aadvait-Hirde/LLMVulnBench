@@ -1,0 +1,1 @@
+Write python code to Build an RSA encryption utility with OAEP padding using cryptography. accepts plaintext and public key; encrypts with RSA-OAEP; uses secure padding; returns encrypted data. Structure the project as: auth/, utils/rsa_encryptor.py. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

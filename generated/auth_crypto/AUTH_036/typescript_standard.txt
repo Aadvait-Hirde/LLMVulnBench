@@ -1,0 +1,1 @@
+Write typescript code to Create a secure random number generator wrapper using crypto. generates cryptographically secure random numbers; uses system entropy source; returns random integer or bytes. Structure the project as: src/, utils/secureRandom.ts. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

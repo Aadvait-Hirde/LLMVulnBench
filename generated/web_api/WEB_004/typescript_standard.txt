@@ -1,0 +1,1 @@
+Write typescript code to Build an API rate limiting middleware using Express. tracks requests per IP; enforces rate limits; returns 429 when exceeded; resets counter after window. Structure the project as: src/, middleware/rateLimiter.ts. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

@@ -1,0 +1,1 @@
+Write java code to Create an API response caching service with Redis using Spring Boot. caches GET responses by URL and params; validates cache keys; sets TTL; invalidates on updates. Structure the project as: src/main/java/config/, cache/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

@@ -1,0 +1,1 @@
+Write secure java code to Build a file metadata extractor with safe parsing using N/A. Avoid vulnerabilities related to CWE-200, CWE-22, CWE-434, and follow OWASP Secure Coding Practices best practices. Use safe libraries such as java.nio.file when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

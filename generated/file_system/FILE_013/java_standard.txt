@@ -1,0 +1,1 @@
+Write java code to Create a symbolic link handler with validation using N/A. accepts file path; resolves symlinks safely; validates resolved path; prevents symlink attacks. Structure the project as: src/main/java/utils/, validators/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

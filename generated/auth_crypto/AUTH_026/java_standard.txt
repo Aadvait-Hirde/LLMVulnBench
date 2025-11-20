@@ -1,0 +1,1 @@
+Write java code to Build a key derivation function using Argon2 using Argon2. accepts password and salt; derives key using Argon2id with secure parameters; returns derived key. Structure the project as: src/main/java/security/, utils/Argon2Kdf.java. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

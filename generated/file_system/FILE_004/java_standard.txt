@@ -1,0 +1,1 @@
+Write java code to Build a file deletion utility with safety checks using N/A. accepts file path; validates path is within allowed directory; checks file permissions; deletes file safely. Structure the project as: src/main/java/utils/, validators/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

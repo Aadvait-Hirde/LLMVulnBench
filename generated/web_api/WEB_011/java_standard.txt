@@ -1,0 +1,1 @@
+Write java code to Create a CORS configuration middleware using Spring Boot. configures CORS headers; validates origin whitelist; handles preflight requests; sets appropriate headers. Structure the project as: src/main/java/config/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

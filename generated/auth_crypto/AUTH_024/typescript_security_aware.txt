@@ -1,0 +1,1 @@
+Write secure typescript code to Build a TOTP (Time-based One-Time Password) generator using otplib. Avoid vulnerabilities related to CWE-330, CWE-345, CWE-287, and follow RFC 6238, OWASP MFA best practices. Use safe libraries such as otplib when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

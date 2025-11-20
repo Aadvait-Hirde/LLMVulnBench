@@ -1,0 +1,1 @@
+Write secure typescript code to Create a secure account lockout mechanism using Map. Avoid vulnerabilities related to CWE-307, CWE-798, CWE-613, and follow OWASP Authentication Cheat Sheet best practices. Use safe libraries such as Date when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

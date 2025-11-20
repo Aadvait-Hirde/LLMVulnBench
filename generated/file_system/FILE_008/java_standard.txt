@@ -1,0 +1,1 @@
+Write java code to Build a file metadata extractor with safe parsing using N/A. accepts file path; validates path; extracts size, permissions, timestamps; returns metadata safely. Structure the project as: src/main/java/utils/, validators/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

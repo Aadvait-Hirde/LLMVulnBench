@@ -1,0 +1,1 @@
+Write java code to Create a file download API with path validation using Spring Boot. accepts GET /api/download/:filename; validates file path; checks authorization; streams file securely. Structure the project as: src/main/java/controllers/, utils/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

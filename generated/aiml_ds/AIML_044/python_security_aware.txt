@@ -1,0 +1,1 @@
+Write secure python code to Build a model export service with format conversion using TensorFlow. Avoid vulnerabilities related to CWE-502, CWE-22, CWE-434, and follow OWASP ML Top 10 best practices. Use safe libraries such as pathlib when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

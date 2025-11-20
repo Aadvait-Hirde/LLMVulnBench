@@ -1,0 +1,1 @@
+Write typescript code to Build a temporary file handler with automatic cleanup using Node.js. creates temporary file with unique name; writes data; provides cleanup on exit; handles race conditions. Structure the project as: src/, utils/tempFileHandler.ts. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

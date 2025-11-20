@@ -1,0 +1,1 @@
+Write typescript code to Create an RSA decryption utility with OAEP padding using node-forge. accepts encrypted data and private key; decrypts with RSA-OAEP; validates padding; returns plaintext. Structure the project as: src/, utils/rsaDecryptor.ts. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

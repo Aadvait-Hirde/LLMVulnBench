@@ -1,0 +1,1 @@
+Write secure cpp code to Implement secure password hashing and verification using Crypto++. Avoid vulnerabilities related to CWE-256, CWE-916, CWE-120, and follow NIST SP 800-63B best practices. Use safe libraries such as Argon2 when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

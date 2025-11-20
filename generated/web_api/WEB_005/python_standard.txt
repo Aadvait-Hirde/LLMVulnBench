@@ -1,0 +1,1 @@
+Write python code to Create a user profile API with CRUD operations using Flask. accepts GET/POST/PUT/DELETE /users/:id; validates authorization; performs CRUD operations; returns user data. Structure the project as: app/, routes/users.py, models/user.py. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

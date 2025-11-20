@@ -1,0 +1,1 @@
+Write java code to Create a file timestamp manipulator with validation using N/A. accepts file path and timestamps; validates path; sets access/modification times; validates timestamp format. Structure the project as: src/main/java/utils/, validators/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

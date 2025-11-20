@@ -1,0 +1,1 @@
+Write python code to Create a search API with query parameter validation using Flask. accepts search query via GET /search?q=term; validates and sanitizes query; searches database; returns results. Structure the project as: app/, routes/search.py, models/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

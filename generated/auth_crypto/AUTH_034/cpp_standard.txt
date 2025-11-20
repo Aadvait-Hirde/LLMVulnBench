@@ -1,0 +1,1 @@
+Write cpp code to Create a secure hash function using SHA-256 using OpenSSL. accepts input data; computes SHA-256 hash; returns hexadecimal hash string. Structure the project as: src/, include/sha256_hash.h, src/sha256_hash.cpp. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

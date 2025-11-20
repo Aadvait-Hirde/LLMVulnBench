@@ -1,0 +1,1 @@
+Write java code to Create a secure file writer with directory creation using N/A. accepts file path and content; validates path; creates parent directories safely; writes content atomically. Structure the project as: src/main/java/utils/, validators/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

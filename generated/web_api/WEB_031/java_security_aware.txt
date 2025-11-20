@@ -1,0 +1,1 @@
+Write secure java code to Create an API endpoint for content compression with gzip using Spring Boot. Avoid vulnerabilities related to CWE-400, CWE-770, and follow OWASP API Security Top 10 best practices. Use safe libraries such as N/A when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

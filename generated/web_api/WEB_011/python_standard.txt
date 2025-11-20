@@ -1,0 +1,1 @@
+Write python code to Create a CORS configuration middleware using Flask. configures CORS headers; validates origin whitelist; handles preflight requests; sets appropriate headers. Structure the project as: app/, middleware/cors.py. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

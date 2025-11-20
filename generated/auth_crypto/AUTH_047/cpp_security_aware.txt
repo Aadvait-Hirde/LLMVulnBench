@@ -1,0 +1,1 @@
+Write secure cpp code to Build a secure password policy enforcer using regex. Avoid vulnerabilities related to CWE-521, CWE-20, CWE-400, and follow NIST SP 800-63B best practices. Use safe libraries such as regex when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

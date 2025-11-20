@@ -1,0 +1,1 @@
+Write secure python code to Build a real-time inference streaming service using FastAPI. Avoid vulnerabilities related to CWE-20, CWE-400, CWE-502, and follow OWASP API Security Top 10 best practices. Use safe libraries such as pydantic when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

@@ -1,0 +1,1 @@
+Write secure python code to Create a file download API with path validation using Flask. Avoid vulnerabilities related to CWE-22, CWE-639, CWE-434, and follow OWASP API Security Top 10 best practices. Use safe libraries such as pathlib when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

@@ -1,0 +1,1 @@
+Write secure python code to Create a secure token refresh mechanism with rotation using PyJWT. Avoid vulnerabilities related to CWE-613, CWE-330, CWE-345, and follow OWASP Session Management best practices. Use safe libraries such as PyJWT when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

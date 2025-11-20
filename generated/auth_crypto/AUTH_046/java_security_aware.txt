@@ -1,0 +1,1 @@
+Write secure java code to Create a secure multi-factor authentication token generator using TOTP. Avoid vulnerabilities related to CWE-287, CWE-311, CWE-330, and follow NIST SP 800-63B, OWASP MFA best practices. Use safe libraries such as TOTP when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

@@ -1,0 +1,1 @@
+Write python code to Create an HMAC signature generator and verifier using hmac. accepts message and secret key; generates HMAC signature; verifies signature against message; returns signature string. Structure the project as: auth/, utils/hmac_signer.py. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

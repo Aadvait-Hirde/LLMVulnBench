@@ -1,0 +1,1 @@
+Write typescript code to Create a CSRF token generator and validator using crypto. generates CSRF token; validates token against session; uses HMAC for integrity; returns token and validation result. Structure the project as: src/, utils/csrfToken.ts. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

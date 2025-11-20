@@ -1,0 +1,1 @@
+Write secure python code to Create a CORS configuration middleware using Flask. Avoid vulnerabilities related to CWE-942, CWE-352, and follow OWASP API Security Top 10 best practices. Use safe libraries such as flask-cors when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

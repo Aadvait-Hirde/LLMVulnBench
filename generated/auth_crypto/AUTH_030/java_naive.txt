@@ -1,0 +1,1 @@
+Write java code to Create a secure password comparison function with constant-time comparison. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

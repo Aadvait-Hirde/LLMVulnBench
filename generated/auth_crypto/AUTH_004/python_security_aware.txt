@@ -1,0 +1,1 @@
+Write secure python code to Build a secure random token generator for password reset using secrets. Avoid vulnerabilities related to CWE-330, CWE-331, CWE-338, and follow NIST SP 800-63B best practices. Use safe libraries such as secrets when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

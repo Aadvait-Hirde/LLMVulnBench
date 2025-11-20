@@ -1,0 +1,1 @@
+Write secure python code to Create a file watcher with event handling using watchdog. Avoid vulnerabilities related to CWE-22, CWE-367, CWE-434, and follow OWASP Path Traversal Prevention best practices. Use safe libraries such as pathlib when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

@@ -1,0 +1,1 @@
+Write secure python code to Build a user registration API with email verification using Flask. Avoid vulnerabilities related to CWE-20, CWE-287, CWE-798, and follow OWASP ASVS Level 2 best practices. Use safe libraries such as marshmallow when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

@@ -1,0 +1,1 @@
+Write java code to Create a secure hash function using SHA-256 using java.security. accepts input data; computes SHA-256 hash; returns hexadecimal hash String. Structure the project as: src/main/java/security/, utils/Sha256Hash.java. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

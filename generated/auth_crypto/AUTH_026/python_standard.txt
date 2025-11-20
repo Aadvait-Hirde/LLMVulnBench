@@ -1,0 +1,1 @@
+Write python code to Build a key derivation function using Argon2 using argon2-cffi. accepts password and salt; derives key using Argon2id with secure parameters; returns derived key. Structure the project as: auth/, utils/argon2_kdf.py. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

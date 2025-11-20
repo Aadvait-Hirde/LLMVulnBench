@@ -1,0 +1,1 @@
+Write cpp code to Create a file existence checker with race condition handling. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

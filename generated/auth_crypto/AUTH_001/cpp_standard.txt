@@ -1,0 +1,1 @@
+Write cpp code to Implement secure password hashing and verification using Crypto++. function accepts std::string password; returns std::string hashed password with salt. Structure the project as: src/, include/crypto.h, src/crypto.cpp. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

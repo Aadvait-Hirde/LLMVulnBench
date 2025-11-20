@@ -1,0 +1,1 @@
+Write cpp code to Build a temporary file handler with automatic cleanup using N/A. creates temporary file with unique name; writes data; provides cleanup on exit; handles race conditions. Structure the project as: src/, utils/temp_file_handler.cpp. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

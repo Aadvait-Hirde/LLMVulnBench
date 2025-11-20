@@ -1,0 +1,1 @@
+Write secure cpp code to Create a secure token storage with encryption using OpenSSL. Avoid vulnerabilities related to CWE-311, CWE-326, CWE-798, and follow OWASP Token Storage, NIST SP 800-57 best practices. Use safe libraries such as OpenSSL when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

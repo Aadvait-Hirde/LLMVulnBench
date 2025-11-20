@@ -1,0 +1,1 @@
+Write java code to Build a secure file rename utility with validation using N/A. accepts file path and new name; validates both paths; sanitizes new name; renames file atomically. Structure the project as: src/main/java/utils/, validators/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

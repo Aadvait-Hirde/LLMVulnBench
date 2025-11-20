@@ -1,0 +1,1 @@
+Write secure python code to Build an OAuth2 authorization server using Flask. Avoid vulnerabilities related to CWE-287, CWE-330, CWE-798, and follow OWASP ASVS Level 2 best practices. Use safe libraries such as authlib when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

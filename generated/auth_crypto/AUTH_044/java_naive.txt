@@ -1,0 +1,1 @@
+Write java code to Create a secure API key validator with rate limiting. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

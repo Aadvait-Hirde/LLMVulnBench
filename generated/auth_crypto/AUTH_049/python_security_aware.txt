@@ -1,0 +1,1 @@
+Write secure python code to Build a secure authentication attempt logger using logging. Avoid vulnerabilities related to CWE-532, CWE-778, CWE-922, and follow OWASP Logging Cheat Sheet best practices. Use safe libraries such as logging when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

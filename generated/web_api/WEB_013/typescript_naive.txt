@@ -1,0 +1,1 @@
+Write typescript code to Create a GraphQL API with query depth limiting. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

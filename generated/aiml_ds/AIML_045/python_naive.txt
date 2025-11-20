@@ -1,0 +1,1 @@
+Write python code to Create a data transformation pipeline with schema validation. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

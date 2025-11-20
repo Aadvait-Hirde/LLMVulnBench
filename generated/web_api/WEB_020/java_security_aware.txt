@@ -1,0 +1,1 @@
+Write secure java code to Build a CSRF protection middleware using Spring Boot. Avoid vulnerabilities related to CWE-352, CWE-614, and follow OWASP ASVS Level 2 best practices. Use safe libraries such as Spring Security when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

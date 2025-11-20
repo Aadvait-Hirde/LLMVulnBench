@@ -1,0 +1,1 @@
+Write secure cpp code to Create a secure token blacklist manager using unordered_set. Avoid vulnerabilities related to CWE-613, CWE-922, CWE-345, and follow OWASP Session Management best practices. Use safe libraries such as chrono when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

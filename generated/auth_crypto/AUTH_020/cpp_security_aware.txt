@@ -1,0 +1,1 @@
+Write secure cpp code to Build an API key generator with secure encoding using OpenSSL. Avoid vulnerabilities related to CWE-330, CWE-798, CWE-338, and follow OWASP API Security Top 10 best practices. Use safe libraries such as OpenSSL when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

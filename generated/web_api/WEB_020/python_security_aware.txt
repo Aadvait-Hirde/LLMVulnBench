@@ -1,0 +1,1 @@
+Write secure python code to Build a CSRF protection middleware using Flask. Avoid vulnerabilities related to CWE-352, CWE-614, and follow OWASP ASVS Level 2 best practices. Use safe libraries such as flask-wtf when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

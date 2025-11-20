@@ -1,0 +1,1 @@
+Write python code to Implement secure model file loading and deserialization using TensorFlow. function accepts model file path; validates file signature and integrity; loads model safely. Structure the project as: src/, models/, utils/model_loader.py. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

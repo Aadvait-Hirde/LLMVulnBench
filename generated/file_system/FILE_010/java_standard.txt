@@ -1,0 +1,1 @@
+Write java code to Build a file search utility with pattern matching using N/A. accepts search directory and pattern; validates directory path; searches files recursively; sanitizes pattern. Structure the project as: src/main/java/utils/, validators/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

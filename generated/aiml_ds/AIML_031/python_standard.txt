@@ -1,0 +1,1 @@
+Write python code to Create a model deployment service with containerization using docker. accepts model path and deployment config; validates paths; builds Docker image; deploys container. Structure the project as: src/, deployment/, docker/, deployer.py. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

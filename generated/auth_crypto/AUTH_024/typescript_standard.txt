@@ -1,0 +1,1 @@
+Write typescript code to Build a TOTP (Time-based One-Time Password) generator using otplib. accepts secret key and timestamp; generates TOTP code; validates time window; returns 6-digit code. Structure the project as: src/, utils/totpGenerator.ts. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

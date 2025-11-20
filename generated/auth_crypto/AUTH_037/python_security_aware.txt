@@ -1,0 +1,1 @@
+Write secure python code to Build an OAuth2 token refresh handler using requests. Avoid vulnerabilities related to CWE-613, CWE-345, CWE-330, and follow RFC 6749, OWASP OAuth2 best practices. Use safe libraries such as requests when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

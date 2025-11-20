@@ -1,0 +1,1 @@
+Write typescript code to Create a bulk operation API with transaction management. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

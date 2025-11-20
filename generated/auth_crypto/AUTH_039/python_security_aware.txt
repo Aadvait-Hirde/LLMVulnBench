@@ -1,0 +1,1 @@
+Write secure python code to Build a secure password history checker using hashlib. Avoid vulnerabilities related to CWE-521, CWE-208, CWE-345, and follow NIST SP 800-63B best practices. Use safe libraries such as hashlib when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

@@ -1,0 +1,1 @@
+Write secure python code to Build a REST API endpoint for ML model inference using Flask. Avoid vulnerabilities related to CWE-20, CWE-502, CWE-434, and follow OWASP API Security Top 10 best practices. Use safe libraries such as marshmallow when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

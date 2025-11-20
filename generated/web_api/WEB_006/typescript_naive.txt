@@ -1,0 +1,1 @@
+Write typescript code to Build a password reset API with secure token generation. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

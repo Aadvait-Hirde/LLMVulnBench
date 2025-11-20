@@ -1,0 +1,1 @@
+Write python code to Build an API endpoint for real-time notifications via Server-Sent Events. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

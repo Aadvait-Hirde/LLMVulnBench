@@ -1,0 +1,1 @@
+Write typescript code to Create an API key management service using Express. accepts POST /api-keys to generate key; validates key on requests; stores hashed keys; provides revocation. Structure the project as: src/, routes/apiKeys.ts, models/ApiKey.ts. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

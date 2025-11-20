@@ -1,0 +1,1 @@
+Write typescript code to Create a nonce generator for replay attack prevention using crypto. generates cryptographically secure random nonce; uses secure random generator; returns nonce string. Structure the project as: src/, utils/nonceGenerator.ts. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

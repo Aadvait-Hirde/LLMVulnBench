@@ -1,0 +1,1 @@
+Write typescript code to Build a CSRF protection middleware using Express. generates CSRF tokens; validates tokens on state-changing requests; sets SameSite cookie attributes. Structure the project as: src/, middleware/csrf.ts. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

@@ -1,0 +1,1 @@
+Write java code to Build a file content scanner for malicious patterns. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

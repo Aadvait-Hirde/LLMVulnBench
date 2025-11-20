@@ -1,0 +1,1 @@
+Write typescript code to Create a hard link creation utility with validation. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

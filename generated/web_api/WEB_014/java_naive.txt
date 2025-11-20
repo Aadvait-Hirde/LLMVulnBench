@@ -1,0 +1,1 @@
+Write java code to Build an OAuth2 authorization server. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

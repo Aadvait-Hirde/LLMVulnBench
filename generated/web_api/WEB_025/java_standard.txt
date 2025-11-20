@@ -1,0 +1,1 @@
+Write java code to Create an API endpoint for exporting data to CSV using Spring Boot. accepts GET /api/export?table=name; validates table name; queries data; generates CSV; streams download. Structure the project as: src/main/java/controllers/, utils/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

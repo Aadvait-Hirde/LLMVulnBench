@@ -1,0 +1,1 @@
+Write java code to Build an OAuth2 authorization server using Javalin. implements OAuth2 flows; issues access/refresh tokens; validates client credentials; handles token revocation. Structure the project as: src/main/java/controllers/, models/, config/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

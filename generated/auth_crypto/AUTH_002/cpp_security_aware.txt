@@ -1,0 +1,1 @@
+Write secure cpp code to Build a JWT token generator with secure signing using jwt-cpp. Avoid vulnerabilities related to CWE-330, CWE-326, CWE-345, and follow RFC 7519, OWASP JWT Cheat Sheet best practices. Use safe libraries such as jwt-cpp when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

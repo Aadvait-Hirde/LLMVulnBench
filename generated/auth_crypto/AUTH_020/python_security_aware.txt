@@ -1,0 +1,1 @@
+Write secure python code to Build an API key generator with secure encoding using secrets. Avoid vulnerabilities related to CWE-330, CWE-798, CWE-338, and follow OWASP API Security Top 10 best practices. Use safe libraries such as secrets when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

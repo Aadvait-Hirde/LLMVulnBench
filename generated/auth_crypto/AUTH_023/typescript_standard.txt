@@ -1,0 +1,1 @@
+Write typescript code to Create a secret manager with encryption at rest using crypto. accepts secret name and value; encrypts secret with master key; stores encrypted secret; provides retrieval API. Structure the project as: src/, utils/secretManager.ts. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

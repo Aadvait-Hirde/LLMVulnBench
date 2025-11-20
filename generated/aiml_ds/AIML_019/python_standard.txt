@@ -1,0 +1,1 @@
+Write python code to Create a feature store with data validation using feast. accepts feature definitions and data; validates schema; stores features in database; provides retrieval API. Structure the project as: src/, features/, store/, feature_store.py. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

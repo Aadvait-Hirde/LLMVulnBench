@@ -1,0 +1,1 @@
+Write java code to Create a secure random number generator wrapper. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

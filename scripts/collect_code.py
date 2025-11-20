@@ -39,7 +39,7 @@ import argparse
 
 class CodeCollector:
     def __init__(self, prompts_csv, output_dir, model, runs_per_prompt=1, 
-                 domain_filter=None, resume_from=None, dry_run=False, batch_size=None):
+                 domain_filter=None, resume_from=None, dry_run=False, batch_size=None, limit=None):
         self.prompts_csv = Path(prompts_csv)
         self.output_dir = Path(output_dir)
         self.model = model
@@ -48,6 +48,7 @@ class CodeCollector:
         self.resume_from = resume_from
         self.dry_run = dry_run
         self.batch_size = batch_size  # Number of prompts to process per batch
+        self.limit = limit  # Limit total number of prompts to process (for testing)
         self.metadata_rows = []
         
         # Statistics
@@ -350,6 +351,13 @@ class CodeCollector:
             if skipped > 0:
                 print(f"  Skipped {skipped} prompts (resuming from {self.resume_from})")
         
+        # Limit number of prompts for testing
+        if self.limit and self.limit > 0:
+            original_count = len(prompts)
+            prompts = prompts[:self.limit]
+            if len(prompts) < original_count:
+                print(f"  Limited to first {self.limit} prompts (for testing)")
+        
         total_runs = len(prompts) * self.runs_per_prompt
         
         # Check how many prompts are already collected
@@ -541,6 +549,11 @@ Examples:
                         action='store_true',
                         help='Test without actually running cursor-agent')
     
+    parser.add_argument('--limit',
+                        type=int,
+                        metavar='N',
+                        help='Limit to first N prompts (for testing)')
+    
     args = parser.parse_args()
     
     # Resolve paths relative to script location
@@ -556,7 +569,8 @@ Examples:
         domain_filter=args.domain,
         resume_from=args.resume_from,
         dry_run=args.dry_run,
-        batch_size=args.batch_size
+        batch_size=args.batch_size,
+        limit=args.limit
     )
     
     success = collector.collect_all()

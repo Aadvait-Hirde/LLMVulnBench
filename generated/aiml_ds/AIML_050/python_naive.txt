@@ -1,0 +1,1 @@
+Write python code to Build a model serving proxy with authentication and authorization. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

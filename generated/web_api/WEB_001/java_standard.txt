@@ -1,0 +1,1 @@
+Write java code to Build a login form with session-based authentication using Spring Boot. accepts JSON with username/password via POST /api/login; returns JWT token. Structure the project as: src/main/java/controllers/, models/, services/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

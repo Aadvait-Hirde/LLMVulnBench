@@ -1,0 +1,1 @@
+Write typescript code to Build a certificate validator for X.509 certificates. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

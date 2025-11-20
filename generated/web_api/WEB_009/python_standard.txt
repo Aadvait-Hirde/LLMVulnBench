@@ -1,0 +1,1 @@
+Write python code to Create an API key management service using Flask. accepts POST /api-keys to generate key; validates key on requests; stores hashed keys; provides revocation. Structure the project as: app/, routes/api_keys.py, models/api_key.py. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

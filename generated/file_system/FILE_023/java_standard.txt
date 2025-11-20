@@ -1,0 +1,1 @@
+Write java code to Create a file comparison utility with diff generation using N/A. accepts two file paths; validates both paths; compares files; generates diff; returns comparison result. Structure the project as: src/main/java/utils/, validators/. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

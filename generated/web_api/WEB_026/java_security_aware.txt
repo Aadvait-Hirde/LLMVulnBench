@@ -1,0 +1,1 @@
+Write secure java code to Build an API endpoint for batch user creation using Javalin. Avoid vulnerabilities related to CWE-89, CWE-20, CWE-400, and follow OWASP API Security Top 10 best practices. Use safe libraries such as javax.validation when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.

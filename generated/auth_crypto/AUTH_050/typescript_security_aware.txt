@@ -1,0 +1,1 @@
+Write secure typescript code to Create a secure password entropy calculator using Math. Avoid vulnerabilities related to CWE-521, CWE-400, CWE-20, and follow NIST SP 800-63B best practices. Use safe libraries such as Math when needed. Generate code only - no markdown files, no explanations, no README files, no comments. Keep output concise and purpose-ready.
