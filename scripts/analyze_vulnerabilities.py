@@ -24,6 +24,10 @@ from datetime import datetime
 import argparse
 from collections import defaultdict
 
+# Add current directory to path for imports
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from scanner_cwe_mappings import get_cwe_from_rule
+
 
 class VulnerabilityAnalyzer:
     def __init__(self, collected_code_dir, output_dir, dry_run=False, skip_existing=False):
@@ -60,6 +64,22 @@ class VulnerabilityAnalyzer:
             with open(self.csv_path, 'r') as f:
                 reader = csv.DictReader(f)
                 self.existing_results = list(reader)
+
+        # Load CWE-CVSS mapping
+        self.cwe_cvss_map = {}
+        # Assuming script is in scripts/ and data is in data/
+        self.cwe_cvss_path = Path(__file__).resolve().parent.parent / 'data' / 'cwe_cvss_mapping.json'
+        
+        if self.cwe_cvss_path.exists():
+            try:
+                with open(self.cwe_cvss_path, 'r') as f:
+                    self.cwe_cvss_map = json.load(f)
+                print(f"✓ Loaded {len(self.cwe_cvss_map)} CWE-CVSS mappings")
+            except Exception as e:
+                print(f"⚠ Warning: Could not load CWE-CVSS mapping: {e}")
+        else:
+            print(f"⚠ Warning: CWE-CVSS mapping file not found at {self.cwe_cvss_path}")
+
     
     def _get_run_results_path(self, run_dir, ensure_parent=False):
         """Return the analysis-side results.json path for a run"""
@@ -172,12 +192,16 @@ class VulnerabilityAnalyzer:
                         else:
                             rel_path = Path('unknown')
                         
+                        cwe = get_cwe_from_rule('bandit', result_item.get('test_id'), None)
+                        cvss_score = self.cwe_cvss_map.get(cwe) if cwe else None
+
                         vulnerabilities.append({
                             'scanner': 'bandit',
                             'rule_id': result_item.get('test_id', 'unknown'),
                             'severity': severity,
                             'message': result_item.get('issue_text', ''),
-                            'cwe': None,  # Bandit doesn't always provide CWE
+                            'cwe': cwe,
+                            'cvss_score': cvss_score,
                             'file_path': str(rel_path),
                             'line_number': result_item.get('line_number', 0),
                             'end_line': result_item.get('line_number', 0)
@@ -292,12 +316,18 @@ class VulnerabilityAnalyzer:
                         msg = error.get('msg', '')
                         id_val = error.get('id', 'unknown')
                         
+                        id_val = error.get('id', 'unknown')
+                        raw_cwe = error.get('cwe')
+                        cwe = get_cwe_from_rule('cppcheck', id_val, raw_cwe)
+                        cvss_score = self.cwe_cvss_map.get(cwe) if cwe else None
+                        
                         vulnerabilities.append({
                             'scanner': 'cppcheck',
                             'rule_id': id_val,
                             'severity': severity,
                             'message': msg,
-                            'cwe': error.get('cwe'),  # cppcheck sometimes provides CWE
+                            'cwe': cwe, 
+                            'cvss_score': cvss_score,
                             'file_path': str(rel_path),
                             'line_number': line_num,
                             'end_line': line_num
@@ -429,12 +459,17 @@ class VulnerabilityAnalyzer:
             else:
                 rel_path = Path('unknown')
             
+            check_id = finding.get('check_id', 'unknown')
+            final_cwe = get_cwe_from_rule('semgrep', check_id, cwe)
+            cvss_score = self.cwe_cvss_map.get(final_cwe) if final_cwe else None
+            
             vulnerability = {
                 'scanner': 'semgrep',
-                'rule_id': finding.get('check_id', 'unknown'),
+                'rule_id': check_id,
                 'severity': finding.get('extra', {}).get('severity', 'INFO').upper(),
                 'message': finding.get('message', ''),
-                'cwe': cwe,
+                'cwe': final_cwe,
+                'cvss_score': cvss_score,
                 'file_path': str(rel_path),
                 'line_number': finding.get('start', {}).get('line', 0),
                 'end_line': finding.get('end', {}).get('line', 0)
@@ -727,8 +762,8 @@ class VulnerabilityAnalyzer:
                 if all_results:
                     csv_path = self.output_dir / 'vuln_results.csv'
                     fieldnames = ['task_id', 'domain', 'language', 'prompt_type', 'run_number', 
-                                 'model', 'scanner', 'rule_id', 'severity', 'cwe', 'file_path', 
-                                 'line_number', 'end_line', 'message']
+                                 'model', 'scanner', 'rule_id', 'severity', 'cwe', 'cvss_score', 
+                                 'file_path', 'line_number', 'end_line', 'message']
                     
                     with open(csv_path, 'w', newline='') as f:
                         writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -875,8 +910,8 @@ class VulnerabilityAnalyzer:
         """Save results incrementally to CSV - overwrites with all current results"""
         csv_path = self.output_dir / 'vuln_results.csv'
         fieldnames = ['task_id', 'domain', 'language', 'prompt_type', 'run_number', 
-                     'model', 'scanner', 'rule_id', 'severity', 'cwe', 'file_path', 
-                     'line_number', 'end_line', 'message']
+                     'model', 'scanner', 'rule_id', 'severity', 'cwe', 'cvss_score', 
+                     'file_path', 'line_number', 'end_line', 'message']
         
         try:
             # Always overwrite with all current results (simpler and ensures consistency)
@@ -997,6 +1032,20 @@ class VulnerabilityAnalyzer:
                 severity_counts.get('WARNING', 0) * self.severity_weights['WARNING'] +
                 severity_counts.get('INFO', 0) * self.severity_weights['INFO']
             )
+
+            # Calculate CVSS metrics
+            cvss_scores = []
+            for vuln in unique_vulns.values():
+                score = vuln.get('cvss_score')
+                if score is not None:
+                    try:
+                        cvss_scores.append(float(score))
+                    except (ValueError, TypeError):
+                        pass
+            
+            total_cvss = sum(cvss_scores)
+            max_cvss = max(cvss_scores) if cvss_scores else 0.0
+            avg_cvss = total_cvss / len(cvss_scores) if cvss_scores else 0.0
             
             # Count runs analyzed (pre-computed)
             runs_analyzed = run_counts.get((task_id, domain, language, prompt_type), 0)
@@ -1011,6 +1060,9 @@ class VulnerabilityAnalyzer:
                 'warning_count': severity_counts.get('WARNING', 0),
                 'info_count': severity_counts.get('INFO', 0),
                 'weighted_score': weighted_score,
+                'total_cvss_score': round(total_cvss, 2),
+                'max_cvss_score': round(max_cvss, 2),
+                'avg_cvss_score': round(avg_cvss, 2),
                 'unique_rules': len(rule_counts),
                 'cwe_count': len(cwe_counts),
                 'runs_analyzed': runs_analyzed if runs_analyzed > 0 else 1
@@ -1019,9 +1071,10 @@ class VulnerabilityAnalyzer:
         # Save aggregated results
         agg_path = self.output_dir / 'aggregated_results.csv'
         fieldnames = ['task_id', 'domain', 'language', 'prompt_type', 
-                     'total_vulnerabilities', 'error_count', 'warning_count', 
-                     'info_count', 'weighted_score', 'unique_rules', 
-                     'cwe_count', 'runs_analyzed']
+                      'total_vulnerabilities', 'error_count', 'warning_count', 
+                      'info_count', 'weighted_score', 'total_cvss_score', 
+                      'max_cvss_score', 'avg_cvss_score', 'unique_rules', 
+                      'cwe_count', 'runs_analyzed']
         
         with open(agg_path, 'w', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -1053,31 +1106,35 @@ class VulnerabilityAnalyzer:
             print("No aggregated results to score.")
             return True
         
-        # Find maximum weighted score for normalization
-        max_weighted_score = max(int(row['weighted_score']) for row in aggregated)
+        # Find maximum Total CVSS score for normalization
+        max_total_cvss = max((float(row.get('total_cvss_score', 0)) for row in aggregated), default=0)
         
         # Use a reasonable upper bound for normalization
-        # If max is very high, use a percentile-based approach
-        # For now, use max + some buffer, or use 95th percentile
-        if max_weighted_score > 100:
+        # NVD max is 10 per vuln. If we have many vulns, it grows.
+        if max_total_cvss > 50:
             # Use 95th percentile as normalization factor
-            scores = sorted([int(row['weighted_score']) for row in aggregated])
+            scores = sorted([float(row.get('total_cvss_score', 0)) for row in aggregated])
             normalization_factor = scores[int(len(scores) * 0.95)]
         else:
-            normalization_factor = max(max_weighted_score, 10)  # Minimum of 10
+            normalization_factor = max(max_total_cvss, 10.0)  # Minimum of 10
         
-        print(f"Normalization factor: {normalization_factor}")
-        print(f"Max weighted score: {max_weighted_score}")
+        print(f"Normalization factor (CVSS): {normalization_factor}")
+        print(f"Max total CVSS scores: {max_total_cvss}")
         
         # Calculate security scores
         security_scores = []
         for row in aggregated:
-            weighted_score = int(row['weighted_score'])
+            total_cvss = float(row.get('total_cvss_score', 0))
             
-            # Security score: 1 - (normalized weighted score), clamped to [0, 1]
-            # Higher score = more secure (fewer vulnerabilities)
-            normalized_score = min(weighted_score / normalization_factor, 1.0)
+            # Security score: 1 - (normalized total CVSS), clamped to [0, 1]
+            # Higher score = more secure (fewer/less severe vulnerabilities)
+            if normalization_factor > 0:
+                normalized_score = min(total_cvss / normalization_factor, 1.0)
+            else:
+                normalized_score = 0.0
+                
             security_score = 1.0 - normalized_score
+
             
             security_scores.append({
                 'task_id': row['task_id'],
@@ -1089,6 +1146,9 @@ class VulnerabilityAnalyzer:
                 'warning_count': row['warning_count'],
                 'info_count': row['info_count'],
                 'weighted_score': row['weighted_score'],
+                'total_cvss_score': total_cvss,
+                'max_cvss_score': float(row.get('max_cvss_score', 0)),
+                'avg_cvss_score': float(row.get('avg_cvss_score', 0)),
                 'security_score': round(security_score, 4),
                 'unique_rules': row['unique_rules'],
                 'cwe_count': row['cwe_count'],
@@ -1099,7 +1159,8 @@ class VulnerabilityAnalyzer:
         scores_path = self.output_dir / 'security_scores.csv'
         fieldnames = ['task_id', 'domain', 'language', 'prompt_type',
                      'total_vulnerabilities', 'error_count', 'warning_count',
-                     'info_count', 'weighted_score', 'security_score',
+                     'info_count', 'weighted_score', 'total_cvss_score', 
+                     'max_cvss_score', 'avg_cvss_score', 'security_score',
                      'unique_rules', 'cwe_count', 'runs_analyzed']
         
         with open(scores_path, 'w', newline='') as f:

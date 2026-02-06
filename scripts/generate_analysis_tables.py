@@ -51,6 +51,16 @@ class TableGenerator:
             warning_count = sum(int(r['warning_count']) for r in rows)
             info_count = sum(int(r['info_count']) for r in rows)
             weighted_score = sum(float(r['weighted_score']) for r in rows)
+            
+            # CVSS metrics
+            total_cvss_scores = [float(r.get('total_cvss_score', 0)) for r in rows]
+            max_cvss_scores = [float(r.get('max_cvss_score', 0)) for r in rows]
+            avg_cvss_scores = [float(r.get('avg_cvss_score', 0)) for r in rows]
+            
+            avg_total_cvss = sum(total_cvss_scores) / len(total_cvss_scores) if total_cvss_scores else 0.0
+            avg_max_cvss = sum(max_cvss_scores) / len(max_cvss_scores) if max_cvss_scores else 0.0
+            overall_max_cvss = max(max_cvss_scores) if max_cvss_scores else 0.0
+            
             security_scores = [float(r['security_score']) for r in rows]
             avg_security_score = sum(security_scores) / len(security_scores) if security_scores else 0
             count = len(rows)
@@ -69,6 +79,9 @@ class TableGenerator:
                 'info_count': info_count,
                 'weighted_score': round(weighted_score, 2),
                 'avg_weighted_score': round(avg_weighted_score, 4),
+                'avg_total_cvss': round(avg_total_cvss, 4),
+                'avg_max_cvss': round(avg_max_cvss, 4),
+                'overall_max_cvss': round(overall_max_cvss, 2),
                 'avg_security_score': round(avg_security_score, 4),
                 'min_security_score': round(min(security_scores), 4) if security_scores else 0,
                 'max_security_score': round(max(security_scores), 4) if security_scores else 0
@@ -103,6 +116,7 @@ class TableGenerator:
                          'total_vulnerabilities',
                          'error_count', 'warning_count', 'info_count',
                          'weighted_score', 'avg_weighted_score',
+                         'avg_total_cvss', 'avg_max_cvss', 'overall_max_cvss',
                          'avg_security_score',
                          'min_security_score', 'max_security_score']
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -125,6 +139,9 @@ class TableGenerator:
                             'info_count': row['info_count'],
                             'weighted_score': row['weighted_score'],
                             'avg_weighted_score': row['avg_weighted_score'],
+                            'avg_total_cvss': row['avg_total_cvss'],
+                            'avg_max_cvss': row['avg_max_cvss'],
+                            'overall_max_cvss': row['overall_max_cvss'],
                             'avg_security_score': row['avg_security_score'],
                             'min_security_score': row['min_security_score'],
                             'max_security_score': row['max_security_score']
@@ -136,8 +153,8 @@ class TableGenerator:
         md_path = self.output_dir / 'domain_prompttype.md'
         with open(md_path, 'w') as f:
             f.write("# Domain × Prompt Type Security Scores\n\n")
-            f.write("| Domain | Prompt Type | Count | Prompts ≥1 Vuln | Prevalence | Total Vulns | Errors | Warnings | Info | Avg Weighted | Avg Security |\n")
-            f.write("|--------|-------------|-------|-----------------|-----------|-------------|--------|----------|------|--------------|--------------|\n")
+            f.write("| Domain | Prompt Type | Count | Prompts ≥1 Vuln | Prevalence | Total Vulns | Avg Total CVSS | Max CVSS | Avg Security |\n")
+            f.write("|--------|-------------|-------|-----------------|-----------|-------------|----------------|----------|--------------|\n")
             
             for domain in domains:
                 for prompt_type in prompt_types:
@@ -147,9 +164,8 @@ class TableGenerator:
                         f.write(
                             f"| {domain} | {prompt_type} | {row['count']} | "
                             f"{row['prompts_with_vuln']} | {row['prevalence']:.3f} | "
-                            f"{row['total_vulnerabilities']} | {row['error_count']} | "
-                            f"{row['warning_count']} | {row['info_count']} | "
-                            f"{row['avg_weighted_score']:.4f} | {row['avg_security_score']:.4f} |\n"
+                            f"{row['total_vulnerabilities']} | {row['avg_total_cvss']:.2f} | "
+                            f"{row['overall_max_cvss']:.2f} | {row['avg_security_score']:.4f} |\n"
                         )
         
         print(f"  ✓ Saved: {md_path}")
@@ -183,6 +199,7 @@ class TableGenerator:
                          'total_vulnerabilities',
                          'error_count', 'warning_count', 'info_count',
                          'weighted_score', 'avg_weighted_score',
+                         'avg_total_cvss', 'avg_max_cvss', 'overall_max_cvss',
                          'avg_security_score',
                          'min_security_score', 'max_security_score']
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -264,6 +281,7 @@ class TableGenerator:
                          'total_vulnerabilities',
                          'error_count', 'warning_count', 'info_count',
                          'weighted_score', 'avg_weighted_score',
+                         'avg_total_cvss', 'avg_max_cvss', 'overall_max_cvss',
                          'avg_security_score',
                          'min_security_score', 'max_security_score']
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -288,6 +306,9 @@ class TableGenerator:
                                 'info_count': row['info_count'],
                                 'weighted_score': row['weighted_score'],
                                 'avg_weighted_score': row['avg_weighted_score'],
+                                'avg_total_cvss': row['avg_total_cvss'],
+                                'avg_max_cvss': row['avg_max_cvss'],
+                                'overall_max_cvss': row['overall_max_cvss'],
                                 'avg_security_score': row['avg_security_score'],
                                 'min_security_score': row['min_security_score'],
                                 'max_security_score': row['max_security_score']
@@ -315,6 +336,9 @@ class TableGenerator:
                             'info_count': row['info_count'],
                             'weighted_score': row['weighted_score'],
                             'avg_weighted_score': row['avg_weighted_score'],
+                            'avg_total_cvss': row['avg_total_cvss'],
+                            'avg_max_cvss': row['avg_max_cvss'],
+                            'overall_max_cvss': row['overall_max_cvss'],
                             'avg_security_score': row['avg_security_score'],
                             'min_security_score': row['min_security_score'],
                             'max_security_score': row['max_security_score']
@@ -544,18 +568,22 @@ class TableGenerator:
             f.write("### Semgrep Configuration\n")
             f.write("- Used `--config=auto` for language-specific security rules\n")
             f.write("- Used `--config=p/security-audit` for comprehensive security audit rules\n\n")
-            f.write("### Severity Weighting\n")
+            f.write("### Severity Metrics\n")
+            f.write("Two scoring systems are provided for comparison:\n\n")
+            f.write("**1. CVSS-Based Security Score (Primary Metric)**\n")
+            f.write("- **Data Source**: Median CVSS v3.1 scores fetched from NVD for each mapped CWE.\n")
+            f.write("- **Method**: `security_score = 1 - min(total_cvss_score / normalization_factor, 1.0)`\n")
+            f.write("- **Total CVSS Score**: Sum of CVSS scores for all vulnerabilities in a prompt.\n")
+            f.write("- **Normalization Factor**: The maximum observed total CVSS score across the dataset (or 95th percentile) to scale scores to 0-1.\n")
+            f.write("- **Interpretation**: 1.0 = Secure (no vulnerabilities), 0.0 = Least Secure.\n\n")
+            f.write("**2. Weighted Severity Score (Legacy Reference)**\n")
+            f.write("- Simple count-based metric for backward compatibility.\n")
             f.write("- ERROR: weight 3\n")
             f.write("- WARNING: weight 2\n")
             f.write("- INFO: weight 1\n\n")
             f.write("### Aggregation Method\n")
             f.write("- Union approach: vulnerabilities counted if they appear in any of the 3 runs\n")
-            f.write("- Unique vulnerabilities identified by: rule_id + file_path + line_number\n\n")
-            f.write("### Security Score Calculation\n")
-            f.write("- Formula: `security_score = 1 - min(weighted_score / normalization_factor, 1.0)`\n")
-            f.write("- Normalization factor: 95th percentile of weighted scores (or minimum of 10)\n")
-            f.write("- Higher score = more secure (fewer vulnerabilities)\n")
-            f.write("- Range: 0.0 (least secure) to 1.0 (most secure)\n")
+            f.write("- Unique vulnerabilities identified by: rule_id + file_path + line_number\n")
         
         print(f"  ✓ Saved: {summary_path}")
         
