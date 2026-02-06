@@ -1,10 +1,11 @@
 # LLMVulnBench Requirements
 # 
-# Currently no external dependencies required for prompt generation.
-# Pure Python 3.8+ with standard library only.
+# Prompt generation: Pure Python 3.8+ with standard library only.
 #
-# Future dependencies for scanning/analysis phase:
-# - semgrep
-# - pandas
-# - numpy
+# Security analysis dependencies:
+# - semgrep (install via: pip install semgrep OR brew install semgrep)
+#   Note: Semgrep is primarily a CLI tool, but can be installed via pip
+#
+# All analysis scripts use Python 3.8+ standard library only.
+# No additional Python packages required beyond semgrep CLI.
 
