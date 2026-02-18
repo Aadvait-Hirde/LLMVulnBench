@@ -569,18 +569,12 @@ class TableGenerator:
             f.write("- Used `--config=auto` for language-specific security rules\n")
             f.write("- Used `--config=p/security-audit` for comprehensive security audit rules\n\n")
             f.write("### Severity Metrics\n")
-            f.write("Two scoring systems are provided for comparison:\n\n")
-            f.write("**1. CVSS-Based Security Score (Primary Metric)**\n")
+            f.write("**CVSS-Based Security Score**\n")
             f.write("- **Data Source**: Median CVSS v3.1 scores fetched from NVD for each mapped CWE.\n")
             f.write("- **Method**: `security_score = 1 - min(total_cvss_score / normalization_factor, 1.0)`\n")
             f.write("- **Total CVSS Score**: Sum of CVSS scores for all vulnerabilities in a prompt.\n")
             f.write("- **Normalization Factor**: The maximum observed total CVSS score across the dataset (or 95th percentile) to scale scores to 0-1.\n")
             f.write("- **Interpretation**: 1.0 = Secure (no vulnerabilities), 0.0 = Least Secure.\n\n")
-            f.write("**2. Weighted Severity Score (Legacy Reference)**\n")
-            f.write("- Simple count-based metric for backward compatibility.\n")
-            f.write("- ERROR: weight 3\n")
-            f.write("- WARNING: weight 2\n")
-            f.write("- INFO: weight 1\n\n")
             f.write("### Aggregation Method\n")
             f.write("- Union approach: vulnerabilities counted if they appear in any of the 3 runs\n")
             f.write("- Unique vulnerabilities identified by: rule_id + file_path + line_number\n")
@@ -629,9 +623,8 @@ Examples:
     args = parser.parse_args()
     
     # Resolve paths relative to script location
-    script_dir = Path(__file__).parent
-    input_path = (script_dir / args.input).resolve()
-    output_path = (script_dir / args.output).resolve()
+    input_path = Path(args.input).resolve()
+    output_path = Path(args.output).resolve()
     
     if not input_path.exists():
         print(f"✗ Error: {input_path} not found")

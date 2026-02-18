@@ -1226,10 +1226,8 @@ Examples:
     
     args = parser.parse_args()
     
-    # Resolve paths relative to script location
-    script_dir = Path(__file__).parent
-    collected_path = (script_dir / args.collected_code).resolve()
-    output_path = (script_dir / args.output).resolve()
+    collected_path = Path(args.collected_code).resolve()
+    output_path = Path(args.output).resolve()
     
     analyzer = VulnerabilityAnalyzer(
         collected_code_dir=collected_path,
