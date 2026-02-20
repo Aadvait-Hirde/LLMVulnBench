@@ -1,7 +1,7 @@
 
 """
 Mappings from scanner specific rules to CWE IDs.
-Currently focuses on Bandit which often output None for CWEs.
+Covers Bandit (Python), Semgrep (TypeScript/Java), and cppcheck (C++).
 """
 
 BANDIT_RULE_TO_CWE = {
@@ -32,6 +32,82 @@ BANDIT_RULE_TO_CWE = {
     'B615': 'CWE-494',  # huggingface_unsafe_download
 }
 
+# Semgrep rule mappings for TypeScript/JavaScript and Java
+# Sources: Semgrep rule metadata, MITRE CWE database, OWASP guidance
+SEMGREP_RULE_TO_CWE = {
+    # ----- JavaScript/TypeScript rules -----
+    # Path traversal via path.join/path.resolve with user input
+    'javascript.lang.security.audit.path-traversal.path-join-resolve-traversal.path-join-resolve-traversal': 'CWE-22',
+    # OS command injection via child_process
+    'javascript.lang.security.detect-child-process.detect-child-process': 'CWE-78',
+    # Hardcoded session secret
+    'javascript.express.security.audit.express-session-hardcoded-secret.express-session-hardcoded-secret': 'CWE-798',
+    # Missing CSRF middleware
+    'javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage': 'CWE-352',
+    # CORS misconfiguration (overly permissive origins)
+    'javascript.express.security.cors-misconfiguration.cors-misconfiguration': 'CWE-942',
+    # ReDoS via non-literal regexp from user input
+    'javascript.lang.security.audit.detect-non-literal-regexp.detect-non-literal-regexp': 'CWE-1333',
+    # Unsafe format string (potential injection)
+    'javascript.lang.security.audit.unsafe-formatstring.unsafe-formatstring': 'CWE-134',
+    # Cipher created without IV (insecure cryptography)
+    'javascript.node-crypto.security.create-de-cipher-no-iv.create-de-cipher-no-iv': 'CWE-329',
+    # GCM mode without specifying tag length (weak crypto)
+    'javascript.node-crypto.security.gcm-no-tag-length.gcm-no-tag-length': 'CWE-327',
+    # AJV allErrors:true leaks validation info
+    'javascript.ajv.security.audit.ajv-allerrors-true.ajv-allerrors-true': 'CWE-209',
+    # TLS verification bypass (insecure transport)
+    'problem-based-packs.insecure-transport.js-node.bypass-tls-verification.bypass-tls-verification': 'CWE-295',
+
+    # ----- Java rules -----
+    # Bad hexadecimal conversion (incorrect type conversion)
+    'java.lang.security.audit.bad-hexa-conversion.bad-hexa-conversion': 'CWE-704',
+    # CBC padding oracle vulnerability
+    'java.lang.security.audit.cbc-padding-oracle.cbc-padding-oracle': 'CWE-327',
+    # OS command injection via ProcessBuilder
+    'java.lang.security.audit.command-injection-process-builder.command-injection-process-builder': 'CWE-78',
+    # Cookie missing HttpOnly flag
+    'java.lang.security.audit.cookie-missing-httponly.cookie-missing-httponly': 'CWE-1004',
+    # Cookie missing Secure flag
+    'java.lang.security.audit.cookie-missing-secure-flag.cookie-missing-secure-flag': 'CWE-614',
+    # ECB cipher mode (insecure block cipher mode)
+    'java.lang.security.audit.crypto.ecb-cipher.ecb-cipher': 'CWE-327',
+    # Use of MD5 (broken hash)
+    'java.lang.security.audit.crypto.use-of-md5.use-of-md5': 'CWE-327',
+    # Permissive CORS configuration
+    'java.lang.security.audit.permissive-cors.permissive-cors': 'CWE-942',
+    # Cookie isSecure set to false
+    'java.servlets.security.cookie-issecure-false.cookie-issecure-false': 'CWE-614',
+    # Spring CSRF protection disabled
+    'java.spring.security.audit.spring-csrf-disabled.spring-csrf-disabled': 'CWE-352',
+    # Tainted file path (path traversal)
+    'java.spring.security.injection.tainted-file-path.tainted-file-path': 'CWE-22',
+}
+
+# Cppcheck rule mappings
+# Sources: cppcheck documentation, MITRE CWE database
+CPPCHECK_RULE_TO_CWE = {
+    # Too many branches for normal check level (code complexity indicator)
+    'normalCheckLevelMaxBranches': 'CWE-710',  # Improper Adherence to Coding Standards
+    # Syntax error in source code
+    'syntaxError': 'CWE-710',  # Improper Adherence to Coding Standards
+    # Dangerous type cast
+    'dangerousTypeCast': 'CWE-704',  # Incorrect Type Conversion or Cast
+    # Return value of function ignored
+    'ignoredReturnValue': 'CWE-252',  # Unchecked Return Value
+    # Incorrect string comparison (using == instead of strcmp)
+    'incorrectStringCompare': 'CWE-597',  # Use of Wrong Operator in String Comparison
+    # Uninitialized private member variable
+    'uninitMemberVarPrivate': 'CWE-457',  # Use of Uninitialized Variable
+    # Uninitialized struct member
+    'uninitStructMember': 'CWE-457',  # Use of Uninitialized Variable
+    # Uninitialized variable
+    'uninitvar': 'CWE-457',  # Use of Uninitialized Variable
+    # Missing virtual destructor (polymorphism issue)
+    'virtualDestructor': 'CWE-710',  # Improper Adherence to Coding Standards
+}
+
+
 def get_cwe_from_rule(scanner, rule_id, reported_cwe=None):
     """
     Returns the CWE ID for a given scanner and rule ID.
@@ -46,8 +122,12 @@ def get_cwe_from_rule(scanner, rule_id, reported_cwe=None):
             cwe_str = f'CWE-{cwe_str}'
         return cwe_str
     
-    # Fallback to manual mapping
+    # Fallback to manual mapping by scanner
     if scanner == 'bandit':
         return BANDIT_RULE_TO_CWE.get(rule_id)
+    elif scanner == 'semgrep':
+        return SEMGREP_RULE_TO_CWE.get(rule_id)
+    elif scanner == 'cppcheck':
+        return CPPCHECK_RULE_TO_CWE.get(rule_id)
         
     return None
